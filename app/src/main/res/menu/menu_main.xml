@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/resetImageButton"
+        android:icon="@drawable/ic_undo_24dp"
+        app:showAsAction="ifRoom"
+        android:title="@string/reset_image">
+    </item>
+    <item
+        android:id="@+id/saveButton"
+        android:icon="@drawable/ic_save_24dp"
+        app:showAsAction="ifRoom"
+        android:title="@string/save">
+    </item>
+</menu>
