@@ -75,11 +75,13 @@
 
                     <ImageButton
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
+                        app:srcCompat="@drawable/effect_normal"
+                        android:onClick=""/>
 
                     <ImageButton
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
+                        app:srcCompat="@drawable/effect_normal"
+                        android:onClick="onclick"/>
 
                     <ImageButton
                         style="@style/button_effect"

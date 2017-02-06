@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.traitementimage.R;
+import fr.ram.traitementimage.Treatment.ShadesOfGray;
 
 public class MainActivity extends AppCompatActivity {
     private Bitmap imageBitmap;
@@ -81,5 +83,10 @@ public class MainActivity extends AppCompatActivity {
     private void onHomePressed() {
         DialogFragment newFragment = new MainActivityBackButtonDialogFragment();
         newFragment.show(getSupportFragmentManager(), null);
+    }
+
+    public void onclick(View view) {
+        ShadesOfGray shadesOfGray=new ShadesOfGray();
+        shadesOfGray.calcul(imageBitmap,imageView);
     }
 }

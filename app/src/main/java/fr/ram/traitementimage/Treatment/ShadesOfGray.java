@@ -9,7 +9,8 @@ import android.widget.ImageView;
  */
 public class ShadesOfGray extends Treatment {
 
-    public void ShadesOfGray(Bitmap bmp,ImageView img)
+    @Override
+    public void calcul(Bitmap bmp,ImageView img)
     {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
