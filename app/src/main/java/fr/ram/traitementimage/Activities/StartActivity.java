@@ -34,9 +34,6 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-
-        Button camera = (Button) findViewById(R.id.camera);
-        Button gallery = (Button) findViewById(R.id.gallery);
     }
 
     @Override

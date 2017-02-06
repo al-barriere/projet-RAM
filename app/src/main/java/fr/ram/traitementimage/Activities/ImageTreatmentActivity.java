@@ -113,7 +113,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void onclick(View view) {
-        ShadesOfGray shadesOfGray=new ShadesOfGray();
+        ShadesOfGray shadesOfGray = new ShadesOfGray();
         shadesOfGray.calcul(imageBitmap,imageView);
     }
 }
