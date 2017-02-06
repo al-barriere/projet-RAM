@@ -1,8 +1,10 @@
-package fr.ram.traitementimage;
+package fr.ram.traitementimage.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+
+import fr.ram.traitementimage.R;
 
 /**
  * When you start the app, you have 2 choices :

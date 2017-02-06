@@ -1,12 +1,16 @@
 package fr.ram.traitementimage.Activities;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,11 +21,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.traitementimage.R;
+import fr.ram.traitementimage.Util.ImageFile;
 
-public class MainActivity extends AppCompatActivity {
+public class ImageTreatmentActivity extends AppCompatActivity {
     private Bitmap imageBitmap;
+    private Uri photoUri;
     private ImageView imageView;
     private Toolbar toolbar;
     private LinearLayout bottomBar;
@@ -36,11 +44,25 @@ public class MainActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         bottomBar = (LinearLayout) findViewById(R.id.bottomBar);
         imageContainer = (RelativeLayout) findViewById(R.id.imageContainer);
-        imageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test_image);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        photoUri = (Uri) extras.getParcelable("image");
+        boolean fromCamera = extras.getBoolean("fromCamra");
+
+
+        try {
+            imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
+            imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
+            if (fromCamera)
+                imageBitmap = ImageFile.rotationImage(photoUri, imageBitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         imageContainer.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
@@ -81,5 +103,10 @@ public class MainActivity extends AppCompatActivity {
     private void onHomePressed() {
         DialogFragment newFragment = new MainActivityBackButtonDialogFragment();
         newFragment.show(getSupportFragmentManager(), null);
+    }
+
+    @Override
+    public void onBackPressed() {
+        onHomePressed();
     }
 }
