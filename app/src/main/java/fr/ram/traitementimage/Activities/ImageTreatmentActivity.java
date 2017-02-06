@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.traitementimage.R;
 import fr.ram.traitementimage.Util.ImageFile;
+import fr.ram.traitementimage.Treatment.ShadesOfGray;
 
 public class ImageTreatmentActivity extends AppCompatActivity {
     private Bitmap imageBitmap;
@@ -38,7 +40,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_image_treatment);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         imageView = (ImageView) findViewById(R.id.imageView);
@@ -108,5 +110,10 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         onHomePressed();
+    }
+
+    public void onclick(View view) {
+        ShadesOfGray shadesOfGray=new ShadesOfGray();
+        shadesOfGray.calcul(imageBitmap,imageView);
     }
 }
