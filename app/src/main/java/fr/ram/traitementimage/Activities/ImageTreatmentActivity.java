@@ -26,6 +26,7 @@ import java.io.IOException;
 
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.traitementimage.R;
+import fr.ram.traitementimage.Treatment.Sepia;
 import fr.ram.traitementimage.Util.ImageFile;
 import fr.ram.traitementimage.Treatment.ShadesOfGray;
 
@@ -112,8 +113,14 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         onHomePressed();
     }
 
-    public void onclick(View view) {
+    public void toShadesOfGray(View view) {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
         shadesOfGray.calcul(imageBitmap,imageView);
+    }
+
+    public void toSepia(View view)
+    {
+        Sepia sepia=new Sepia();
+        sepia.calcul(imageBitmap,imageView);
     }
 }
