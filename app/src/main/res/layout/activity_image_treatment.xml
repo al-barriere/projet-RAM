@@ -76,12 +76,12 @@
                     <ImageButton
                         style="@style/button_effect"
                         app:srcCompat="@drawable/effect_normal"
-                        android:onClick=""/>
+                        android:onClick="toShadesOfGray"/>
 
                     <ImageButton
                         style="@style/button_effect"
                         app:srcCompat="@drawable/effect_normal"
-                        android:onClick="onclick"/>
+                        android:onClick="toSepia"/>
 
                     <ImageButton
                         style="@style/button_effect"
