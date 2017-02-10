@@ -2,6 +2,7 @@ package fr.ram.traitementimage.Treatment;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.widget.ImageView;
 
 
 /**
@@ -9,18 +10,18 @@ import android.graphics.Color;
  *
  */
 
-public class OverExposure extends Treatment {
+public class OverExposure implements Treatment {
 
     /*
    Apply the effect "OverExposure"
     */
-    public static void applyFilter(Bitmap img, int value){
+    public static void applyFilter(Bitmap bmp, ImageView img, int value){
         int red,green,blue;
-        int size = img.getWidth()*img.getHeight();
+        int size = bmp.getWidth()*bmp.getHeight();
         int pixels[] = new int[size];
         int new_pixels[] = new int[size];
 
-        img.getPixels(pixels, 0, img.getWidth(), 0, 0, img.getWidth(), img.getHeight());
+        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for(int i=0;i<size;i++){
             red = Color.red(pixels[i]) + value;
             green = Color.green(pixels[i])+value;
@@ -31,6 +32,12 @@ public class OverExposure extends Treatment {
             else if(blue>255) {blue=255;}
             new_pixels[i] = Color.rgb(red,green,blue);
         }
-        img.setPixels(new_pixels, 0, img.getWidth(), 0, 0, img.getWidth(), img.getHeight());
+        bmp.setPixels(new_pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        img.setImageBitmap(bmp);
+    }
+
+    @Override
+    public void calcul(Bitmap bmp, ImageView img) {
+
     }
 }

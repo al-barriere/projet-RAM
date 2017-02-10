@@ -7,7 +7,7 @@ import android.widget.ImageView;
 /**
  * Created by Maxime on 03/02/2017.
  */
-public class ShadesOfGray extends Treatment {
+public class ShadesOfGray implements Treatment {
 
     @Override
     public void calcul(Bitmap bmp,ImageView img)

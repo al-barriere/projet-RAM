@@ -7,7 +7,7 @@ import android.widget.ImageView;
 /**
  * Created by Maxime on 03/02/2017.
  */
-public class Sepia extends Treatment {
+public class Sepia implements Treatment {
 
     @Override
     public void calcul(Bitmap bmp,ImageView img)

@@ -2,6 +2,7 @@ package fr.ram.traitementimage.Treatment;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.widget.ImageView;
 
 import static android.graphics.Color.RGBToHSV;
 
@@ -10,18 +11,18 @@ import static android.graphics.Color.RGBToHSV;
  * You choose a color. It will be display and the others one will be change to the gray color
  */
 
-public class ColorFilter extends Treatment {
+public class ColorFilter implements Treatment {
 
     /*
     Apply the effect "ColorFilter"
      */
-    public static void applyFilter(Bitmap img, int min, int color){
+    public static void applyFilter(Bitmap bmp, ImageView img,int min, int color){
         int red,blue,green,rgb;
-        int size = img.getWidth()*img.getHeight();
+        int size = bmp.getWidth()*bmp.getHeight();
         int pixels[] = new int[size];
         float hsv[] = new float[3];
 
-        img.getPixels(pixels, 0, img.getWidth(), 0, 0, img.getWidth(), img.getHeight());
+        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for(int i=0;i<size;i++){
             rgb = pixels[i];
 
@@ -37,7 +38,8 @@ public class ColorFilter extends Treatment {
             }
             pixels[i] = rgb;
         }
-        img.setPixels(pixels, 0, img.getWidth(), 0, 0, img.getWidth(), img.getHeight());
+        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        img.setImageBitmap(bmp);
     }
 
     /*
@@ -48,5 +50,10 @@ public class ColorFilter extends Treatment {
         green = (green * 59) / 100;
         blue = (blue * 11) / 100;
         return red + green + blue;
+    }
+
+    @Override
+    public void calcul(Bitmap bmp, ImageView img) {
+
     }
 }

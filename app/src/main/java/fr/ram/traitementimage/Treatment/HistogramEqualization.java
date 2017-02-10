@@ -8,7 +8,7 @@ import android.widget.ImageView;
  * Created by Maxime on 09/02/2017.
  */
 
-public class HistogramEqualization extends Treatment {
+public class HistogramEqualization implements Treatment {
     @Override
     public void calcul(Bitmap bmp, ImageView img)
     {
