@@ -1,6 +1,7 @@
 package fr.ram.traitementimage.Treatment.Convolution;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.widget.ImageView;
 
 import fr.ram.traitementimage.Treatment.Treatment;
@@ -11,7 +12,7 @@ import fr.ram.traitementimage.Treatment.Treatment;
 
 public class Laplacien extends Convolution {
     @Override
-    public void calcul(Bitmap bmp, ImageView img)
+    public void calcul(Bitmap bmp, ImageView img, Bundle b)
     {
 
     }

@@ -1,6 +1,7 @@
 package fr.ram.traitementimage.Treatment.Convolution;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.widget.ImageView;
 
 /**
@@ -9,7 +10,7 @@ import android.widget.ImageView;
 
 public class Gaussien extends Convolution {
     @Override
-    public void calcul(Bitmap bmp, ImageView img)
+    public void calcul(Bitmap bmp, ImageView img, Bundle b)
     {
 
     }
