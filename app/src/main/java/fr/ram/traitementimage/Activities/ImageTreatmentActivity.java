@@ -2,16 +2,12 @@ package fr.ram.traitementimage.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +21,9 @@ import android.widget.Toast;
 import java.io.IOException;
 
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
+import fr.ram.traitementimage.Fragments.SeekbarHueColorDialogFragment;
 import fr.ram.traitementimage.R;
+import fr.ram.traitementimage.Treatment.HueChoice;
 import fr.ram.traitementimage.Treatment.Sepia;
 import fr.ram.traitementimage.Util.ImageFile;
 import fr.ram.traitementimage.Treatment.ShadesOfGray;
@@ -37,6 +35,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private LinearLayout bottomBar;
     private RelativeLayout imageContainer;
+    private Bundle seekData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,14 +112,30 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         onHomePressed();
     }
 
+    /**
+     * OnClick event
+     */
     public void toShadesOfGray(View view) {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
-        shadesOfGray.calcul(imageBitmap,imageView);
+        shadesOfGray.calcul(imageBitmap,imageView,seekData);
     }
 
-    public void toSepia(View view)
-    {
+    public void toSepia(View view) {
         Sepia sepia=new Sepia();
-        sepia.calcul(imageBitmap,imageView);
+        sepia.calcul(imageBitmap,imageView, seekData);
+    }
+
+    public void choiceHue(View view){
+        SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
+        newFragments.show(getFragmentManager(),"hue choice");
+    }
+
+    /**
+     * Functions Dialogfragment
+     */
+    public void hueChoice(int hue){
+        HueChoice hueChoice = new HueChoice();
+        seekData.putInt("value", hue);
+        hueChoice.calcul(imageBitmap,imageView,seekData);
     }
 }
