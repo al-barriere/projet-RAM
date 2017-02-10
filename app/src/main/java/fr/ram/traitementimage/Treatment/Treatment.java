@@ -1,6 +1,7 @@
 package fr.ram.traitementimage.Treatment;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.widget.ImageView;
 
 /**
@@ -8,5 +9,5 @@ import android.widget.ImageView;
  */
 public interface Treatment {
 
-    void calcul(Bitmap bmp, ImageView img);
+    void calcul(Bitmap bmp, ImageView img, Bundle b);
 }

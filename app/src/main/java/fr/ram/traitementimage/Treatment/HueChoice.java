@@ -2,6 +2,7 @@ package fr.ram.traitementimage.Treatment;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.widget.ImageView;
 
 /**
@@ -11,11 +12,12 @@ import android.widget.ImageView;
 
 public class HueChoice implements Treatment {
 
-    /*
-    Apply the effect of "The choice of the hue"
-     */
-    public static void applyFilter(Bitmap bmp, ImageView img,int hue){
+    @Override
+    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int size = bmp.getWidth() * bmp.getHeight();
+        //////
+        int hue=4;
+        //////
         int pixels[] = new int[size];
         float hsv[] = new float[3];
 
@@ -27,10 +29,5 @@ public class HueChoice implements Treatment {
         }
         bmp.setPixels(pixels, 0, img.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         img.setImageBitmap(bmp);
-    }
-
-    @Override
-    public void calcul(Bitmap bmp, ImageView img) {
-
     }
 }

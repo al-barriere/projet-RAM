@@ -85,7 +85,8 @@
 
                     <ImageButton
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
+                        app:srcCompat="@drawable/effect_normal"
+                        android:onClick="hueChoice (ImageTreatmentActivity)" />
 
                     <ImageButton
                         style="@style/button_effect"
