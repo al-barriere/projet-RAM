@@ -16,7 +16,7 @@ public class HueChoice implements Treatment {
     public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int size = bmp.getWidth() * bmp.getHeight();
         //////
-        int hue=4;
+        int hue=b.getInt("value");
         //////
         int pixels[] = new int[size];
         float hsv[] = new float[3];
@@ -27,7 +27,7 @@ public class HueChoice implements Treatment {
             hsv[0] = hue;
             pixels[i] = Color.HSVToColor(hsv);
         }
-        bmp.setPixels(pixels, 0, img.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         img.setImageBitmap(bmp);
     }
 }

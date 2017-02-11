@@ -86,15 +86,17 @@
                     <ImageButton
                         style="@style/button_effect"
                         app:srcCompat="@drawable/effect_normal"
-                        android:onClick="hueChoice (ImageTreatmentActivity)" />
+                        android:onClick="choiceHue" />
 
                     <ImageButton
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
+                        app:srcCompat="@drawable/effect_normal"
+                        android:onClick="colorFilter" />
 
                     <ImageButton
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
+                        app:srcCompat="@drawable/effect_normal"
+                        android:onClick="overExposure" />
 
                     <ImageButton
                         style="@style/button_effect"

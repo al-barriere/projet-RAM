@@ -17,7 +17,7 @@ public class OverExposure implements Treatment {
     public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int red,green,blue;
         //////
-        int value=3;
+        int value=b.getInt("value");
         //////
         int size = bmp.getWidth()*bmp.getHeight();
         int pixels[] = new int[size];

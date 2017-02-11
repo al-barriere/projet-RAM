@@ -12,32 +12,25 @@ import fr.ram.traitementimage.Activities.ImageTreatmentActivity;
 import fr.ram.traitementimage.R;
 
 /**
- * Created by AntoineB on 17-02-10.
+ * Created by AntoineB on 17-02-11.
  */
 
-public class SeekbarHueColorDialogFragment extends DialogFragment {
+public class SeekbarValueDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layout = getActivity().getLayoutInflater();
-        builder.setTitle("Quel teinte choississez-vous ?");
-        builder.setView(layout.inflate(R.layout.seekbar_hue,null));
+        builder.setTitle("Quel valeur choississez-vous ?");
+        builder.setView(layout.inflate(R.layout.seekbar_value,null));
 
 
 
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
-                SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.choix);
+                SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.seekBar);
                 ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
-                if(callingActivity.getOption() == 0){
-                    callingActivity.hueChoice(contrast.getProgress());
-                }else if(callingActivity.getOption() == 1){
-                    callingActivity.filterColor(contrast.getProgress());
-                }
-
-
-
+                callingActivity.overExposureTreatment(contrast.getProgress());
 
                 dialog.dismiss();
             }

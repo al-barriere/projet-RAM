@@ -18,7 +18,8 @@ public class ColorFilter implements Treatment {
     public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int red,blue,green,rgb;
         ///////:
-        int min=1,color=4;
+        int min=30;
+        int color=b.getInt("color");
         ///////
         int size = bmp.getWidth()*bmp.getHeight();
         int pixels[] = new int[size];

@@ -2,6 +2,7 @@ package fr.ram.traitementimage.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,8 +23,11 @@ import java.io.IOException;
 
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.traitementimage.Fragments.SeekbarHueColorDialogFragment;
+import fr.ram.traitementimage.Fragments.SeekbarValueDialogFragment;
 import fr.ram.traitementimage.R;
+import fr.ram.traitementimage.Treatment.ColorFilter;
 import fr.ram.traitementimage.Treatment.HueChoice;
+import fr.ram.traitementimage.Treatment.OverExposure;
 import fr.ram.traitementimage.Treatment.Sepia;
 import fr.ram.traitementimage.Util.ImageFile;
 import fr.ram.traitementimage.Treatment.ShadesOfGray;
@@ -36,6 +40,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     private LinearLayout bottomBar;
     private RelativeLayout imageContainer;
     private Bundle seekData;
+
+    public int getOption() {
+        return option;
+    }
+
+    private int option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,8 +136,20 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void choiceHue(View view){
+        option = 0;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
-        newFragments.show(getFragmentManager(),"hue choice");
+        newFragments.show(getFragmentManager(),"choice hue");
+    }
+
+    public void colorFilter(View view){
+        option = 1;
+        SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
+        newFragments.show(getFragmentManager(),"colorFilter");
+    }
+
+    public void overExposure(View view){
+        SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
+        newFragments.show(getFragmentManager(), "overexposure");
     }
 
     /**
@@ -135,7 +157,22 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      */
     public void hueChoice(int hue){
         HueChoice hueChoice = new HueChoice();
+        seekData = new Bundle();
         seekData.putInt("value", hue);
         hueChoice.calcul(imageBitmap,imageView,seekData);
+    }
+
+    public void filterColor(int color){
+        ColorFilter colorFilter = new ColorFilter();
+        seekData = new Bundle();
+        seekData.putInt("color", color);
+        colorFilter.calcul(imageBitmap,imageView,seekData);
+    }
+
+    public void overExposureTreatment(int value){
+        OverExposure overExposure = new OverExposure();
+        seekData = new Bundle();
+        seekData.putInt("value", value);
+        overExposure.calcul(imageBitmap,imageView,seekData);
     }
 }
