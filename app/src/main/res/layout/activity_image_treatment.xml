@@ -73,42 +73,37 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageButton
+                    <Button
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal"
-                        android:onClick="toShadesOfGray"/>
+                        android:text="nb"
+                        android:onClick="toShadesOfGray"/> <!-- app:srcCompat="@drawable/effect_normal"-->
 
-                    <ImageButton
+                    <Button
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal"
-                        android:onClick="toSepia"/>
+                        android:text="sepia"
+                        android:onClick="toSepia"/> <!--app:srcCompat="@drawable/effect_normal"-->
 
-                    <ImageButton
+                    <Button
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal"
-                        android:onClick="choiceHue" />
+                        android:text="teinte"
+                        android:onClick="choiceHue" /><!--app:srcCompat="@drawable/effect_normal"-->
 
-                    <ImageButton
+                    <Button
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal"
-                        android:onClick="colorFilter" />
+                        android:text="filtre"
+                        android:onClick="colorFilter" /><!--app:srcCompat="@drawable/effect_normal"-->
 
-                    <ImageButton
+                    <Button
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal"
-                        android:onClick="overExposure" />
+                        android:text="lumos"
+                        android:onClick="overExposure" /><!--app:srcCompat="@drawable/effect_normal"-->
 
-                    <ImageButton
+                    <Button
                         style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
+                        android:text="moyenneur"
+                        android:onClick="moyenneur"/><!--app:srcCompat="@drawable/effect_normal"-->
 
-                    <ImageButton
-                        style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
 
-                    <ImageButton
-                        style="@style/button_effect"
-                        app:srcCompat="@drawable/effect_normal" />
 
                 </LinearLayout>
             </HorizontalScrollView>

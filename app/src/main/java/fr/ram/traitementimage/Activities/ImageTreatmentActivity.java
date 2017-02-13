@@ -26,6 +26,7 @@ import fr.ram.traitementimage.Fragments.SeekbarHueColorDialogFragment;
 import fr.ram.traitementimage.Fragments.SeekbarValueDialogFragment;
 import fr.ram.traitementimage.R;
 import fr.ram.traitementimage.Treatment.ColorFilter;
+import fr.ram.traitementimage.Treatment.Convolution.Moyenneur;
 import fr.ram.traitementimage.Treatment.HueChoice;
 import fr.ram.traitementimage.Treatment.OverExposure;
 import fr.ram.traitementimage.Treatment.Sepia;
@@ -150,6 +151,11 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void overExposure(View view){
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
         newFragments.show(getFragmentManager(), "overexposure");
+    }
+    public void moyenneur(View view)
+    {
+        Moyenneur m= new Moyenneur();
+        m.calcul(imageBitmap,imageView,seekData);
     }
 
     /**
