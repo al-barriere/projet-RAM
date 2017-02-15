@@ -43,7 +43,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="da364b696506c1f1f0110e9bc99e0a8600a745c9">
+        sha1="0a6d6e13d30e6058d80a4998a96c9ac91b46ee22">
         <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a0d255dcccdd7e39c22d65bfd754d13a1d939427\classes.dex" />
     </item>
     <item
@@ -90,6 +90,24 @@
         revision="24.0.3"
         sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
         <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_dcc5e9167b9df95c7c835ee042d6a25815a1357f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_b1aa74a8697cbaa8e606a6fdcc5e2dc7ee0a2473\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_6b070b55b14d2bb76277f29801050f8b464ea4e6\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -151,7 +169,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="ed1c338ad8478df1982002a5a3a3d779c63f7fd5">
+        sha1="b95ecf236a1a0c74c36b61fdfd6d054ee98f6c8d">
         <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_66396b52a507eb75ceaa0edefd33e2e996623b47\classes.dex" />
     </item>
 

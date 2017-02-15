@@ -43,7 +43,7 @@
             android:onClick="onButtonCameraClick"/>
 
         <TextView
-            android:text="Bienvenu dans notre application de traitement d'image"
+            android:text="Bienvenue dans notre application de traitement d'image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
@@ -53,7 +53,7 @@
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:text="    Rémi MOMPRIVÉ, Antoine BARRIERE et Maxime GUILBAULT"
+            android:text=" Rémi MOMPRIVÉ, Antoine BARRIERE et Maxime GUILBAULT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"

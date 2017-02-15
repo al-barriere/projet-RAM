@@ -28,7 +28,6 @@ public class StartActivity extends AppCompatActivity {
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int SELECT_IMAGE = 2;
     private Uri mCurrentPhotoUri;
-    private Bitmap imageBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +40,13 @@ public class StartActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_TAKE_PHOTO) {
             if (resultCode == Activity.RESULT_OK) {
-                startTreatmentActivity(mCurrentPhotoUri, true);
+                startTreatmentActivity(mCurrentPhotoUri);
             }
         }
         if (requestCode == SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
-                    startTreatmentActivity(data.getData(), false);
+                    startTreatmentActivity(data.getData());
                 }
             }
         }
@@ -84,10 +83,9 @@ public class StartActivity extends AppCompatActivity {
         dispatchTakePictureIntent();
     }
 
-    private void startTreatmentActivity(Uri imageUri, boolean fromCamera) {
+    private void startTreatmentActivity(Uri imageUri) {
         Intent intent = new Intent(this, ImageTreatmentActivity.class);
         intent.putExtra("image", imageUri);
-        intent.putExtra("fromCamera", fromCamera);
         startActivity(intent);
     }
 }

@@ -10,4 +10,5 @@
     <string name="reset_image">Réinitialiser l\'image</string>
     <string name="camera">Appareil photo</string>
     <string name="galery">Galerie</string>
+    <string name="image_saved">L\'image a été sauvegardée</string>
 </resources>
