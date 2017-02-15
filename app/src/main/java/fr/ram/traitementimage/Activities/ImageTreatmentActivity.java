@@ -70,21 +70,8 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         imageView.setImageBitmap(imageBitmap);
-        /*imageView.post(new Runnable() {
-            @Override
-            public void run() {
-                int height = imageView.getMeasuredHeight() - bottomBar.getLayoutParams().height;
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
-                imageView.setLayoutParams(lp);
-            }
-        });*/
     }
 
     @Override
