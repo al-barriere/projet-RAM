@@ -2,6 +2,7 @@ package fr.ram.traitementimage.Treatment;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.widget.ImageView;
 
 /**
@@ -10,8 +11,7 @@ import android.widget.ImageView;
 public class Sepia implements Treatment {
 
     @Override
-    public void calcul(Bitmap bmp,ImageView img)
-    {
+    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for (int i = 0; i < pixels.length; i++) {

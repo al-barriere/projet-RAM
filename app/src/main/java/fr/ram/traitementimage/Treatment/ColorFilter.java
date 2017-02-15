@@ -2,6 +2,7 @@ package fr.ram.traitementimage.Treatment;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.widget.ImageView;
 
 import static android.graphics.Color.RGBToHSV;
@@ -13,11 +14,13 @@ import static android.graphics.Color.RGBToHSV;
 
 public class ColorFilter implements Treatment {
 
-    /*
-    Apply the effect "ColorFilter"
-     */
-    public static void applyFilter(Bitmap bmp, ImageView img,int min, int color){
+    @Override
+    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int red,blue,green,rgb;
+        ///////:
+        int min=30;
+        int color=b.getInt("color");
+        ///////
         int size = bmp.getWidth()*bmp.getHeight();
         int pixels[] = new int[size];
         float hsv[] = new float[3];
@@ -42,6 +45,7 @@ public class ColorFilter implements Treatment {
         img.setImageBitmap(bmp);
     }
 
+
     /*
     Change the color of all the pixel which are inferior or superior to the value
      */
@@ -52,8 +56,5 @@ public class ColorFilter implements Treatment {
         return red + green + blue;
     }
 
-    @Override
-    public void calcul(Bitmap bmp, ImageView img) {
 
-    }
 }

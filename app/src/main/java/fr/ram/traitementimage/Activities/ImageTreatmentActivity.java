@@ -15,11 +15,18 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.io.IOException;
 
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
+import fr.ram.traitementimage.Fragments.SeekbarHueColorDialogFragment;
+import fr.ram.traitementimage.Fragments.SeekbarValueDialogFragment;
 import fr.ram.traitementimage.R;
+import fr.ram.traitementimage.Treatment.ColorFilter;
+import fr.ram.traitementimage.Treatment.Convolution.Moyenneur;
+import fr.ram.traitementimage.Treatment.HueChoice;
+import fr.ram.traitementimage.Treatment.OverExposure;
 import fr.ram.traitementimage.Treatment.Sepia;
 import fr.ram.traitementimage.Treatment.ShadesOfGray;
 import fr.ram.traitementimage.Util.ImageFile;
@@ -31,6 +38,11 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private HorizontalScrollView bottomBar;
     private boolean modifiedAfterSaved;
+    private RelativeLayout imageContainer;
+    private Bundle seekData;
+    private int option;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +77,14 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         super.onStart();
 
         imageView.setImageBitmap(imageBitmap);
-        imageView.post(new Runnable() {
+        /*imageView.post(new Runnable() {
             @Override
             public void run() {
                 int height = imageView.getMeasuredHeight() - bottomBar.getLayoutParams().height;
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
                 imageView.setLayoutParams(lp);
             }
-        });
+        });*/
     }
 
     @Override
@@ -115,8 +127,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
             DialogFragment fragmentLeave = new MainActivityBackButtonDialogFragment();
             fragmentLeave.setArguments(args);
             fragmentLeave.show(getSupportFragmentManager(), null);
-        }
-        else {
+        } else {
             this.finish();
         }
     }
@@ -126,19 +137,75 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         onHomePressed();
     }
 
+    /**
+     * OnClick event
+     */
     public void toShadesOfGray(View view) {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
-        shadesOfGray.calcul(imageBitmap, imageView);
-        setImageModified(true);
-    }
-
-    public void toSepia(View view) {
-        Sepia sepia = new Sepia();
-        sepia.calcul(imageBitmap, imageView);
+        shadesOfGray.calcul(imageBitmap, imageView, seekData);
         setImageModified(true);
     }
 
     private void setImageModified(boolean modified) {
         modifiedAfterSaved = modified;
+    }
+
+    public void toSepia(View view) {
+        Sepia sepia = new Sepia();
+        sepia.calcul(imageBitmap, imageView, seekData);
+        setImageModified(true);
+    }
+
+    public void choiceHue(View view) {
+        option = 0;
+        SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
+        newFragments.show(getFragmentManager(), "choice hue");
+    }
+
+    public void colorFilter(View view) {
+        option = 1;
+        SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
+        newFragments.show(getFragmentManager(), "colorFilter");
+    }
+
+    public void overExposure(View view) {
+        SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
+        newFragments.show(getFragmentManager(), "overexposure");
+    }
+
+    public void moyenneur(View view) {
+        Moyenneur m = new Moyenneur();
+        m.calcul(imageBitmap, imageView, seekData);
+    }
+
+    /**
+     * Functions Dialogfragment
+     */
+    public void hueChoice(int hue) {
+        HueChoice hueChoice = new HueChoice();
+        seekData = new Bundle();
+        seekData.putInt("value", hue);
+        hueChoice.calcul(imageBitmap, imageView, seekData);
+        setImageModified(true);
+    }
+
+    public void filterColor(int color) {
+        ColorFilter colorFilter = new ColorFilter();
+        seekData = new Bundle();
+        seekData.putInt("color", color);
+        colorFilter.calcul(imageBitmap, imageView, seekData);
+        setImageModified(true);
+    }
+
+    public void overExposureTreatment(int value) {
+        OverExposure overExposure = new OverExposure();
+        seekData = new Bundle();
+        seekData.putInt("value", value);
+        overExposure.calcul(imageBitmap, imageView, seekData);
+        setImageModified(true);
+    }
+
+    public int getOption() {
+        return option;
     }
 }

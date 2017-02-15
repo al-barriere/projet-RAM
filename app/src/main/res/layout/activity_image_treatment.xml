@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -8,38 +7,45 @@
     android:layout_height="match_parent"
     tools:context="fr.ram.traitementimage.Activities.ImageTreatmentActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context="fr.ram.traitementimage.Activities.ImageTreatmentActivity">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ToolbarTheme"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_above="@+id/bottomBar">
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ToolbarTheme"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:scaleType="centerCrop" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
 
         <HorizontalScrollView
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:fadingEdge="none"
             android:fillViewport="false"
             android:scrollbars="none"
-            android:soundEffectsEnabled="false">
+            android:soundEffectsEnabled="false"
+            android:layout_alignParentBottom="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -58,12 +64,27 @@
 
                 <ImageButton
                     style="@style/button_effect"
-                    android:onClick="toSepia"
+                    android:onClick="choiceHue"
+                    app:srcCompat="@drawable/effect_hue" />
+
+                <ImageButton
+                    style="@style/button_effect"
+                    android:onClick="colorFilter"
+                    app:srcCompat="@drawable/effect_sepia" />
+
+                <ImageButton
+                    style="@style/button_effect"
+                    android:onClick="overExposure"
+                    app:srcCompat="@drawable/effect_sepia" />
+
+                <ImageButton
+                    style="@style/button_effect"
+                    android:onClick="moyenneur"
                     app:srcCompat="@drawable/effect_sepia" />
 
             </LinearLayout>
         </HorizontalScrollView>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

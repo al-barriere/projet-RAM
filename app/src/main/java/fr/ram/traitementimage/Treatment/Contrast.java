@@ -2,6 +2,7 @@ package fr.ram.traitementimage.Treatment;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.widget.ImageView;
 
 /**
@@ -10,9 +11,9 @@ import android.widget.ImageView;
 
 public class Contrast implements Treatment {
 
+
     @Override
-    public void calcul(Bitmap bmp, ImageView img)
-    {
+    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
 
     }
 }
