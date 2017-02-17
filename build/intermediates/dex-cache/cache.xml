@@ -30,20 +30,11 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_b1fcbdf9b42d1d04b1e4ec1f9482a166c51941a7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="0a6d6e13d30e6058d80a4998a96c9ac91b46ee22">
+        sha1="a5d80ce0de2bb4b08422779453c8b5b0a73d021e">
         <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a0d255dcccdd7e39c22d65bfd754d13a1d939427\classes.dex" />
     </item>
     <item
@@ -54,24 +45,6 @@
         revision="24.0.3"
         sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
         <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_19bbf7246f460fc600e4146e1d3e41ce52219845\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_00a75f2bb098bcb316a9d16a126a8b14f5795647\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_d0ed72fc7a098b8b7c87940a52b4b14dbe0f01c1\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -138,6 +111,42 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ddc0e7f35880116ef179a0356b557f552904aa74\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_b1fcbdf9b42d1d04b1e4ec1f9482a166c51941a7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_00a75f2bb098bcb316a9d16a126a8b14f5795647\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_d0ed72fc7a098b8b7c87940a52b4b14dbe0f01c1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -156,20 +165,11 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ddc0e7f35880116ef179a0356b557f552904aa74\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="b95ecf236a1a0c74c36b61fdfd6d054ee98f6c8d">
+        sha1="ea70bac2e28a794e40e04a96f48aaed7e774f601">
         <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_66396b52a507eb75ceaa0edefd33e2e996623b47\classes.dex" />
     </item>
 

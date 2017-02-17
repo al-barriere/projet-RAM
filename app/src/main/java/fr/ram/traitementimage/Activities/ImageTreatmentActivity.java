@@ -65,13 +65,16 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
         try {
             imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
-            imageBitmap = ImageFile.rotationImage(photoUri, imageBitmap);
             imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         imageView.setImageBitmap(imageBitmap);
+    }
+
+    private void setImageModified(boolean modified) {
+        modifiedAfterSaved = modified;
     }
 
     @Override
@@ -131,10 +134,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
         shadesOfGray.calcul(imageBitmap, imageView, seekData);
         setImageModified(true);
-    }
-
-    private void setImageModified(boolean modified) {
-        modifiedAfterSaved = modified;
     }
 
     public void toSepia(View view) {

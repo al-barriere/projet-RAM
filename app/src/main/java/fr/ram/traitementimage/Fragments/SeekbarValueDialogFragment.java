@@ -20,12 +20,12 @@ public class SeekbarValueDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layout = getActivity().getLayoutInflater();
-        builder.setTitle("Quel valeur choississez-vous ?");
+        builder.setTitle(R.string.question_value);
         builder.setView(layout.inflate(R.layout.seekbar_value,null));
 
 
 
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
                 SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.seekBar);
@@ -36,7 +36,7 @@ public class SeekbarValueDialogFragment extends DialogFragment {
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

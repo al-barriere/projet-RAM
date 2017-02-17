@@ -10,7 +10,6 @@ import android.widget.ImageView;
  */
 
 public class Gaussien extends Convolution {
-    @Override
     public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int width = bmp.getWidth();
         int height = bmp.getHeight();

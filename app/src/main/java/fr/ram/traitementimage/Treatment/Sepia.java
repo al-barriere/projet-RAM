@@ -9,8 +9,6 @@ import android.widget.ImageView;
  * Created by Maxime on 03/02/2017.
  */
 public class Sepia implements Treatment {
-
-    @Override
     public void calcul(Bitmap bmp, ImageView img, Bundle b) {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
@@ -35,7 +33,6 @@ public class Sepia implements Treatment {
 
         }
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-
 
         img.setImageBitmap(bmp);
     }

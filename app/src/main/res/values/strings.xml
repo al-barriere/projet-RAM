@@ -11,4 +11,6 @@
     <string name="camera">Appareil photo</string>
     <string name="galery">Galerie</string>
     <string name="image_saved">L\'image a été sauvegardée</string>
+    <string name="question_value">Quelle valeur choississez-vous ?</string>
+    <string name="question_hue">Quelle teinte choissez-vous ?</string>
 </resources>
