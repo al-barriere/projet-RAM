@@ -14,59 +14,42 @@ public class Moyenneur extends Convolution {
     @Override
     public void calcul(Bitmap bmp, ImageView img, Bundle b)
     {
+        int value=7;
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         int[] pixelMoyenneur = new int[bmp.getWidth() * bmp.getHeight()];
         int width = bmp.getWidth();
         int height = bmp.getHeight();
+        int red=0, blue=0, green=0, x_pixelMatrix, y_pixelMatrix;
         for(int i = 0; i < pixelMoyenneur.length; i++)
         {
-            int red= Color.red(pixelMoyenneur[i]);
-            int blue= Color.blue(pixelMoyenneur[i]);
-            int green= Color.green(pixelMoyenneur[i]);
-            if(i <= width || i >= width * (height-1) || i % width ==0 || i % width == width-1)
+            x_pixelMatrix=i%width;
+            y_pixelMatrix=i/width;
+
+            if(i <= width*(value/2) || i >= width * (height-(value/2)) || i % width < value/2  || i % width >= width-(value/2))
             {
                 red = Color.red(pixels[i]);
                 green = Color.green(pixels[i]);
                 blue = Color.blue(pixels[i]);
             }
             else {
-                red = (Color.red(pixels[i - width - 1])
-                        + Color.red(pixels[i - width])
-                        + Color.red(pixels[i - width + 1])
-                        + Color.red(pixels[i - 1])
-                        + Color.red(pixels[i])
-                        + Color.red(pixels[i + 1])
-                        + Color.red(pixels[i + width - 1])
-                        + Color.red(pixels[i + width])
-                        + Color.red(pixels[i + width + 1])) / 9;
-                green = (Color.green(pixels[i - width - 1])
-                        + Color.green(pixels[i - width])
-                        + Color.green(pixels[i - width + 1])
-                        + Color.green(pixels[i - 1])
-                        + Color.green(pixels[i])
-                        + Color.green(pixels[i + 1])
-                        + Color.green(pixels[i + width - 1])
-                        + Color.green(pixels[i + width])
-                        + Color.green(pixels[i + width + 1])) / 9;
-                blue = (Color.blue(pixels[i - width - 1])
-                        + Color.blue(pixels[i - width])
-                        + Color.blue(pixels[i - width + 1])
-                        + Color.blue(pixels[i - 1])
-                        + Color.blue(pixels[i])
-                        + Color.blue(pixels[i + 1])
-                        + Color.blue(pixels[i + width - 1])
-                        + Color.blue(pixels[i + width])
-                        + Color.blue(pixels[i + width + 1])) / 9;
+                for (int x = x_pixelMatrix -(value / 2); x <= x_pixelMatrix +(value / 2); x++) {
+                    for (int y = y_pixelMatrix - (value / 2); y <= y_pixelMatrix + (value / 2); y++) {
+                        red+=Color.red(pixels[x+y*width]);
+                        green+=Color.green(pixels[x+y*width]);
+                        blue+=Color.blue(pixels[x+y*width]);
+                    }
+                }
             }
-            pixelMoyenneur[i] = Color.rgb(red, green, blue);
 
+            red/=(value*value);
+            green/=(value*value);
+            blue/=(value*value);
+            pixelMoyenneur[i] = Color.rgb(red, green, blue);
         }
 
         bmp.setPixels(pixelMoyenneur, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-
         img.setImageBitmap(bmp);
-
     }
 
 }
