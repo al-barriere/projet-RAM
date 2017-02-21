@@ -24,6 +24,7 @@ import fr.ram.traitementimage.Fragments.SeekbarHueColorDialogFragment;
 import fr.ram.traitementimage.Fragments.SeekbarValueDialogFragment;
 import fr.ram.traitementimage.R;
 import fr.ram.traitementimage.Treatment.ColorFilter;
+import fr.ram.traitementimage.Treatment.Convolution.Gaussien;
 import fr.ram.traitementimage.Treatment.Convolution.Moyenneur;
 import fr.ram.traitementimage.Treatment.HueChoice;
 import fr.ram.traitementimage.Treatment.OverExposure;
@@ -160,12 +161,15 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void moyenneur(View view) {
-        double [][]filtre=new double[3][3];
-        for(int i=0;i<3;i++)
-            for(int j=0;j<3;j++)
-                filtre[i][j]=1.0/9.0;
         Moyenneur m = new Moyenneur();
-        m.test(imageBitmap, imageView, seekData,filtre,3);
+        seekData = new Bundle();
+        m.calcul(imageBitmap, imageView, seekData);
+    }
+
+    public void gaussien(View view) {
+        Gaussien g = new Gaussien();
+        seekData = new Bundle();
+        g.calcul(imageBitmap, imageView, seekData);
     }
 
     /**

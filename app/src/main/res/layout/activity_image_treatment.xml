@@ -82,6 +82,11 @@
                     android:onClick="moyenneur"
                     app:srcCompat="@drawable/effect_sepia" />
 
+                <ImageButton
+                    style="@style/button_effect"
+                    android:onClick="gaussien"
+                    app:srcCompat="@drawable/effect_sepia" />
+
             </LinearLayout>
         </HorizontalScrollView>
 

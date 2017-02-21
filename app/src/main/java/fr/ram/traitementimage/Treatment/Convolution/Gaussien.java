@@ -3,6 +3,7 @@ package fr.ram.traitementimage.Treatment.Convolution;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 /**
@@ -11,37 +12,30 @@ import android.widget.ImageView;
 
 public class Gaussien extends Convolution {
     public void calcul(Bitmap bmp, ImageView img, Bundle b) {
-        int width = bmp.getWidth();
-        int height = bmp.getHeight();
-        int size = width * height;
-        int[] pixels = new int[size];
-        int[] newPixels = new int[size];
-        bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-
-        int maskSize = b.getInt("mask_size");
+        int maskSize = 5;
         double[][] mask = new double[maskSize][maskSize];
-        int alpha = 10;
 
-        int tempColorRGB;
-        float[] tempColorHSV = new float[3];
+        double sigma = 1.0;
+        double r, s = 2.0 * sigma * sigma;
 
-        for (int i = 0; i < maskSize; i++) {
-            int x = i - maskSize / 2;
-            for (int j = 0; j < maskSize; j++) {
-                int y = j - maskSize / 2;
-                mask[i][j] = Math.exp(-((Math.pow(x, 2) + Math.pow(y, 2) / 2 * Math.pow(alpha, 2))));
+        double sum = 0.0;
+        int shift = maskSize / 2;
+
+        for (int x = -shift; x <= shift; x++) {
+            for (int y = -shift; y <= shift; y++) {
+                r = Math.sqrt(x * x + y * y);
+                mask[x + shift][y + shift] = (Math.exp(-(r * r) / s)) / (Math.PI * s);
+                sum += mask[x + shift][y + shift];
             }
         }
 
-        for (int i = 0; i < newPixels.length; i++) {
-            if (i <= width || i >= width * (height - 1) || i % width == 0 || i % width == width - 1) {
-                newPixels[i] = pixels[i];
-            } else {
-                Color.colorToHSV(pixels[i], tempColorHSV);
-            }
+        for (int i = 0; i < maskSize; ++i)
+            for (int j = 0; j < maskSize; ++j)
+                mask[i][j] /= sum;
 
-        }
-        bmp.setPixels(newPixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        img.setImageBitmap(bmp);
+        b.putInt("mask_size", maskSize);
+        b.putSerializable("mask", mask);
+
+        super.calcul(bmp, img, b);
     }
 }
