@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import fr.ram.traitementimage.Util.CustomImageView;
+
 import static android.graphics.Color.RGBToHSV;
 
 /**
@@ -12,32 +14,36 @@ import static android.graphics.Color.RGBToHSV;
  * You choose a color. It will be display and the others one will be change to the gray color
  */
 
-public class ColorFilter implements Treatment {
+public class ColorFilter extends Treatment {
 
     @Override
-    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
-        int red,blue,green,rgb;
+    public void calcul(CustomImageView img, Bundle b) {
+        super.calcul(img, b);
+
+        Bitmap bmp = img.getImageBitmap();
+
+        int red, blue, green, rgb;
         ///////:
-        int min=30;
-        int color=b.getInt("color");
+        int min = 30;
+        int color = b.getInt("color");
         ///////
-        int size = bmp.getWidth()*bmp.getHeight();
+        int size = bmp.getWidth() * bmp.getHeight();
         int pixels[] = new int[size];
         float hsv[] = new float[3];
 
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             rgb = pixels[i];
 
             red = Color.red(rgb);
             green = Color.green(rgb);
             blue = Color.blue(rgb);
             RGBToHSV(red, green, blue, hsv);
-            if(hsv[0]<(float)color-min || hsv[0]>(float)color+min ){
-                rgb = pixelToGrey(red,green,blue);
-                rgb = Color.rgb(rgb,rgb,rgb);
-            }else{
-                rgb = Color.rgb(red,green,blue);
+            if (hsv[0] < (float) color - min || hsv[0] > (float) color + min) {
+                rgb = pixelToGrey(red, green, blue);
+                rgb = Color.rgb(rgb, rgb, rgb);
+            } else {
+                rgb = Color.rgb(red, green, blue);
             }
             pixels[i] = rgb;
         }

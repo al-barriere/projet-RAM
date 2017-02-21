@@ -5,13 +5,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import fr.ram.traitementimage.Util.CustomImageView;
+
 /**
  * Created by Maxime on 03/02/2017.
  */
-public class ShadesOfGray implements Treatment {
-
+public class ShadesOfGray extends Treatment {
     @Override
-    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
+    public void calcul(CustomImageView img, Bundle b) {
+        super.calcul(img, b);
+
+        Bitmap bmp = img.getImageBitmap();
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for (int i = 0; i < pixels.length; i++) {

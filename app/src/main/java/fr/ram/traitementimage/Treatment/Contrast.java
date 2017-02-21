@@ -5,15 +5,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import fr.ram.traitementimage.Util.CustomImageView;
+
 /**
  * Created by Maxime on 09/02/2017.
  */
 
-public class Contrast implements Treatment {
-
-
+public class Contrast extends Treatment {
     @Override
-    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
+    public void calcul(CustomImageView img, Bundle b) {
+        super.calcul(img, b);
 
     }
 }

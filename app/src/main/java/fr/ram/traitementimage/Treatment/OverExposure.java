@@ -5,16 +5,20 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import fr.ram.traitementimage.Util.CustomImageView;
+
 
 /**
  * Created by AntoineB on 17-02-05.
  *
  */
 
-public class OverExposure implements Treatment {
-
+public class OverExposure extends Treatment {
     @Override
-    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
+    public void calcul(CustomImageView img, Bundle b) {
+        super.calcul(img, b);
+
+        Bitmap bmp = img.getImageBitmap();
         int red,green,blue;
         //////
         int value=b.getInt("value");

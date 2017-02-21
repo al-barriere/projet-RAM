@@ -27,12 +27,14 @@
                 android:theme="@style/ToolbarTheme"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-            <ImageView
+            <fr.ram.traitementimage.Util.CustomImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter">
+
+            </fr.ram.traitementimage.Util.CustomImageView>
 
         </LinearLayout>
 

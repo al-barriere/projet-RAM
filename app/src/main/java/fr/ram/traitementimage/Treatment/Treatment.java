@@ -4,10 +4,13 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import fr.ram.traitementimage.Util.CustomImageView;
+
 /**
  * Created by Maxime on 03/02/2017.
  */
-public interface Treatment {
-
-    void calcul(Bitmap bmp, ImageView img, Bundle b);
+public abstract class Treatment {
+    public void calcul(CustomImageView img, Bundle args) {
+        img.setImageModified(true);
+    }
 }

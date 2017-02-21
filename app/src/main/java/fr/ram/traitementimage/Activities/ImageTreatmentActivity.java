@@ -30,20 +30,17 @@ import fr.ram.traitementimage.Treatment.HueChoice;
 import fr.ram.traitementimage.Treatment.OverExposure;
 import fr.ram.traitementimage.Treatment.Sepia;
 import fr.ram.traitementimage.Treatment.ShadesOfGray;
+import fr.ram.traitementimage.Util.CustomImageView;
 import fr.ram.traitementimage.Util.ImageFile;
 
 public class ImageTreatmentActivity extends AppCompatActivity {
     private Bitmap imageBitmap;
     private Uri photoUri;
-    private ImageView imageView;
+    private CustomImageView imageView;
     private Toolbar toolbar;
     private HorizontalScrollView bottomBar;
-    private boolean modifiedAfterSaved;
     private RelativeLayout imageContainer;
-    private Bundle seekData;
     private int option;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +48,8 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image_treatment);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (CustomImageView) findViewById(R.id.imageView);
         bottomBar = (HorizontalScrollView) findViewById(R.id.bottomBar);
-
-        setImageModified(false);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -72,10 +67,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         }
 
         imageView.setImageBitmap(imageBitmap);
-    }
-
-    private void setImageModified(boolean modified) {
-        modifiedAfterSaved = modified;
     }
 
     @Override
@@ -100,9 +91,9 @@ public class ImageTreatmentActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.saveButton:
-                if (modifiedAfterSaved) {
+                if (imageView.getImageModified()) {
                     ImageFile.saveImage(this, imageBitmap);
-                    setImageModified(false);
+                    imageView.setImageModified(false);
                     Snackbar.make(findViewById(R.id.activity_main), R.string.image_saved, Snackbar.LENGTH_SHORT).show();
                 }
                 break;
@@ -111,7 +102,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     private void onHomePressed() {
-        if (modifiedAfterSaved) {
+        if (imageView.getImageModified()) {
             Bundle args = new Bundle();
             args.putParcelable("imageBitmap", imageBitmap);
 
@@ -133,14 +124,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      */
     public void toShadesOfGray(View view) {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
-        shadesOfGray.calcul(imageBitmap, imageView, seekData);
-        setImageModified(true);
+        shadesOfGray.calcul(imageView, null);
     }
 
     public void toSepia(View view) {
         Sepia sepia = new Sepia();
-        sepia.calcul(imageBitmap, imageView, seekData);
-        setImageModified(true);
+        sepia.calcul(imageView, null);
     }
 
     public void choiceHue(View view) {
@@ -162,14 +151,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     public void moyenneur(View view) {
         Moyenneur m = new Moyenneur();
-        seekData = new Bundle();
-        m.calcul(imageBitmap, imageView, seekData);
+        m.calcul(imageView, null);
     }
 
     public void gaussien(View view) {
         Gaussien g = new Gaussien();
-        seekData = new Bundle();
-        g.calcul(imageBitmap, imageView, seekData);
+        g.calcul(imageView, null);
     }
 
     /**
@@ -177,26 +164,23 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      */
     public void hueChoice(int hue) {
         HueChoice hueChoice = new HueChoice();
-        seekData = new Bundle();
+        Bundle seekData = new Bundle();
         seekData.putInt("value", hue);
-        hueChoice.calcul(imageBitmap, imageView, seekData);
-        setImageModified(true);
+        hueChoice.calcul(imageView, seekData);
     }
 
     public void filterColor(int color) {
         ColorFilter colorFilter = new ColorFilter();
-        seekData = new Bundle();
+        Bundle seekData = new Bundle();
         seekData.putInt("color", color);
-        colorFilter.calcul(imageBitmap, imageView, seekData);
-        setImageModified(true);
+        colorFilter.calcul(imageView, seekData);
     }
 
     public void overExposureTreatment(int value) {
         OverExposure overExposure = new OverExposure();
-        seekData = new Bundle();
+        Bundle seekData = new Bundle();
         seekData.putInt("value", value);
-        overExposure.calcul(imageBitmap, imageView, seekData);
-        setImageModified(true);
+        overExposure.calcul(imageView, seekData);
     }
 
     public int getOption() {

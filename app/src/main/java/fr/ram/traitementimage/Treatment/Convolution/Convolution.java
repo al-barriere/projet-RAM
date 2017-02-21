@@ -6,15 +6,18 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import fr.ram.traitementimage.Treatment.Treatment;
+import fr.ram.traitementimage.Util.CustomImageView;
 
 /**
  * Created by Maxime on 10/02/2017.
  */
 
-public abstract class Convolution implements Treatment {
-
+public abstract class Convolution extends Treatment {
     @Override
-    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
+    public void calcul(CustomImageView img, Bundle b) {
+        super.calcul(img, b);
+
+        Bitmap bmp = img.getImageBitmap();
         int maskSize = b.getInt("mask_size");
         double[][] mask = (double[][]) b.get("mask");
 

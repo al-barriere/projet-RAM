@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import fr.ram.traitementimage.Util.CustomImageView;
+
 /**
  * Created by Remi on 10/02/2017.
  */
 
 public class Gaussien extends Convolution {
-    public void calcul(Bitmap bmp, ImageView img, Bundle b) {
+    public void calcul(CustomImageView img, Bundle b) {
         int maskSize = 5;
         double[][] mask = new double[maskSize][maskSize];
 
@@ -33,9 +35,10 @@ public class Gaussien extends Convolution {
             for (int j = 0; j < maskSize; ++j)
                 mask[i][j] /= sum;
 
+        b = new Bundle();
         b.putInt("mask_size", maskSize);
         b.putSerializable("mask", mask);
 
-        super.calcul(bmp, img, b);
+        super.calcul(img, b);
     }
 }
