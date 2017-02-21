@@ -160,8 +160,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void moyenneur(View view) {
+        double [][]filtre=new double[3][3];
+        for(int i=0;i<3;i++)
+            for(int j=0;j<3;j++)
+                filtre[i][j]=1.0/9.0;
         Moyenneur m = new Moyenneur();
-        m.calcul(imageBitmap, imageView, seekData);
+        m.test(imageBitmap, imageView, seekData,filtre,3);
     }
 
     /**
