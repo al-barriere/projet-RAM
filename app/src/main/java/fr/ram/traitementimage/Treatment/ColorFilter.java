@@ -24,7 +24,7 @@ public class ColorFilter extends Treatment {
 
         int red, blue, green, rgb;
         ///////:
-        int min = 30;
+        int min = 50;
         int color = b.getInt("color");
         ///////
         int size = bmp.getWidth() * bmp.getHeight();
