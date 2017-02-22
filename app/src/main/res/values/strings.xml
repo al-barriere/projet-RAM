@@ -13,4 +13,5 @@
     <string name="image_saved">L\'image a été sauvegardée</string>
     <string name="question_value">Quelle valeur choississez-vous ?</string>
     <string name="question_hue">Quelle teinte choissez-vous ?</string>
+    <string name="sizeMask">Quelle taille de filtre ?</string>
 </resources>

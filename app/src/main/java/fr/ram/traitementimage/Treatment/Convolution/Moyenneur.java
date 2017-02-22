@@ -17,14 +17,12 @@ public class Moyenneur extends Convolution {
     public void calcul(CustomImageView img, Bundle b) {
         super.calcul(img, b);
 
-        int maskSize = 5;
+        int maskSize = b.getInt("mask_size");
         double[][] mask = new double[maskSize][maskSize];
         for (int i = 0; i < maskSize; i++)
             for (int j = 0; j < maskSize; j++)
                 mask[i][j] = 1.0/(maskSize*maskSize);
 
-        b = new Bundle();
-        b.putInt("mask_size", maskSize);
         b.putSerializable("mask", mask);
 
         super.calcul(img, b);

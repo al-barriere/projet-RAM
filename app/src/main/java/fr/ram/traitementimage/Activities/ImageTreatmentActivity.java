@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import fr.ram.traitementimage.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.traitementimage.Fragments.SeekbarHueColorDialogFragment;
 import fr.ram.traitementimage.Fragments.SeekbarValueDialogFragment;
+import fr.ram.traitementimage.Fragments.SizeMaskDialogFragment;
 import fr.ram.traitementimage.R;
 import fr.ram.traitementimage.Treatment.ColorFilter;
 import fr.ram.traitementimage.Treatment.Convolution.Gaussien;
@@ -150,8 +152,8 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void moyenneur(View view) {
-        Moyenneur m = new Moyenneur();
-        m.calcul(imageView, null);
+        SizeMaskDialogFragment newFragment=new SizeMaskDialogFragment();
+        newFragment.show(getFragmentManager(), "sizeMask");
     }
 
     public void gaussien(View view) {
@@ -181,6 +183,14 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         Bundle seekData = new Bundle();
         seekData.putInt("value", value);
         overExposure.calcul(imageView, seekData);
+    }
+
+    public void moyenneurTreatment(int maskSize)
+    {
+        Moyenneur m = new Moyenneur();
+        Bundle seekData=new Bundle();
+        seekData.putInt("mask_size", maskSize);
+        m.calcul(imageView, seekData);
     }
 
     public int getOption() {
