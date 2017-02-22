@@ -15,8 +15,6 @@ import fr.ram.traitementimage.Util.CustomImageView;
 public class Moyenneur extends Convolution {
     @Override
     public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
-
         int maskSize = b.getInt("mask_size");
         double[][] mask = new double[maskSize][maskSize];
         for (int i = 0; i < maskSize; i++)
