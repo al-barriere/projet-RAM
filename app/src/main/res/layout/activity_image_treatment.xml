@@ -99,6 +99,11 @@
                     android:onClick="sobel"
                     app:srcCompat="@drawable/effect_sepia" />
 
+                <ImageButton
+                    style="@style/button_effect"
+                    android:onClick="histogramEqualization"
+                    app:srcCompat="@drawable/effect_sepia" />
+
             </LinearLayout>
         </HorizontalScrollView>
 

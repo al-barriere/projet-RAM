@@ -30,6 +30,7 @@ import fr.ram.traitementimage.Treatment.Convolution.Gaussien;
 import fr.ram.traitementimage.Treatment.Convolution.Laplacien;
 import fr.ram.traitementimage.Treatment.Convolution.Moyenneur;
 import fr.ram.traitementimage.Treatment.Convolution.Sobel;
+import fr.ram.traitementimage.Treatment.HistogramEqualization;
 import fr.ram.traitementimage.Treatment.HueChoice;
 import fr.ram.traitementimage.Treatment.OverExposure;
 import fr.ram.traitementimage.Treatment.Sepia;
@@ -178,6 +179,11 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void sobel(View view) {
         Sobel s = new Sobel();
         s.calcul(imageView, null);
+    }
+
+    public void histogramEqualization(View view) {
+        HistogramEqualization he = new HistogramEqualization();
+        he.calcul(imageView, null);
     }
 
     /**
