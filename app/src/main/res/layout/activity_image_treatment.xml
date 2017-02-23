@@ -16,8 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_above="@+id/bottomBar">
+            android:layout_above="@+id/bottomBar"
+            android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -42,12 +42,12 @@
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
             android:fadingEdge="none"
             android:fillViewport="false"
             android:scrollbars="none"
-            android:soundEffectsEnabled="false"
-            android:layout_alignParentBottom="true">
+            android:soundEffectsEnabled="false">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -72,21 +72,31 @@
                 <ImageButton
                     style="@style/button_effect"
                     android:onClick="colorFilter"
-                    app:srcCompat="@drawable/effect_sepia" />
+                    app:srcCompat="@drawable/effect_color_filter" />
 
                 <ImageButton
                     style="@style/button_effect"
                     android:onClick="overExposure"
-                    app:srcCompat="@drawable/effect_sepia" />
+                    app:srcCompat="@drawable/effect_exposure" />
 
                 <ImageButton
                     style="@style/button_effect"
                     android:onClick="moyenneur"
-                    app:srcCompat="@drawable/effect_sepia" />
+                    app:srcCompat="@drawable/effect_moyenneur" />
 
                 <ImageButton
                     style="@style/button_effect"
                     android:onClick="gaussien"
+                    app:srcCompat="@drawable/effect_gaussien" />
+
+                <ImageButton
+                    style="@style/button_effect"
+                    android:onClick="laplacien"
+                    app:srcCompat="@drawable/effect_sepia" />
+
+                <ImageButton
+                    style="@style/button_effect"
+                    android:onClick="sobel"
                     app:srcCompat="@drawable/effect_sepia" />
 
             </LinearLayout>

@@ -27,7 +27,9 @@ import fr.ram.traitementimage.Fragments.SizeMaskDialogFragment;
 import fr.ram.traitementimage.R;
 import fr.ram.traitementimage.Treatment.ColorFilter;
 import fr.ram.traitementimage.Treatment.Convolution.Gaussien;
+import fr.ram.traitementimage.Treatment.Convolution.Laplacien;
 import fr.ram.traitementimage.Treatment.Convolution.Moyenneur;
+import fr.ram.traitementimage.Treatment.Convolution.Sobel;
 import fr.ram.traitementimage.Treatment.HueChoice;
 import fr.ram.traitementimage.Treatment.OverExposure;
 import fr.ram.traitementimage.Treatment.Sepia;
@@ -159,6 +161,16 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void gaussien(View view) {
         Gaussien g = new Gaussien();
         g.calcul(imageView, null);
+    }
+
+    public void laplacien(View view) {
+        Laplacien l = new Laplacien();
+        l.calcul(imageView, null);
+    }
+
+    public void sobel(View view) {
+        Sobel s = new Sobel();
+        s.calcul(imageView, null);
     }
 
     /**

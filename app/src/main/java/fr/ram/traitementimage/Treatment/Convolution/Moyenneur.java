@@ -19,7 +19,7 @@ public class Moyenneur extends Convolution {
         double[][] mask = new double[maskSize][maskSize];
         for (int i = 0; i < maskSize; i++)
             for (int j = 0; j < maskSize; j++)
-                mask[i][j] = 1.0/(maskSize*maskSize);
+                mask[i][j] = 1.0 / (maskSize * maskSize);
 
         b.putSerializable("mask", mask);
 

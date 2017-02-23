@@ -12,9 +12,14 @@ import fr.ram.traitementimage.Util.CustomImageView;
 
 public class Sobel extends Convolution {
     @Override
-    public void calcul(CustomImageView img, Bundle b)
-    {
-        super.calcul(img, b);
+    public void calcul(CustomImageView img, Bundle b) {
+        int maskSize = 3;
+        double[][] mask = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
 
+        b = new Bundle();
+        b.putInt("mask_size", maskSize);
+        b.putSerializable("mask", mask);
+
+        super.calcul(img, b);
     }
 }
