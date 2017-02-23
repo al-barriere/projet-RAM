@@ -90,6 +90,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
                     imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
                     imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
                     imageView.setImageBitmap(imageBitmap);
+                    imageView.setImageModified(false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -154,13 +155,19 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void moyenneur(View view) {
-        SizeMaskDialogFragment newFragment=new SizeMaskDialogFragment();
+        SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
+        Bundle fragmentArgs = new Bundle();
+        fragmentArgs.putString("filter", "moyenneur");
+        newFragment.setArguments(fragmentArgs);
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
     public void gaussien(View view) {
-        Gaussien g = new Gaussien();
-        g.calcul(imageView, null);
+        SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
+        Bundle fragmentArgs = new Bundle();
+        fragmentArgs.putString("filter", "gaussien");
+        newFragment.setArguments(fragmentArgs);
+        newFragment.show(getFragmentManager(), "sizeMask");
     }
 
     public void laplacien(View view) {
@@ -197,15 +204,22 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         overExposure.calcul(imageView, seekData);
     }
 
-    public void moyenneurTreatment(int maskSize)
-    {
+    public void moyenneurTreatment(int maskSize) {
         Moyenneur m = new Moyenneur();
-        Bundle seekData=new Bundle();
+        Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
         m.calcul(imageView, seekData);
+    }
+
+    public void gaussienTreatment(int maskSize) {
+        Gaussien g = new Gaussien();
+        Bundle seekData = new Bundle();
+        seekData.putInt("mask_size", maskSize);
+        g.calcul(imageView, seekData);
     }
 
     public int getOption() {
         return option;
     }
+
 }

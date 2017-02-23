@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 
+import java.util.Objects;
+
 import fr.ram.traitementimage.Activities.ImageTreatmentActivity;
 import fr.ram.traitementimage.R;
 
@@ -55,8 +57,14 @@ public class SizeMaskDialogFragment extends DialogFragment {
 
     private void callingActivity(int size)
     {
+        String filter = getArguments().getString("filter");
         ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
-        callingActivity.moyenneurTreatment(size);
+
+        if (Objects.equals(filter, "moyenneur"))
+            callingActivity.moyenneurTreatment(size);
+        else if (Objects.equals(filter, "gaussien"))
+            callingActivity.gaussienTreatment(size);
+
         dismiss();
     }
 }

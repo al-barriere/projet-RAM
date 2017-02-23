@@ -14,7 +14,7 @@ import fr.ram.traitementimage.Util.CustomImageView;
 
 public class Gaussien extends Convolution {
     public void calcul(CustomImageView img, Bundle b) {
-        int maskSize = 5;
+        int maskSize = b.getInt("mask_size");
         double[][] mask = new double[maskSize][maskSize];
 
         double sigma = 1.0;
