@@ -60,7 +60,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/camera"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +87,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/galery"
-                android:textAllCaps="true"/>
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 
