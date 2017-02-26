@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textview2"
+        android:id="@+id/authors_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -18,78 +18,83 @@
         android:textSize="14sp"
         android:textStyle="normal|italic" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
-
-
         <ImageView
             android:id="@+id/appLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/app_logo" />
+            app:srcCompat="@drawable/app_logo"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
-            style="@style/StartActivityButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_start_button"
-            android:clickable="true"
-            android:gravity="center"
-            android:onClick="onButtonCameraClick"
-            android:orientation="horizontal">
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                style="@style/StartActivityButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_photo_camera_24dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:background="@drawable/background_start_button"
+                android:clickable="true"
                 android:gravity="center"
-                android:text="@string/camera"
-                android:textAllCaps="true"
-                android:textStyle="bold"/>
+                android:onClick="onButtonCameraClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_photo_camera_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/camera"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/StartActivityButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_start_button"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onButtonGaleryClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_collections_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/galery"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            style="@style/StartActivityButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_start_button"
-            android:clickable="true"
-            android:gravity="center"
-            android:onClick="onButtonGaleryClick"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_collections_24dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/galery"
-                android:textAllCaps="true"
-                android:textStyle="bold"/>
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Traitement Image</string>
+    <string name="app_name">Ramstagram</string>
     <string name="save">Sauvegarder</string>
     <string name="back">Quitter</string>
     <string name="ok">Ok</string>
