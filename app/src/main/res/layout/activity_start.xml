@@ -27,74 +27,66 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
         <LinearLayout
+            style="@style/StartActivityButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:background="@drawable/background_start_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onButtonCameraClick"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                style="@style/StartActivityButton"
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_start_button"
-                android:clickable="true"
-                android:gravity="center"
-                android:onClick="onButtonCameraClick"
-                android:orientation="horizontal">
+                android:layout_marginRight="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_photo_camera_24dp" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_photo_camera_24dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/camera"
-                    android:textAllCaps="true"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/StartActivityButton"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_start_button"
-                android:clickable="true"
                 android:gravity="center"
-                android:onClick="onButtonGaleryClick"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_collections_24dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/galery"
-                    android:textAllCaps="true"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
+                android:text="@string/camera"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
         </LinearLayout>
 
-    </RelativeLayout>
+        <LinearLayout
+            style="@style/StartActivityButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_start_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onButtonGaleryClick"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_collections_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/galery"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
