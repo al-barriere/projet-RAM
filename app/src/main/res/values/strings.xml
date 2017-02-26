@@ -14,4 +14,6 @@
     <string name="question_value">Quelle valeur choississez-vous ?</string>
     <string name="question_hue">Quelle teinte choissez-vous ?</string>
     <string name="sizeMask">Quelle taille de filtre ?</string>
+    <string name="welcome_message">Bienvenue dans notre application de traitement d\'image</string>
+    <string name="authors">Rémi MOMPRIVÉ, Antoine BARRIERE et Maxime GUILBAULT</string>
 </resources>

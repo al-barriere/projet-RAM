@@ -55,52 +55,52 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="toShadesOfGray"
                     app:srcCompat="@drawable/effect_grey_levels" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="toSepia"
                     app:srcCompat="@drawable/effect_sepia" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="choiceHue"
                     app:srcCompat="@drawable/effect_hue" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="colorFilter"
                     app:srcCompat="@drawable/effect_color_filter" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="overExposure"
                     app:srcCompat="@drawable/effect_exposure" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="moyenneur"
                     app:srcCompat="@drawable/effect_moyenneur" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="gaussien"
                     app:srcCompat="@drawable/effect_gaussien" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="laplacien"
                     app:srcCompat="@drawable/effect_sepia" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="sobel"
                     app:srcCompat="@drawable/effect_sepia" />
 
                 <ImageButton
-                    style="@style/button_effect"
+                    style="@style/buttonEffect"
                     android:onClick="histogramEqualization"
                     app:srcCompat="@drawable/effect_sepia" />
 
