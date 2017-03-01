@@ -23,7 +23,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ImageFile {
-    public static File createImageFile(Activity activity) throws IOException {
+    public static File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+
+        File storageDir = Environment.getExternalStoragePublicDirectory("Ramstagram");
+        if (!storageDir.exists())
+            storageDir.mkdirs();
+        String filename = imageFileName + ".jpg";
+
+        return new File(storageDir, filename);
+    }
+
+    public static File createTempImageFile(Activity activity) throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
 
@@ -36,28 +48,32 @@ public class ImageFile {
     public static void saveImage(Activity activity, Bitmap image) {
         File pictureFile = null;
         try {
-            pictureFile = ImageFile.createImageFile(activity);
+            pictureFile = ImageFile.createImageFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
             FileOutputStream fos = new FileOutputStream(pictureFile);
-            image.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+            image.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.close();
         } catch (FileNotFoundException e) {
             Log.d("FileNotFoundException", "File not found: " + e.getMessage());
         } catch (IOException e) {
             Log.d("IOException", "Error accessing file: " + e.getMessage());
+        } catch (NullPointerException e) {
+            Log.d("NullPointerException", "Error accessing file: " + e.getMessage());
         }
 
-        MediaScannerConnection.scanFile(activity,
-                new String[]{pictureFile.toString()}, null,
-                new MediaScannerConnection.OnScanCompletedListener() {
-                    public void onScanCompleted(String path, Uri uri) {
-                        Log.i("ExternalStorage", "Scanned " + path + ":");
-                        Log.i("ExternalStorage", "-> uri=" + uri);
-                    }
-                });
+        if (pictureFile != null) {
+            MediaScannerConnection.scanFile(activity,
+                    new String[]{pictureFile.toString()}, null,
+                    new MediaScannerConnection.OnScanCompletedListener() {
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.i("ExternalStorage", "Scanned " + path + ":");
+                            Log.i("ExternalStorage", "-> uri=" + uri);
+                        }
+                    });
+        }
     }
 }
 

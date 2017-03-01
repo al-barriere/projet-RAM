@@ -21,23 +21,18 @@ public class SeekbarHueColorDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layout = getActivity().getLayoutInflater();
         builder.setTitle(R.string.question_hue);
-        builder.setView(layout.inflate(R.layout.seekbar_hue,null));
-
-
+        builder.setView(layout.inflate(R.layout.seekbar_hue, null));
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
-                SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.choix);
+                SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.choice);
                 ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
-                if(callingActivity.getOption() == 0){
+                if (callingActivity.getOption() == 0) {
                     callingActivity.hueChoice(contrast.getProgress());
-                }else if(callingActivity.getOption() == 1){
+                } else if (callingActivity.getOption() == 1) {
                     callingActivity.filterColor(contrast.getProgress());
                 }
-
-
-
 
                 dialog.dismiss();
             }

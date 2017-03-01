@@ -1,11 +1,15 @@
 package fr.ram.traitementimage.Activities;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +38,7 @@ import fr.ram.traitementimage.Treatment.Sepia;
 import fr.ram.traitementimage.Treatment.ShadesOfGray;
 import fr.ram.traitementimage.CustomView.CustomImageView;
 import fr.ram.traitementimage.Util.ImageFile;
+import fr.ram.traitementimage.Util.PermissionUtil;
 
 public class ImageTreatmentActivity extends AppCompatActivity {
     private Bitmap imageBitmap;
@@ -69,6 +74,8 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         }
 
         imageView.setImageBitmap(imageBitmap);
+
+        PermissionUtil.verifyStoragePermissions(this);
     }
 
     @Override
@@ -207,14 +214,14 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         overExposure.compute(imageView, seekData);
     }
 
-    public void moyenneurTreatment(int maskSize) {
+    public void averageBlurTreatment(int maskSize) {
         Moyenneur m = new Moyenneur();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
         m.compute(imageView, seekData);
     }
 
-    public void gaussienTreatment(int maskSize) {
+    public void gaussianFilterTreatment(int maskSize) {
         Gaussien g = new Gaussien();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
@@ -224,5 +231,4 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public int getOption() {
         return option;
     }
-
 }
