@@ -3,16 +3,15 @@ package fr.ram.traitementimage.Treatment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.ImageView;
 
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 
 /**
  * Created by Maxime on 03/02/2017.
  */
 public class Sepia extends Treatment {
-    public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
+    public void compute(CustomImageView img, Bundle args) {
+        super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];

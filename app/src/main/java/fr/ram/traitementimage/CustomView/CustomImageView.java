@@ -1,4 +1,4 @@
-package fr.ram.traitementimage.Util;
+package fr.ram.traitementimage.CustomView;
 
 import android.content.Context;
 import android.graphics.Bitmap;

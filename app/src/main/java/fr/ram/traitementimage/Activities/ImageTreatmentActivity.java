@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import java.io.IOException;
@@ -35,7 +32,7 @@ import fr.ram.traitementimage.Treatment.HueChoice;
 import fr.ram.traitementimage.Treatment.OverExposure;
 import fr.ram.traitementimage.Treatment.Sepia;
 import fr.ram.traitementimage.Treatment.ShadesOfGray;
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 import fr.ram.traitementimage.Util.ImageFile;
 
 public class ImageTreatmentActivity extends AppCompatActivity {
@@ -130,12 +127,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      */
     public void toShadesOfGray(View view) {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
-        shadesOfGray.calcul(imageView, null);
+        shadesOfGray.compute(imageView, null);
     }
 
     public void toSepia(View view) {
         Sepia sepia = new Sepia();
-        sepia.calcul(imageView, null);
+        sepia.compute(imageView, null);
     }
 
     public void choiceHue(View view) {
@@ -173,17 +170,17 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     public void laplacien(View view) {
         Laplacien l = new Laplacien();
-        l.calcul(imageView, null);
+        l.compute(imageView, null);
     }
 
     public void sobel(View view) {
         Sobel s = new Sobel();
-        s.calcul(imageView, null);
+        s.compute(imageView, null);
     }
 
     public void histogramEqualization(View view) {
         HistogramEqualization he = new HistogramEqualization();
-        he.calcul(imageView, null);
+        he.compute(imageView, null);
     }
 
     /**
@@ -193,35 +190,35 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         HueChoice hueChoice = new HueChoice();
         Bundle seekData = new Bundle();
         seekData.putInt("value", hue);
-        hueChoice.calcul(imageView, seekData);
+        hueChoice.compute(imageView, seekData);
     }
 
     public void filterColor(int color) {
         ColorFilter colorFilter = new ColorFilter();
         Bundle seekData = new Bundle();
         seekData.putInt("color", color);
-        colorFilter.calcul(imageView, seekData);
+        colorFilter.compute(imageView, seekData);
     }
 
     public void overExposureTreatment(int value) {
         OverExposure overExposure = new OverExposure();
         Bundle seekData = new Bundle();
         seekData.putInt("value", value);
-        overExposure.calcul(imageView, seekData);
+        overExposure.compute(imageView, seekData);
     }
 
     public void moyenneurTreatment(int maskSize) {
         Moyenneur m = new Moyenneur();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
-        m.calcul(imageView, seekData);
+        m.compute(imageView, seekData);
     }
 
     public void gaussienTreatment(int maskSize) {
         Gaussien g = new Gaussien();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
-        g.calcul(imageView, seekData);
+        g.compute(imageView, seekData);
     }
 
     public int getOption() {

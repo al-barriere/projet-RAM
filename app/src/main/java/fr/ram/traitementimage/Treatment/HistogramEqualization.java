@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 
 /**
  * Created by Maxime on 09/02/2017.
@@ -12,8 +12,8 @@ import fr.ram.traitementimage.Util.CustomImageView;
 
 public class HistogramEqualization extends Treatment {
     @Override
-    public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
+    public void compute(CustomImageView img, Bundle args) {
+        super.compute(img, args);
 
         Bitmap image = img.getImageBitmap();
         Bitmap greyImage = image;

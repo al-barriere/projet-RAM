@@ -3,9 +3,9 @@ package fr.ram.traitementimage.Treatment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.ImageView;
 
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.Util.ColorUtil;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 
 import static android.graphics.Color.RGBToHSV;
 
@@ -17,16 +17,14 @@ import static android.graphics.Color.RGBToHSV;
 public class ColorFilter extends Treatment {
 
     @Override
-    public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
+    public void compute(CustomImageView img, Bundle args) {
+        super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
 
         int red, blue, green, rgb;
-        ///////:
         int min = 50;
-        int color = b.getInt("color");
-        ///////
+        int color = args.getInt("color");
         int size = bmp.getWidth() * bmp.getHeight();
         int pixels[] = new int[size];
         float hsv[] = new float[3];
@@ -40,7 +38,7 @@ public class ColorFilter extends Treatment {
             blue = Color.blue(rgb);
             RGBToHSV(red, green, blue, hsv);
             if (hsv[0] < (float) color - min || hsv[0] > (float) color + min) {
-                rgb = pixelToGrey(red, green, blue);
+                rgb = ColorUtil.pixelToGrey(red, green, blue);
                 rgb = Color.rgb(rgb, rgb, rgb);
             } else {
                 rgb = Color.rgb(red, green, blue);
@@ -50,17 +48,4 @@ public class ColorFilter extends Treatment {
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         img.setImageBitmap(bmp);
     }
-
-
-    /*
-    Change the color of all the pixel which are inferior or superior to the value
-     */
-    private static int pixelToGrey(int red, int green, int blue) {
-        red = (red * 3) / 10;
-        green = (green * 59) / 100;
-        blue = (blue * 11) / 100;
-        return red + green + blue;
-    }
-
-
 }

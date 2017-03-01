@@ -3,9 +3,8 @@ package fr.ram.traitementimage.Treatment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.ImageView;
 
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 
 /**
  * Created by AntoineB on 17-02-05.
@@ -14,14 +13,12 @@ import fr.ram.traitementimage.Util.CustomImageView;
 
 public class HueChoice extends Treatment {
     @Override
-    public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
+    public void compute(CustomImageView img, Bundle args) {
+        super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
         int size = bmp.getWidth() * bmp.getHeight();
-        //////
-        int hue = b.getInt("value");
-        //////
+        int hue = args.getInt("value");
         int pixels[] = new int[size];
         float hsv[] = new float[3];
 
@@ -32,6 +29,7 @@ public class HueChoice extends Treatment {
             pixels[i] = Color.HSVToColor(hsv);
         }
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+
         img.setImageBitmap(bmp);
     }
 }

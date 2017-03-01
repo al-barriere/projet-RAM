@@ -3,17 +3,17 @@ package fr.ram.traitementimage.Treatment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.ImageView;
 
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.Util.ColorUtil;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 
 /**
  * Created by Maxime on 03/02/2017.
  */
 public class ShadesOfGray extends Treatment {
     @Override
-    public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
+    public void compute(CustomImageView img, Bundle args) {
+        super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
         calcul(bmp);
@@ -30,7 +30,7 @@ public class ShadesOfGray extends Treatment {
             int red = Color.red(o);
             int green = Color.green(o);
 
-            int newColor = (red * 30 / 100) + (green * 59 / 100) + (blue * 11 / 100);
+            int newColor = ColorUtil.pixelToGrey(red, green, blue);
 
             pixels[i] = Color.rgb(newColor, newColor, newColor);
 

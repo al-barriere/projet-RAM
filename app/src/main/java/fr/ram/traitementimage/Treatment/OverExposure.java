@@ -3,9 +3,8 @@ package fr.ram.traitementimage.Treatment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.ImageView;
 
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 
 
 /**
@@ -15,14 +14,12 @@ import fr.ram.traitementimage.Util.CustomImageView;
 
 public class OverExposure extends Treatment {
     @Override
-    public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
+    public void compute(CustomImageView img, Bundle args) {
+        super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
         int red,green,blue;
-        //////
-        int value=b.getInt("value");
-        //////
+        int value= args.getInt("value");
         int size = bmp.getWidth()*bmp.getHeight();
         int pixels[] = new int[size];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());

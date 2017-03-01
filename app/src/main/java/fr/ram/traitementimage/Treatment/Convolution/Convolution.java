@@ -3,10 +3,9 @@ package fr.ram.traitementimage.Treatment.Convolution;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import fr.ram.traitementimage.Treatment.Treatment;
-import fr.ram.traitementimage.Util.CustomImageView;
+import fr.ram.traitementimage.CustomView.CustomImageView;
 
 /**
  * Created by Maxime on 10/02/2017.
@@ -14,12 +13,12 @@ import fr.ram.traitementimage.Util.CustomImageView;
 
 public abstract class Convolution extends Treatment {
     @Override
-    public void calcul(CustomImageView img, Bundle b) {
-        super.calcul(img, b);
+    public void compute(CustomImageView img, Bundle args) {
+        super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
-        int maskSize = b.getInt("mask_size");
-        double[][] mask = (double[][]) b.get("mask");
+        int maskSize = args.getInt("mask_size");
+        double[][] mask = (double[][]) args.get("mask");
 
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
