@@ -75,7 +75,7 @@ public class StartActivity extends AppCompatActivity {
         }
     }
 
-    public void onButtonGaleryClick(View view) {
+    public void onButtonGalleryClick(View view) {
         dispatchSelectPictureIntent();
     }
 

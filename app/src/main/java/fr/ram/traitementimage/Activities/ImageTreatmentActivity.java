@@ -147,33 +147,33 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         newFragments.show(getFragmentManager(), "colorFilter");
     }
 
-    public void overExposure(View view) {
+    public void exposure(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
         newFragments.show(getFragmentManager(), "overexposure");
     }
 
-    public void moyenneur(View view) {
+    public void averageBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
-        fragmentArgs.putString("filter", "moyenneur");
+        fragmentArgs.putString("filter", "averageBlur");
         newFragment.setArguments(fragmentArgs);
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    public void gaussien(View view) {
+    public void gaussianBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
-        fragmentArgs.putString("filter", "gaussien");
+        fragmentArgs.putString("filter", "gaussianBlur");
         newFragment.setArguments(fragmentArgs);
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    public void laplacien(View view) {
+    public void laplacianFilter(View view) {
         Laplacien l = new Laplacien();
         l.compute(imageView, null);
     }
 
-    public void sobel(View view) {
+    public void sobelFilter(View view) {
         Sobel s = new Sobel();
         s.compute(imageView, null);
     }

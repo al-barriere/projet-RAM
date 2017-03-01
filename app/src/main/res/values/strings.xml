@@ -9,11 +9,21 @@
     <string name="yes">Oui</string>
     <string name="reset_image">Réinitialiser l\'image</string>
     <string name="camera">Appareil photo</string>
-    <string name="galery">Galerie</string>
+    <string name="gallery">Galerie</string>
     <string name="image_saved">L\'image a été sauvegardée</string>
     <string name="question_value">Quelle valeur choississez-vous ?</string>
     <string name="question_hue">Quelle teinte choissez-vous ?</string>
     <string name="sizeMask">Quelle taille de filtre ?</string>
     <string name="welcome_message">Bienvenue dans notre application de traitement d\'image</string>
     <string name="authors">Rémi MOMPRIVÉ, Antoine BARRIERE et Maxime GUILBAULT</string>
+    <string name="grey_levels">Niveaux de gris</string>
+    <string name="sepia">Sepia</string>
+    <string name="hue">Teinte</string>
+    <string name="keep_color">Garder couleur</string>
+    <string name="exposure">Exposition</string>
+    <string name="average_blur">Flou moyenneur</string>
+    <string name="gaussian_blur">Flou gaussien</string>
+    <string name="laplacian_filter">Filtre laplacien</string>
+    <string name="sobel_filter">Filtre sobel</string>
+    <string name="histogram_equalization">Égalisation d\'histogramme</string>
 </resources>

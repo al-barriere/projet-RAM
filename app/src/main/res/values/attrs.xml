@@ -1,0 +1,10 @@
+<resources>
+    <declare-styleable name="RoundedButton">
+        <attr name="rounded_button_icon" format="reference" />
+        <attr name="rounded_button_text" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="EffectButton">
+        <attr name="effect_button_icon" format="reference" />
+        <attr name="effect_button_text" format="reference" />
+    </declare-styleable>
+</resources>

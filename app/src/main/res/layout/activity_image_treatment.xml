@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,69 +42,89 @@
         <HorizontalScrollView
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
             android:fadingEdge="none"
             android:fillViewport="false"
             android:scrollbars="none"
-            android:soundEffectsEnabled="false">
+            android:soundEffectsEnabled="false"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                <ImageButton
-                    style="@style/buttonEffect"
+                <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="toShadesOfGray"
-                    app:srcCompat="@drawable/effect_grey_levels" />
+                    custom:effect_button_icon="@drawable/effect_grey_levels"
+                    custom:effect_button_text="@string/grey_levels"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
+                <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="toSepia"
-                    app:srcCompat="@drawable/effect_sepia" />
+                    custom:effect_button_icon="@drawable/effect_sepia"
+                    custom:effect_button_text="@string/sepia"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
+                <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="choiceHue"
-                    app:srcCompat="@drawable/effect_hue" />
+                    custom:effect_button_icon="@drawable/effect_hue"
+                    custom:effect_button_text="@string/hue"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
+                <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="colorFilter"
-                    app:srcCompat="@drawable/effect_color_filter" />
+                    custom:effect_button_icon="@drawable/effect_color_filter"
+                    custom:effect_button_text="@string/keep_color"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
-                    android:onClick="overExposure"
-                    app:srcCompat="@drawable/effect_exposure" />
+                <fr.ram.traitementimage.CustomView.EffectButton
+                    android:onClick="exposure"
+                    custom:effect_button_icon="@drawable/effect_exposure"
+                    app:effect_button_text="@string/exposure"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
-                    android:onClick="moyenneur"
-                    app:srcCompat="@drawable/effect_moyenneur" />
+                <fr.ram.traitementimage.CustomView.EffectButton
+                    android:onClick="averageBlur"
+                    app:effect_button_icon="@drawable/effect_average_blur"
+                    app:effect_button_text="@string/average_blur"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
-                    android:onClick="gaussien"
-                    app:srcCompat="@drawable/effect_gaussien" />
+                <fr.ram.traitementimage.CustomView.EffectButton
+                    android:onClick="gaussianBlur"
+                    app:effect_button_icon="@drawable/effect_gaussian_blur"
+                    app:effect_button_text="@string/gaussian_blur"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
-                    android:onClick="laplacien"
-                    app:srcCompat="@drawable/effect_sepia" />
+                <fr.ram.traitementimage.CustomView.EffectButton
+                    android:onClick="laplacianFilter"
+                    app:effect_button_icon="@drawable/effect_sepia"
+                    app:effect_button_text="@string/laplacian_filter"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
-                    android:onClick="sobel"
-                    app:srcCompat="@drawable/effect_sepia" />
+                <fr.ram.traitementimage.CustomView.EffectButton
+                    android:onClick="sobelFilter"
+                    app:effect_button_icon="@drawable/effect_sepia"
+                    app:effect_button_text="@string/sobel_filter"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
 
-                <ImageButton
-                    style="@style/buttonEffect"
+                <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="histogramEqualization"
-                    app:srcCompat="@drawable/effect_sepia" />
-
+                    app:effect_button_icon="@drawable/effect_sepia"
+                    app:effect_button_text="@string/histogram_equalization"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
             </LinearLayout>
         </HorizontalScrollView>
 

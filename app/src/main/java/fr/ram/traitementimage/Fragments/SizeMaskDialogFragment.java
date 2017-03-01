@@ -60,9 +60,9 @@ public class SizeMaskDialogFragment extends DialogFragment {
         String filter = getArguments().getString("filter");
         ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
 
-        if (Objects.equals(filter, "moyenneur"))
+        if (Objects.equals(filter, "averageBlur"))
             callingActivity.moyenneurTreatment(size);
-        else if (Objects.equals(filter, "gaussien"))
+        else if (Objects.equals(filter, "gaussianBlur"))
             callingActivity.gaussienTreatment(size);
 
         dismiss();
