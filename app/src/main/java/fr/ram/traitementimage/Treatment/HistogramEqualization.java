@@ -36,7 +36,7 @@ public class HistogramEqualization extends Treatment {
             pixelsColorRGB[i][2] = Color.blue(pixelsColor[i]);
         }
 
-        sod.calcul(greyImage);
+        sod.compute(greyImage);
         greyImage.getPixels(pixelsShadesOfGrey, 0, greyImage.getWidth(), 0, 0, greyImage.getWidth(), greyImage.getHeight());
 
         for (int i = 0; i <= 255; i++) {

@@ -26,4 +26,5 @@
     <string name="laplacian_filter">Filtre laplacien</string>
     <string name="sobel_filter">Filtre sobel</string>
     <string name="histogram_equalization">Égalisation d\'histogramme</string>
+    <string name="contrast">Contraste</string>
 </resources>

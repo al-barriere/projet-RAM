@@ -27,6 +27,7 @@ import fr.ram.traitementimage.Fragments.SeekbarValueDialogFragment;
 import fr.ram.traitementimage.Fragments.SizeMaskDialogFragment;
 import fr.ram.traitementimage.R;
 import fr.ram.traitementimage.Treatment.ColorFilter;
+import fr.ram.traitementimage.Treatment.Contrast;
 import fr.ram.traitementimage.Treatment.Convolution.Gaussien;
 import fr.ram.traitementimage.Treatment.Convolution.Laplacien;
 import fr.ram.traitementimage.Treatment.Convolution.Moyenneur;
@@ -185,6 +186,11 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void sobelFilter(View view) {
         Sobel s = new Sobel();
         s.compute(imageView, null);
+    }
+
+    public void contrast(View view) {
+        Contrast c = new Contrast();
+        c.compute(imageView, null);
     }
 
     public void histogramEqualization(View view) {

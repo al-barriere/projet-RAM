@@ -16,12 +16,12 @@ public class ShadesOfGray extends Treatment {
         super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
-        calcul(bmp);
+        compute(bmp);
 
         img.setImageBitmap(bmp);
     }
 
-    public void calcul(Bitmap bmp) {
+    public void compute(Bitmap bmp) {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for (int i = 0; i < pixels.length; i++) {

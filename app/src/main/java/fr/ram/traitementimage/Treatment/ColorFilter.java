@@ -45,6 +45,7 @@ public class ColorFilter extends Treatment {
             }
             pixels[i] = rgb;
         }
+
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         img.setImageBitmap(bmp);
     }

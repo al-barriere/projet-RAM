@@ -121,6 +121,13 @@
                 </fr.ram.traitementimage.CustomView.EffectButton>
 
                 <fr.ram.traitementimage.CustomView.EffectButton
+                    android:onClick="contrast"
+                    app:effect_button_icon="@drawable/effect_sepia"
+                    app:effect_button_text="@string/contrast"
+                    style="@style/ButtonEffect">
+                </fr.ram.traitementimage.CustomView.EffectButton>
+
+                <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="histogramEqualization"
                     app:effect_button_icon="@drawable/effect_sepia"
                     app:effect_button_text="@string/histogram_equalization"
