@@ -103,8 +103,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
             case R.id.saveButton:
                 if (imageView.getImageModified()) {
                     ImageFile.saveImage(this, imageBitmap);
-                    imageView.setImageModified(false);
-                    Snackbar.make(findViewById(R.id.activity_main), R.string.image_saved, Snackbar.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -127,6 +125,10 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         onHomePressed();
+    }
+
+    public CustomImageView getImageView() {
+        return imageView;
     }
 
     /**

@@ -12,6 +12,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
@@ -21,6 +22,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import fr.ram.traitementimage.Activities.ImageTreatmentActivity;
+import fr.ram.traitementimage.R;
 
 public class ImageFile {
     public static File createImageFile() throws IOException {
@@ -65,6 +69,10 @@ public class ImageFile {
         }
 
         if (pictureFile != null) {
+            ((ImageTreatmentActivity) activity).getImageView().setImageModified(false);
+            Snackbar.make(activity.findViewById(R.id.activity_main), R.string.image_saved, Snackbar.LENGTH_SHORT).show();
+
+
             MediaScannerConnection.scanFile(activity,
                     new String[]{pictureFile.toString()}, null,
                     new MediaScannerConnection.OnScanCompletedListener() {
