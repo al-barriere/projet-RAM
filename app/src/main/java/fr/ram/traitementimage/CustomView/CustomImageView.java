@@ -12,7 +12,6 @@ import android.widget.ImageView;
 
 public class CustomImageView extends ImageView {
     private boolean imageModified = false;
-    private Bitmap imageBitmap;
 
     public CustomImageView(Context context) {
         super(context);
