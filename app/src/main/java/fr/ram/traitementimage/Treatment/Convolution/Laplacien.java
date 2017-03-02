@@ -18,6 +18,7 @@ public class Laplacien extends Convolution {
         double[][] mask = {{1, 1, 1}, {1, -8, 1}, {1, 1, 1}};
 
         args = new Bundle();
+        args.putInt("nbMask",1);
         args.putInt("mask_size", maskSize);
         args.putSerializable("mask", mask);
 

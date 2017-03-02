@@ -32,6 +32,7 @@ public class Gaussien extends Convolution {
                 mask[i][j] /= sum;
 
         args = new Bundle();
+        args.putInt("nbMask",1);
         args.putInt("mask_size", maskSize);
         args.putSerializable("mask", mask);
 
