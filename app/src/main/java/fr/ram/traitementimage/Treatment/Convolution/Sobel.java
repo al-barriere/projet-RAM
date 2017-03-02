@@ -17,18 +17,12 @@ public class Sobel extends Convolution {
         double[][] mask2 = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
 
         args = new Bundle();
-        args.putInt("nbMask",2);
+        args.putInt("nbMask", 2);
         args.putInt("mask_size", maskSize);
         args.putSerializable("mask", mask);
         args.putInt("mask2_size", maskSize);
         args.putSerializable("mask2", mask2);
 
-
-
         super.compute(img, args);
-
-
-
-
     }
 }

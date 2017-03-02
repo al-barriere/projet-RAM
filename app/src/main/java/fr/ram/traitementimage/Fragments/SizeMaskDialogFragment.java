@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.Objects;
 
@@ -26,7 +27,6 @@ public class SizeMaskDialogFragment extends DialogFragment {
         View view = layout.inflate(R.layout.mask_value, null);
         builder.setView(view);
 
-        /*
         Button bt_3_3 = (Button) view.findViewById(R.id.id_3_3);
         bt_3_3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -49,14 +49,6 @@ public class SizeMaskDialogFragment extends DialogFragment {
         bt_9_9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 callingActivity(9);
-            }
-        });
-        */
-
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
             }
         });
 

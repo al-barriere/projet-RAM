@@ -108,14 +108,14 @@
 
                 <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="laplacianFilter"
-                    app:effect_button_icon="@drawable/effect_sepia"
+                    app:effect_button_icon="@drawable/effect_laplacian"
                     app:effect_button_text="@string/laplacian_filter"
                     style="@style/ButtonEffect">
                 </fr.ram.traitementimage.CustomView.EffectButton>
 
                 <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="sobelFilter"
-                    app:effect_button_icon="@drawable/effect_sepia"
+                    app:effect_button_icon="@drawable/effect_sobel"
                     app:effect_button_text="@string/sobel_filter"
                     style="@style/ButtonEffect">
                 </fr.ram.traitementimage.CustomView.EffectButton>
@@ -129,7 +129,7 @@
 
                 <fr.ram.traitementimage.CustomView.EffectButton
                     android:onClick="histogramEqualization"
-                    app:effect_button_icon="@drawable/effect_sepia"
+                    app:effect_button_icon="@drawable/effect_histogram_equalization"
                     app:effect_button_text="@string/histogram_equalization"
                     style="@style/ButtonEffect">
                 </fr.ram.traitementimage.CustomView.EffectButton>
