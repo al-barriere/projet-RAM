@@ -32,7 +32,7 @@
             android:layout_centerVertical="true"
             android:orientation="vertical">
 
-            <fr.ram.traitementimage.CustomView.RoundedButton
+            <fr.ram.traitementimage.CustomViews.RoundedButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -40,7 +40,7 @@
                 custom:rounded_button_icon="@drawable/ic_collections_24dp"
                 custom:rounded_button_text="@string/gallery" />
 
-            <fr.ram.traitementimage.CustomView.RoundedButton
+            <fr.ram.traitementimage.CustomViews.RoundedButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"

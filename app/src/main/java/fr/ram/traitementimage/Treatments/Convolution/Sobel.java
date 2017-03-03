@@ -1,9 +1,8 @@
-package fr.ram.traitementimage.Treatment.Convolution;
+package fr.ram.traitementimage.Treatments.Convolution;
 
 import android.os.Bundle;
-import android.util.Log;
 
-import fr.ram.traitementimage.CustomView.CustomImageView;
+import fr.ram.traitementimage.CustomViews.CustomImageView;
 
 /**
  * Created by Maxime on 10/02/2017.

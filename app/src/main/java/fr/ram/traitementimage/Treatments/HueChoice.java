@@ -1,10 +1,10 @@
-package fr.ram.traitementimage.Treatment;
+package fr.ram.traitementimage.Treatments;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import fr.ram.traitementimage.CustomView.CustomImageView;
+import fr.ram.traitementimage.CustomViews.CustomImageView;
 
 /**
  * Created by AntoineB on 17-02-05.
