@@ -24,31 +24,23 @@ public class SizeMaskDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layout = getActivity().getLayoutInflater();
         builder.setTitle(R.string.sizeMask);
-        View view = layout.inflate(R.layout.mask_value, null);
-        builder.setView(view);
 
-        Button bt_3_3 = (Button) view.findViewById(R.id.id_3_3);
-        bt_3_3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                callingActivity(3);
-            }
-        });
-        Button bt_5_5 = (Button) view.findViewById(R.id.id_5_5);
-        bt_5_5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                callingActivity(5);
-            }
-        });
-        Button bt_7_7 = (Button) view.findViewById(R.id.id_7_7);
-        bt_7_7.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                callingActivity(7);
-            }
-        });
-        Button bt_9_9 = (Button) view.findViewById(R.id.id_9_9);
-        bt_9_9.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                callingActivity(9);
+        builder.setItems(R.array.mask_sizes_array, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        callingActivity(3);
+                        break;
+                    case 1:
+                        callingActivity(5);
+                        break;
+                    case 2:
+                        callingActivity(7);
+                        break;
+                    case 3:
+                        callingActivity(9);
+                        break;
+                }
             }
         });
 
