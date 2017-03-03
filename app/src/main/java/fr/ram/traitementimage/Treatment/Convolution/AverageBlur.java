@@ -17,7 +17,7 @@ public class AverageBlur extends Convolution {
             for (int j = 0; j < maskSize; j++)
                 mask[i][j] = 1.0 / (maskSize * maskSize);
 
-        args.putInt("nbMask",1);
+        args.putInt("nbMask", 1);
         args.putSerializable("mask", mask);
 
         super.compute(img, args);

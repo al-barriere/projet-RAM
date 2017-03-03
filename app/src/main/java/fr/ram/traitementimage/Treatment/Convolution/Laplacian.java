@@ -11,9 +11,6 @@ import fr.ram.traitementimage.CustomView.CustomImageView;
 public class Laplacian extends Convolution {
     @Override
     public void compute(CustomImageView img, Bundle args) {
-        /*ShadesOfGray sof  = new ShadesOfGray();
-        sof.compute(img, null);*/
-
         int maskSize = 3;
         double[][] mask = {{1, 1, 1}, {1, -8, 1}, {1, 1, 1}};
 
