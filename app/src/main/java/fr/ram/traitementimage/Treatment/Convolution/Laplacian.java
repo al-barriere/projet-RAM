@@ -8,7 +8,7 @@ import fr.ram.traitementimage.CustomView.CustomImageView;
  * Created by Maxime on 10/02/2017.
  */
 
-public class Laplacien extends Convolution {
+public class Laplacian extends Convolution {
     @Override
     public void compute(CustomImageView img, Bundle args) {
         /*ShadesOfGray sof  = new ShadesOfGray();

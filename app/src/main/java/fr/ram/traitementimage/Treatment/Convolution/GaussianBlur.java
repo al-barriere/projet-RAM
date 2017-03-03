@@ -8,7 +8,7 @@ import fr.ram.traitementimage.CustomView.CustomImageView;
  * Created by Remi on 10/02/2017.
  */
 
-public class Gaussien extends Convolution {
+public class GaussianBlur extends Convolution {
     public void compute(CustomImageView img, Bundle args) {
         int maskSize = args.getInt("mask_size");
         double[][] mask = new double[maskSize][maskSize];

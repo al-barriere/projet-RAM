@@ -8,7 +8,7 @@ import fr.ram.traitementimage.CustomView.CustomImageView;
  * Created by Maxime on 10/02/2017.
  */
 
-public class Moyenneur extends Convolution {
+public class AverageBlur extends Convolution {
     @Override
     public void compute(CustomImageView img, Bundle args) {
         int maskSize = args.getInt("mask_size");

@@ -1,15 +1,10 @@
 package fr.ram.traitementimage.Activities;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,9 +23,9 @@ import fr.ram.traitementimage.Fragments.SizeMaskDialogFragment;
 import fr.ram.traitementimage.R;
 import fr.ram.traitementimage.Treatment.ColorFilter;
 import fr.ram.traitementimage.Treatment.Contrast;
-import fr.ram.traitementimage.Treatment.Convolution.Gaussien;
-import fr.ram.traitementimage.Treatment.Convolution.Laplacien;
-import fr.ram.traitementimage.Treatment.Convolution.Moyenneur;
+import fr.ram.traitementimage.Treatment.Convolution.GaussianBlur;
+import fr.ram.traitementimage.Treatment.Convolution.Laplacian;
+import fr.ram.traitementimage.Treatment.Convolution.AverageBlur;
 import fr.ram.traitementimage.Treatment.Convolution.Sobel;
 import fr.ram.traitementimage.Treatment.HistogramEqualization;
 import fr.ram.traitementimage.Treatment.HueChoice;
@@ -179,7 +174,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void laplacianFilter(View view) {
-        Laplacien l = new Laplacien();
+        Laplacian l = new Laplacian();
         l.compute(imageView, null);
     }
 
@@ -223,14 +218,14 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void averageBlurTreatment(int maskSize) {
-        Moyenneur m = new Moyenneur();
+        AverageBlur m = new AverageBlur();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
         m.compute(imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
-        Gaussien g = new Gaussien();
+        GaussianBlur g = new GaussianBlur();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
         g.compute(imageView, seekData);
