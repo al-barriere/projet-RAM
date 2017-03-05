@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.ram.traitementimage">
+    package="fr.ram.imagetreatment">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -19,7 +19,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="fr.ram.traitementimage.fileprovider"
+            android:authorities="fr.ram.imagetreatment.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
 
@@ -29,7 +29,7 @@
         </provider>
 
         <activity
-            android:name=".Activities.StartActivity"
+            android:name="fr.ram.imagetreatment.Activities.StartActivity"
             android:screenOrientation="portrait"
             android:theme="@style/StartActivityTheme">
             <intent-filter>
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.ImageTreatmentActivity"
+            android:name="fr.ram.imagetreatment.Activities.ImageTreatmentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
     </application>
