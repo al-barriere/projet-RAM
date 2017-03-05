@@ -16,11 +16,11 @@ public class PermissionUtil {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
-    private static int getWritePermission(Activity activity) {
+    public static int getWritePermission(Activity activity) {
         return ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
-    private static int getReadPermission(Activity activity) {
+    public static int getReadPermission(Activity activity) {
         return ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
