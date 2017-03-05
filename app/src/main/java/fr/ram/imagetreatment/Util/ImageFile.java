@@ -45,7 +45,7 @@ public class ImageFile {
         return image;
     }
 
-    public static void saveImage(final Activity activity, Bitmap image) {
+    public static boolean saveImage(final Activity activity, Bitmap image) {
         if (PermissionUtil.getWritePermission(activity) != PackageManager.PERMISSION_GRANTED) {
             Snackbar.make(activity.findViewById(R.id.activity_main), R.string.storage_permissions_not_granted, Snackbar.LENGTH_LONG).setAction(R.string.open_permissions, new View.OnClickListener() {
                 @Override
@@ -84,9 +84,12 @@ public class ImageFile {
                                     Log.i("ExternalStorage", "-> uri=" + uri);
                                 }
                             });
+
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     private static void openPermissionsIntent(Activity activity) {

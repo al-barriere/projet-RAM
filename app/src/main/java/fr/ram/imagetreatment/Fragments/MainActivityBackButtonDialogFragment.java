@@ -19,8 +19,8 @@ public class MainActivityBackButtonDialogFragment extends DialogFragment {
         builder.setTitle(R.string.main_activity_back_button_title);
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                ImageFile.saveImage(getActivity(), image);
-                getActivity().finish();
+                if (ImageFile.saveImage(getActivity(), image))
+                    getActivity().finish();
             }
         });
         builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
