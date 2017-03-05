@@ -27,14 +27,14 @@ public abstract class Convolution extends Treatment {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
-        int[] pixelMoyenneur = new int[bmp.getWidth() * bmp.getHeight()];
+        int[] pixelsOutput = new int[bmp.getWidth() * bmp.getHeight()];
         int width = bmp.getWidth();
         int height = bmp.getHeight();
         int red, blue, green, x_pixelMatrix, y_pixelMatrix;
         float redF, blueF, greenF;
         float redF2, blueF2, greenF2;
         if (nbMask == 1) {
-            for (int i = 0; i < pixelMoyenneur.length; i++) {
+            for (int i = 0; i < pixelsOutput.length; i++) {
                 redF = blueF = greenF = 0;
                 x_pixelMatrix = i % width;
                 y_pixelMatrix = i / width;
@@ -61,10 +61,10 @@ public abstract class Convolution extends Treatment {
                 red = (int) redF;
                 green = (int) greenF;
                 blue = (int) blueF;
-                pixelMoyenneur[i] = Color.rgb(red, green, blue);
+                pixelsOutput[i] = Color.rgb(red, green, blue);
             }
         } else {//nbMask ==2
-            for (int i = 0; i < pixelMoyenneur.length; i++) {
+            for (int i = 0; i < pixelsOutput.length; i++) {
                 redF = blueF = greenF = 0;
                 redF2 = blueF2 = greenF2 = 0;
                 x_pixelMatrix = i % width;
@@ -101,12 +101,12 @@ public abstract class Convolution extends Treatment {
                 red = (int) Math.sqrt(redF * redF + redF2 * redF2);
                 green = (int) Math.sqrt(greenF * greenF + greenF2 * greenF2);
                 blue = (int) Math.sqrt(blueF * blueF + blueF2 * blueF2);
-                pixelMoyenneur[i] = Color.rgb(red, green, blue);
+                pixelsOutput[i] = Color.rgb(red, green, blue);
             }
 
         }
 
-        bmp.setPixels(pixelMoyenneur, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+        bmp.setPixels(pixelsOutput, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         img.setImageBitmap(bmp);
     }
 

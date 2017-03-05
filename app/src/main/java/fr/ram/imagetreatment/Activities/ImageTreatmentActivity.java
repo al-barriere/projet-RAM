@@ -27,6 +27,7 @@ import fr.ram.imagetreatment.Treatments.Convolution.GaussianBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Laplacian;
 import fr.ram.imagetreatment.Treatments.Convolution.AverageBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
+import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
 import fr.ram.imagetreatment.Treatments.HueChoice;
 import fr.ram.imagetreatment.Treatments.OverExposure;
@@ -43,7 +44,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private HorizontalScrollView bottomBar;
     private RelativeLayout imageContainer;
-    private int option;
+    private FilterChoiceEnum option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,13 +142,13 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void choiceHue(View view) {
-        option = 0;
+        option = FilterChoiceEnum.HUE;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "choice hue");
     }
 
     public void colorFilter(View view) {
-        option = 1;
+        option = FilterChoiceEnum.COLOR;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "colorFilter");
     }
@@ -231,7 +232,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         g.compute(imageView, seekData);
     }
 
-    public int getOption() {
+    public FilterChoiceEnum getOption() {
         return option;
     }
 }

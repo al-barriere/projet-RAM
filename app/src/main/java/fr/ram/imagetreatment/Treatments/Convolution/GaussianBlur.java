@@ -31,7 +31,6 @@ public class GaussianBlur extends Convolution {
             for (int j = 0; j < maskSize; ++j)
                 mask[i][j] /= sum;
 
-        args = new Bundle();
         args.putInt("nbMask", 1);
         args.putSerializable("mask", mask);
 

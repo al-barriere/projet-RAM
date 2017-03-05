@@ -10,6 +10,7 @@ import android.widget.SeekBar;
 
 import fr.ram.imagetreatment.Activities.ImageTreatmentActivity;
 import fr.ram.imagetreatment.R;
+import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 
 /**
  * Created by AntoineB on 17-02-10.
@@ -28,9 +29,9 @@ public class SeekbarHueColorDialogFragment extends DialogFragment {
 
                 SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.choice);
                 ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
-                if (callingActivity.getOption() == 0) {
+                if (callingActivity.getOption() == FilterChoiceEnum.HUE) {
                     callingActivity.hueChoice(contrast.getProgress());
-                } else if (callingActivity.getOption() == 1) {
+                } else if (callingActivity.getOption() == FilterChoiceEnum.COLOR) {
                     callingActivity.filterColor(contrast.getProgress());
                 }
 
