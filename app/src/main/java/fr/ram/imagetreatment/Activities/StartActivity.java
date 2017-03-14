@@ -64,7 +64,7 @@ public class StartActivity extends AppCompatActivity {
             try {
                 photoFile = ImageFile.createTempImageFile(this);
                 if (photoFile != null) {
-                    mCurrentPhotoUri = FileProvider.getUriForFile(this, "fr.ram.traitementimage.fileprovider", photoFile);
+                    mCurrentPhotoUri = FileProvider.getUriForFile(this, "fr.ram.imagetreatment.fileprovider", photoFile);
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCurrentPhotoUri);
                     startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
                 }
