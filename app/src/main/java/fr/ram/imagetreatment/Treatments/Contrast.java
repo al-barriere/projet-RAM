@@ -16,7 +16,7 @@ public class Contrast extends Treatment {
         super.compute(img, args);
 
         Bitmap bmp = img.getImageBitmap();
-      //  Bitmap greyBitmap = bmp.copy(bmp.getConfig(), true);
+        //  Bitmap greyBitmap = bmp.copy(bmp.getConfig(), true);
         int imageSize = bmp.getWidth() * bmp.getHeight();
         int pixels[] = new int[imageSize];
         //int pixelsGrey[] = new int[imageSize];
@@ -30,10 +30,10 @@ public class Contrast extends Treatment {
         int tempColor;
 
         //ShadesOfGray shadesOfGray = new ShadesOfGray();
-       // shadesOfGray.compute(greyBitmap);
+        // shadesOfGray.compute(greyBitmap);
 
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-       // greyBitmap.getPixels(pixelsGrey, 0, greyBitmap.getWidth(), 0, 0, greyBitmap.getWidth(), greyBitmap.getHeight());
+        // greyBitmap.getPixels(pixelsGrey, 0, greyBitmap.getWidth(), 0, 0, greyBitmap.getWidth(), greyBitmap.getHeight());
 
         for (int i = 0; i < imageSize; i++) {
             color[i][0] = Color.red(pixels[i]);
@@ -50,8 +50,8 @@ public class Contrast extends Treatment {
             }
         }
 
+        diff = (max - min > 0) ? max - min : 1;
         for (int i = 0; i <= 255; i++) {
-            diff = (max - min > 0) ? max - min : 1;
             lut[i] = (255 * (i - min)) / diff;
         }
 

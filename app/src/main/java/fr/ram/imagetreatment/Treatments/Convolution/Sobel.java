@@ -20,8 +20,8 @@ public class Sobel extends Convolution {
         args = new Bundle();
 
         args.putInt("mask_size", 3);
-        GaussianBlur gaussianBlur=new GaussianBlur();
-        gaussianBlur.compute(img,args);
+        GaussianBlur gaussianBlur = new GaussianBlur();
+        gaussianBlur.compute(img, args);
 
         args = new Bundle();
         args.putInt("nbMask", 2);

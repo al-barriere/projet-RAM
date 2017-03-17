@@ -15,7 +15,6 @@ import static android.graphics.Color.RGBToHSV;
  */
 
 public class ColorFilter extends Treatment {
-
     @Override
     public void compute(CustomImageView img, Bundle args) {
         super.compute(img, args);
