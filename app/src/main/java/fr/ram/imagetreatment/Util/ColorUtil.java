@@ -12,4 +12,5 @@ public class ColorUtil {
         return red + green + blue;
     }
 
+
 }

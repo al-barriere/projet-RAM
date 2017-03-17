@@ -131,34 +131,34 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     /**
      * OnClick event
      */
-    public void toShadesOfGray(View view) {
+    protected void toShadesOfGray(View view) {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
         shadesOfGray.compute(imageView, null);
     }
 
-    public void toSepia(View view) {
+    protected void toSepia(View view) {
         Sepia sepia = new Sepia();
         sepia.compute(imageView, null);
     }
 
-    public void choiceHue(View view) {
+    protected void choiceHue(View view) {
         option = FilterChoiceEnum.HUE;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "choice hue");
     }
 
-    public void colorFilter(View view) {
+    protected void colorFilter(View view) {
         option = FilterChoiceEnum.COLOR;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "colorFilter");
     }
 
-    public void exposure(View view) {
+    protected void exposure(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
         newFragments.show(getFragmentManager(), "overexposure");
     }
 
-    public void averageBlur(View view) {
+    protected void averageBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
         fragmentArgs.putString("filter", "averageBlur");
@@ -166,7 +166,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    public void gaussianBlur(View view) {
+    protected void gaussianBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
         fragmentArgs.putString("filter", "gaussianBlur");
@@ -174,22 +174,22 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    public void laplacianFilter(View view) {
+    protected void laplacianFilter(View view) {
         Laplacian l = new Laplacian();
         l.compute(imageView, null);
     }
 
-    public void sobelFilter(View view) {
+    protected void sobelFilter(View view) {
         Sobel s = new Sobel();
         s.compute(imageView, null);
     }
 
-    public void contrast(View view) {
+    protected void contrast(View view) {
         Contrast c = new Contrast();
         c.compute(imageView, null);
     }
 
-    public void histogramEqualization(View view) {
+    protected void histogramEqualization(View view) {
         HistogramEqualization he = new HistogramEqualization();
         he.compute(imageView, null);
     }
