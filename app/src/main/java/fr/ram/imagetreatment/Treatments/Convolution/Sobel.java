@@ -18,7 +18,7 @@ public class Sobel extends Convolution {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
         shadesOfGray.compute(img, null);
         args = new Bundle();
-        
+
         args.putInt("mask_size", 3);
         GaussianBlur gaussianBlur=new GaussianBlur();
         gaussianBlur.compute(img,args);
