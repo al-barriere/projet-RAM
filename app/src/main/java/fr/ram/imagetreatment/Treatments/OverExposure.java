@@ -25,9 +25,9 @@ public class OverExposure extends Treatment {
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for(int i=0;i<size;i++){
             int o = pixels[i];
-            red = Color.red(o) + (value-255);
-            green = Color.green(o) +(value-255);
-            blue = Color.blue(o) + (value-255);
+            red = Color.red(o) + (value);
+            green = Color.green(o) +(value);
+            blue = Color.blue(o) + (value);
 
             if(value>255){
                 if (red > 255) {
