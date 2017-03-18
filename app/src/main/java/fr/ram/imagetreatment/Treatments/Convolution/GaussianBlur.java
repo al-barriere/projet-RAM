@@ -1,5 +1,6 @@
 package fr.ram.imagetreatment.Treatments.Convolution;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
@@ -9,7 +10,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
  */
 
 public class GaussianBlur extends Convolution {
-    public void compute(CustomImageView img, Bundle args) {
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         int maskSize = args.getInt("mask_size");
         double[][] mask = new double[maskSize][maskSize];
 
@@ -34,6 +35,6 @@ public class GaussianBlur extends Convolution {
         args.putInt("nbMask", 1);
         args.putSerializable("mask", mask);
 
-        super.compute(img, args);
+        return super._compute(img, args);
     }
 }

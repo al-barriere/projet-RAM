@@ -12,9 +12,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class Contrast extends Treatment {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
         //  Bitmap greyBitmap = bmp.copy(bmp.getConfig(), true);
         int imageSize = bmp.getWidth() * bmp.getHeight();
@@ -30,7 +28,7 @@ public class Contrast extends Treatment {
         int tempColor;
 
         //ShadesOfGray shadesOfGray = new ShadesOfGray();
-        // shadesOfGray.compute(greyBitmap);
+        // shadesOfGray._compute(greyBitmap);
 
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         // greyBitmap.getPixels(pixelsGrey, 0, greyBitmap.getWidth(), 0, 0, greyBitmap.getWidth(), greyBitmap.getHeight());
@@ -63,6 +61,6 @@ public class Contrast extends Treatment {
         }
 
         bmp.setPixels(pixelsNew, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        img.setImageBitmap(bmp);
+        return bmp;
     }
 }

@@ -1,5 +1,6 @@
 package fr.ram.imagetreatment.Treatments.Convolution;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
@@ -11,17 +12,17 @@ import fr.ram.imagetreatment.Treatments.ShadesOfGray;
 
 public class Sobel extends Convolution {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         int maskSize = 3;
         double[][] mask = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
         double[][] mask2 = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
         ShadesOfGray shadesOfGray = new ShadesOfGray();
-        shadesOfGray.compute(img, null);
+        shadesOfGray._compute(img, null);
         args = new Bundle();
 
         args.putInt("mask_size", 3);
         GaussianBlur gaussianBlur = new GaussianBlur();
-        gaussianBlur.compute(img, args);
+        gaussianBlur._compute(img, args);
 
         args = new Bundle();
         args.putInt("nbMask", 2);
@@ -30,6 +31,6 @@ public class Sobel extends Convolution {
         args.putInt("mask2_size", maskSize);
         args.putSerializable("mask2", mask2);
 
-        super.compute(img, args);
+        return super._compute(img, args);
     }
 }

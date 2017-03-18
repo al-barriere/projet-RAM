@@ -1,5 +1,6 @@
 package fr.ram.imagetreatment.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -133,12 +134,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      */
     protected void toShadesOfGray(View view) {
         ShadesOfGray shadesOfGray = new ShadesOfGray();
-        shadesOfGray.compute(imageView, null);
+        shadesOfGray.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     protected void toSepia(View view) {
         Sepia sepia = new Sepia();
-        sepia.compute(imageView, null);
+        sepia.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     protected void choiceHue(View view) {
@@ -176,22 +177,22 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     protected void laplacianFilter(View view) {
         Laplacian l = new Laplacian();
-        l.compute(imageView, null);
+        l.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     protected void sobelFilter(View view) {
         Sobel s = new Sobel();
-        s.compute(imageView, null);
+        s.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     protected void contrast(View view) {
         Contrast c = new Contrast();
-        c.compute(imageView, null);
+        c.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     protected void histogramEqualization(View view) {
         HistogramEqualization he = new HistogramEqualization();
-        he.compute(imageView, null);
+        he.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     /**
@@ -201,38 +202,43 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         HueChoice hueChoice = new HueChoice();
         Bundle seekData = new Bundle();
         seekData.putInt("value", hue);
-        hueChoice.compute(imageView, seekData);
+        hueChoice.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void filterColor(int color) {
         ColorFilter colorFilter = new ColorFilter();
         Bundle seekData = new Bundle();
         seekData.putInt("color", color);
-        colorFilter.compute(imageView, seekData);
+        colorFilter.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void overExposureTreatment(int value) {
         OverExposure overExposure = new OverExposure();
         Bundle seekData = new Bundle();
         seekData.putInt("value", value);
-        overExposure.compute(imageView, seekData);
+        overExposure.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void averageBlurTreatment(int maskSize) {
         AverageBlur m = new AverageBlur();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
-        m.compute(imageView, seekData);
+        m.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
         GaussianBlur g = new GaussianBlur();
         Bundle seekData = new Bundle();
         seekData.putInt("mask_size", maskSize);
-        g.compute(imageView, seekData);
+        g.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public FilterChoiceEnum getOption() {
         return option;
+    }
+
+    public void processFinish(Bitmap result) {
+        imageView.setImageBitmap(result);
+        imageView.setImageModified(true);
     }
 }

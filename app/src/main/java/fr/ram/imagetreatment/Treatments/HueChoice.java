@@ -13,9 +13,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class HueChoice extends Treatment {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
         int size = bmp.getWidth() * bmp.getHeight();
         int hue = args.getInt("value");
@@ -30,6 +28,6 @@ public class HueChoice extends Treatment {
         }
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
-        img.setImageBitmap(bmp);
+        return bmp;
     }
 }

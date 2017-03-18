@@ -29,4 +29,6 @@
     <string name="contrast">Contraste</string>
     <string name="open_permissions">Paramètres</string>
     <string name="storage_permissions_not_granted">Erreur de permissions</string>
+    <string name="please_wait">Veuillez patienter</string>
+    <string name="processing_image">Application de l\'effet ...</string>
 </resources>

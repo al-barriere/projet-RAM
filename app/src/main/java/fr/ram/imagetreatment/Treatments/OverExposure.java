@@ -14,9 +14,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class OverExposure extends Treatment {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
         int red,green,blue;
         int value= args.getInt("value");
@@ -50,6 +48,7 @@ public class OverExposure extends Treatment {
             pixels[i] = Color.rgb(red,green,blue);
         }
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        img.setImageBitmap(bmp);
+
+        return bmp;
     }
 }

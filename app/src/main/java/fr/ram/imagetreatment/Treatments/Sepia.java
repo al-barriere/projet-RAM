@@ -11,9 +11,7 @@ import fr.ram.imagetreatment.Util.ColorUtil;
  * Created by Maxime on 03/02/2017.
  */
 public class Sepia extends Treatment {
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
@@ -37,6 +35,6 @@ public class Sepia extends Treatment {
         }
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
-        img.setImageBitmap(bmp);
+        return bmp;
     }
 }

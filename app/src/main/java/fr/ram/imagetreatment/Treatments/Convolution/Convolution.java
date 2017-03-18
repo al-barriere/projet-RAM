@@ -13,9 +13,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public abstract class Convolution extends Treatment {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
         int nbMask = args.getInt("nbMask");
         int maskSize = args.getInt("mask_size");
@@ -107,7 +105,7 @@ public abstract class Convolution extends Treatment {
         }
 
         bmp.setPixels(pixelsOutput, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        img.setImageBitmap(bmp);
+        return bmp;
     }
 
 

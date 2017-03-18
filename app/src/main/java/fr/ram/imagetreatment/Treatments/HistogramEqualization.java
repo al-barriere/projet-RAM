@@ -12,9 +12,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class HistogramEqualization extends Treatment {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap image = img.getImageBitmap();
         Bitmap greyImage = image;
         int size = image.getWidth() * image.getHeight();
@@ -36,7 +34,7 @@ public class HistogramEqualization extends Treatment {
             pixelsColorRGB[i][2] = Color.blue(pixelsColor[i]);
         }
 
-        sod.compute(greyImage);
+        sod._compute(greyImage);
         greyImage.getPixels(pixelsShadesOfGrey, 0, greyImage.getWidth(), 0, 0, greyImage.getWidth(), greyImage.getHeight());
 
         for (int i = 0; i <= 255; i++) {
@@ -62,6 +60,6 @@ public class HistogramEqualization extends Treatment {
         }
 
         image.setPixels(pixelsColorNew, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
-        img.setImageBitmap(image);
+        return image;
     }
 }

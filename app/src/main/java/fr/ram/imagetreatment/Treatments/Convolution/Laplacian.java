@@ -1,5 +1,6 @@
 package fr.ram.imagetreatment.Treatments.Convolution;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
@@ -10,7 +11,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class Laplacian extends Convolution {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         int maskSize = 3;
         double[][] mask = {{1, 1, 1}, {1, -8, 1}, {1, 1, 1}};
 
@@ -19,6 +20,6 @@ public class Laplacian extends Convolution {
         args.putInt("mask_size", maskSize);
         args.putSerializable("mask", mask);
 
-        super.compute(img, args);
+        return super._compute(img, args);
     }
 }

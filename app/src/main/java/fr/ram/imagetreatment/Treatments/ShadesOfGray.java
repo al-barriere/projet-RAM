@@ -12,16 +12,14 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
  */
 public class ShadesOfGray extends Treatment {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
-        compute(bmp);
+        _compute(bmp);
 
-        img.setImageBitmap(bmp);
+        return bmp;
     }
 
-    public void compute(Bitmap bmp) {
+    public void _compute(Bitmap bmp) {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for (int i = 0; i < pixels.length; i++) {
