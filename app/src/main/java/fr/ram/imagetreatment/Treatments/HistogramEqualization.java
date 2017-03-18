@@ -24,7 +24,7 @@ public class HistogramEqualization extends Treatment {
         int cumulateHistogramShadesOfGrey[] = new int[256];
         int tempColor;
         int red, green, blue;
-        ShadesOfGray sod = new ShadesOfGray();
+        ShadesOfGrey sod = new ShadesOfGrey();
 
         image.getPixels(pixelsColor, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
 

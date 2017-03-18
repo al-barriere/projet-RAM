@@ -21,7 +21,6 @@ public abstract class Treatment {
         effectProgressDialog.setCancelable(false);
 
         TreatmentAsyncTask treatmentRunnable = new TreatmentAsyncTask();
-        treatmentRunnable.delegate = (ImageTreatmentActivity) activity;
-        treatmentRunnable.execute(img, args, this, effectProgressDialog);
+        treatmentRunnable.execute(img, args, this, activity, effectProgressDialog);
     }
 }

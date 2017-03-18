@@ -27,7 +27,7 @@ public class Contrast extends Treatment {
         int diff;
         int tempColor;
 
-        //ShadesOfGray shadesOfGray = new ShadesOfGray();
+        //ShadesOfGrey shadesOfGray = new ShadesOfGrey();
         // shadesOfGray._compute(greyBitmap);
 
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());

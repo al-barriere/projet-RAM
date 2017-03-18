@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
-import fr.ram.imagetreatment.Treatments.ShadesOfGray;
+import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
 
 /**
  * Created by Maxime on 10/02/2017.
@@ -16,7 +16,7 @@ public class Sobel extends Convolution {
         int maskSize = 3;
         double[][] mask = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
         double[][] mask2 = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
-        ShadesOfGray shadesOfGray = new ShadesOfGray();
+        ShadesOfGrey shadesOfGray = new ShadesOfGrey();
         shadesOfGray._compute(img, null);
         args = new Bundle();
 

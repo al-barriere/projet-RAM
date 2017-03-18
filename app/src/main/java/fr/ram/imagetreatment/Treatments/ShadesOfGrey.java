@@ -10,7 +10,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 /**
  * Created by Maxime on 03/02/2017.
  */
-public class ShadesOfGray extends Treatment {
+public class ShadesOfGrey extends Treatment {
     @Override
     public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();

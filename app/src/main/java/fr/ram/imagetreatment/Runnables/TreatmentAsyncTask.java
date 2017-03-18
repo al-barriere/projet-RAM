@@ -18,22 +18,21 @@ public class TreatmentAsyncTask extends AsyncTask<Object, Integer, Bitmap> {
     private CustomImageView img;
     private Bundle args;
     private Treatment treatment;
-    ProgressDialog progressDialog;
-    public ImageTreatmentActivity delegate = null;
+    private ProgressDialog progressDialog;
+    private ImageTreatmentActivity delegate;
 
     @Override
     protected Bitmap doInBackground(Object... params) {
         this.img = (CustomImageView) params[0];
         this.args = (Bundle) params[1];
         this.treatment = (Treatment) params[2];
-        this.progressDialog = (ProgressDialog) params[3];
+        this.delegate = (ImageTreatmentActivity) params[3];
+        this.progressDialog = (ProgressDialog) params[4];
 
-        Bitmap result = treatment._compute(img, args);
-        return result;
+        return treatment._compute(img, args);
     }
 
     protected void onPostExecute(Bitmap result) {
-        delegate.processFinish(result);
-        progressDialog.dismiss();
+        delegate.processFinish(result, progressDialog);
     }
 }

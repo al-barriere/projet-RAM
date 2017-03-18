@@ -57,7 +57,7 @@
                 android:weightSum="1">
 
                 <fr.ram.imagetreatment.CustomViews.EffectButton
-                    android:onClick="toShadesOfGray"
+                    android:onClick="toShadesOfGrey"
                     custom:effect_button_icon="@drawable/effect_grey_levels"
                     custom:effect_button_text="@string/grey_levels"
                     style="@style/ButtonEffect"

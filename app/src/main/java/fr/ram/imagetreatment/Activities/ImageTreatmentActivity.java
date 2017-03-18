@@ -33,7 +33,7 @@ import fr.ram.imagetreatment.Treatments.HistogramEqualization;
 import fr.ram.imagetreatment.Treatments.HueChoice;
 import fr.ram.imagetreatment.Treatments.OverExposure;
 import fr.ram.imagetreatment.Treatments.Sepia;
-import fr.ram.imagetreatment.Treatments.ShadesOfGray;
+import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.ImageFile;
 import fr.ram.imagetreatment.Util.PermissionUtil;
@@ -132,9 +132,9 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     /**
      * OnClick event
      */
-    protected void toShadesOfGray(View view) {
-        ShadesOfGray shadesOfGray = new ShadesOfGray();
-        shadesOfGray.compute(ImageTreatmentActivity.this, imageView, null);
+    public void toShadesOfGrey(View view) {
+        ShadesOfGrey shadesOfGrey = new ShadesOfGrey();
+        shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     protected void toSepia(View view) {
@@ -237,8 +237,9 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         return option;
     }
 
-    public void processFinish(Bitmap result) {
+    public void processFinish(Bitmap result, ProgressDialog progressDialog) {
         imageView.setImageBitmap(result);
         imageView.setImageModified(true);
+        progressDialog.dismiss();
     }
 }
