@@ -13,9 +13,7 @@ import fr.ram.imagetreatment.Util.ColorUtil;
 
 public class InverseColor extends Treatment {
     @Override
-    public void compute(CustomImageView img, Bundle args) {
-        super.compute(img, args);
-
+    public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
@@ -42,7 +40,7 @@ public class InverseColor extends Treatment {
         }
         bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
-        img.setImageBitmap(bmp);
+        return bmp;
     }
 
 

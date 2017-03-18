@@ -3,6 +3,8 @@ package fr.ram.imagetreatment.Treatments;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ViewDebug;
 
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
@@ -23,9 +25,9 @@ public class OverExposure extends Treatment {
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for(int i=0;i<size;i++){
             int o = pixels[i];
-            red = Color.red(o) + (value);
-            green = Color.green(o) +(value);
-            blue = Color.blue(o) + (value);
+            red = Color.red(o) + (value-255);
+            green = Color.green(o) +(value-255);
+            blue = Color.blue(o) + (value-255);
 
             if(value>255){
                 if (red > 255) {

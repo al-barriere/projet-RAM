@@ -121,6 +121,13 @@
                 </fr.ram.imagetreatment.CustomViews.EffectButton>
 
                 <fr.ram.imagetreatment.CustomViews.EffectButton
+                    android:onClick="pencil"
+                    app:effect_button_icon="@drawable/effect_grey_levels"
+                    app:effect_button_text="@string/pencil"
+                    style="@style/ButtonEffect">
+                </fr.ram.imagetreatment.CustomViews.EffectButton>
+
+                <fr.ram.imagetreatment.CustomViews.EffectButton
                     android:onClick="histogramEqualization"
                     app:effect_button_icon="@drawable/effect_histogram_equalization"
                     app:effect_button_text="@string/histogram_equalization"

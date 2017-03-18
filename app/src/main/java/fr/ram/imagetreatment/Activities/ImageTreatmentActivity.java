@@ -31,7 +31,9 @@ import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
 import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
 import fr.ram.imagetreatment.Treatments.HueChoice;
+import fr.ram.imagetreatment.Treatments.InverseColor;
 import fr.ram.imagetreatment.Treatments.OverExposure;
+import fr.ram.imagetreatment.Treatments.Pencil;
 import fr.ram.imagetreatment.Treatments.Sepia;
 import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
@@ -138,7 +140,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     protected void toSepia(View view) {
-        Sepia sepia = new Sepia();
+       Sepia sepia = new Sepia();
         sepia.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
@@ -183,6 +185,10 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     protected void sobelFilter(View view) {
         Sobel s = new Sobel();
         s.compute(ImageTreatmentActivity.this, imageView, null);
+    }
+    protected void pencil(View view) {
+        Pencil p = new Pencil();
+        p.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     protected void contrast(View view) {
