@@ -25,6 +25,7 @@
     <string name="gaussian_blur">Flou gaussien</string>
     <string name="laplacian_filter">Filtre laplacien</string>
     <string name="sobel_filter">Filtre sobel</string>
+    <string name="pencil">Effet crayon</string>
     <string name="histogram_equalization">Égalisation d\'histogramme</string>
     <string name="contrast">Contraste</string>
     <string name="open_permissions">Paramètres</string>
