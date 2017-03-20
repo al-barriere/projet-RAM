@@ -72,7 +72,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         }
 
         imageView.setImageBitmap(imageBitmap);
-
         PermissionUtil.verifyStoragePermissions(this);
     }
 

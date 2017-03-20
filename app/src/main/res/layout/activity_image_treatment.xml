@@ -28,14 +28,17 @@
                 android:theme="@style/ToolbarTheme"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-            <fr.ram.imagetreatment.CustomViews.CustomImageView
-                android:id="@+id/imageView"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:scaleType="fitCenter">
+                android:layout_height="match_parent">
+                <fr.ram.imagetreatment.CustomViews.CustomImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="matrix">
 
-            </fr.ram.imagetreatment.CustomViews.CustomImageView>
+                </fr.ram.imagetreatment.CustomViews.CustomImageView>
+            </FrameLayout>
 
         </LinearLayout>
 
