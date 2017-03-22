@@ -13,22 +13,20 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
-import fr.ram.imagetreatment.R;
-
 /**
  * Created by Rémi on 21/02/2017.
  */
 
 public class CustomImageView extends AppCompatImageView {
     private boolean imageModified = false;
-    private float mScaleFactor = 1.f;
-    private int lastX = 0, lastY = 0;
     private ScaleGestureDetector mScaleDetector;
     private TouchListener mTouchListener;
-    private float MIN_SCALE = 0.1f;
-    private final float MAX_SCALE = 5.0f;
     private int imageWidth, imageHeight, screenWidth, screenHeight;
     private Matrix matrix = new Matrix();
+    private int lastX = 0, lastY = 0;
+    private float mScaleFactor = 1.f;
+    private float MIN_SCALE = 0.1f;
+    private final float MAX_SCALE = 10.0f;
 
     public CustomImageView(Context context) {
         super(context);
@@ -67,6 +65,7 @@ public class CustomImageView extends AppCompatImageView {
 
                 float[] matrixValues = new float[9];
                 matrix.getValues(matrixValues);
+
                 mScaleFactor = MIN_SCALE = matrixValues[0];
             }
         });
@@ -98,10 +97,24 @@ public class CustomImageView extends AppCompatImageView {
             extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
+            float[] matrixValues = new float[9];
+            matrix.getValues(matrixValues);
+
             mScaleFactor *= detector.getScaleFactor();
             mScaleFactor = Math.max(MIN_SCALE, Math.min(mScaleFactor, MAX_SCALE));
-            matrix.setScale(mScaleFactor, mScaleFactor);
+
+            // MSCALE_X
+            matrixValues[0] = mScaleFactor;
+            // MSCALE_Y
+            matrixValues[4] = mScaleFactor;
+            // MTRANS_X
+            matrixValues[2] = (screenWidth - imageWidth * mScaleFactor) / 2;
+            // MTRANS_Y
+            matrixValues[5] = (screenHeight - imageHeight * mScaleFactor) / 2;
+
+            matrix.setValues(matrixValues);
             invalidate();
+
             return true;
         }
     }
@@ -123,10 +136,10 @@ public class CustomImageView extends AppCompatImageView {
                         int scrollX = lastX - x;
                         int scrollY = lastY - y;
 
-                        if (-getScrollX() - scrollX > 0 || imageWidth * mScaleFactor - getScrollX() - scrollX < screenWidth)
+                        if (-getScrollX() - scrollX > 0 || -getScrollX() - scrollX + imageWidth * mScaleFactor < screenWidth)
                             scrollX = 0;
 
-                        if (-getScrollY() - scrollY > 0 || imageHeight * mScaleFactor - getScrollY() - scrollY < screenHeight)
+                        if (-getScrollY() - scrollY > 0 || -getScrollY() - scrollY + imageHeight * mScaleFactor < screenHeight)
                             scrollY = 0;
 
                         if (scrollX != 0 || scrollY != 0) {
@@ -134,7 +147,6 @@ public class CustomImageView extends AppCompatImageView {
                             lastY = y;
                             scrollBy(scrollX, scrollY);
                         }
-                        break;
                 }
                 return true;
             }

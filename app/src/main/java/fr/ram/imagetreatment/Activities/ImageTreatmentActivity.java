@@ -138,29 +138,29 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    protected void toSepia(View view) {
+    public void toSepia(View view) {
        Sepia sepia = new Sepia();
         sepia.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    protected void choiceHue(View view) {
+    public void choiceHue(View view) {
         option = FilterChoiceEnum.HUE;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "choice hue");
     }
 
-    protected void colorFilter(View view) {
+    public void colorFilter(View view) {
         option = FilterChoiceEnum.COLOR;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "colorFilter");
     }
 
-    protected void exposure(View view) {
+    public void exposure(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
         newFragments.show(getFragmentManager(), "overexposure");
     }
 
-    protected void averageBlur(View view) {
+    public void averageBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
         fragmentArgs.putString("filter", "averageBlur");
@@ -168,7 +168,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    protected void gaussianBlur(View view) {
+    public void gaussianBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
         fragmentArgs.putString("filter", "gaussianBlur");
@@ -176,26 +176,26 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    protected void laplacianFilter(View view) {
+    public void laplacianFilter(View view) {
         Laplacian l = new Laplacian();
         l.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    protected void sobelFilter(View view) {
+    public void sobelFilter(View view) {
         Sobel s = new Sobel();
         s.compute(ImageTreatmentActivity.this, imageView, null);
     }
-    protected void pencil(View view) {
+    public void pencil(View view) {
         Pencil p = new Pencil();
         p.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    protected void contrast(View view) {
+    public void contrast(View view) {
         Contrast c = new Contrast();
         c.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    protected void histogramEqualization(View view) {
+    public void histogramEqualization(View view) {
         HistogramEqualization he = new HistogramEqualization();
         he.compute(ImageTreatmentActivity.this, imageView, null);
     }
