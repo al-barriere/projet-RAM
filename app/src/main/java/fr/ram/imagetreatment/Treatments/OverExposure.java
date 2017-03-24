@@ -8,6 +8,8 @@ import android.view.ViewDebug;
 
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
+import static fr.ram.imagetreatment.Util.ColorUtil.changeColorInterval;
+
 
 /**
  * Created by AntoineB on 17-02-05.
@@ -25,27 +27,15 @@ public class OverExposure extends Treatment {
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for(int i=0;i<size;i++){
             int o = pixels[i];
-            red = Color.red(o) + (value-255);
-            green = Color.green(o) +(value-255);
-            blue = Color.blue(o) + (value-255);
+            red = Color.red(o) + (value);
+            green = Color.green(o) +(value);
+            blue = Color.blue(o) + (value);
 
-            if(value>255){
-                if (red > 255) {
-                    red = 255;
-                }if (green > 255) {
-                    green = 255;
-                }if (blue > 255) {
-                    blue = 255;
-                }
-            }else{
-                if (red <0) {
-                    red = 0;
-                } if (green <0) {
-                    green = 0;
-                } if (blue <0) {
-                    blue = 0;
-                }
-            }
+
+            red = changeColorInterval(red, -255, 510);
+            green = changeColorInterval(green, -255,510);
+            blue = changeColorInterval(blue, -255,510);
+
 
             pixels[i] = Color.rgb(red,green,blue);
         }
