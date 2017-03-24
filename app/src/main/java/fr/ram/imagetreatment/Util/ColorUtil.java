@@ -20,4 +20,8 @@ public class ColorUtil {
         color = ((color < 0) ? 0 : color);
         return color;
     }
+
+    public static int changeColorInterval(int value, int min, int max){
+        return ((value-min) * MAX_VALUE_COLOR_RGB)/(max-min);
+    }
 }
