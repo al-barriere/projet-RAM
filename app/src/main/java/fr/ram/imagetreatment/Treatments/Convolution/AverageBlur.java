@@ -20,6 +20,8 @@ public class AverageBlur extends Convolution {
 
         args.putInt("nbMask", 1);
         args.putSerializable("mask", mask);
+        args.putInt("min",0);
+        args.putInt("max",255);
 
         return super._compute(img, args);
     }

@@ -3,9 +3,11 @@ package fr.ram.imagetreatment.Treatments.Convolution;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 
 import fr.ram.imagetreatment.Treatments.Treatment;
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
+import fr.ram.imagetreatment.Util.ColorUtil;
 
 /**
  * Created by Maxime on 10/02/2017.
@@ -17,6 +19,8 @@ public abstract class Convolution extends Treatment {
         Bitmap bmp = img.getImageBitmap();
         int nbMask = args.getInt("nbMask");
         int maskSize = args.getInt("mask_size");
+        int min=args.getInt("min");
+        int max=args.getInt("max");
         double[][] mask = (double[][]) args.get("mask");
         double[][] mask2 = null;
         if (nbMask == 2) {
@@ -56,9 +60,9 @@ public abstract class Convolution extends Treatment {
                         cptj = 0;
                     }
                 }
-                red = (int) redF;
-                green = (int) greenF;
-                blue = (int) blueF;
+                red = ColorUtil.changeColorInterval((int) redF,min,max);
+                green = ColorUtil.changeColorInterval((int) greenF,min,max);
+                blue = ColorUtil.changeColorInterval((int) blueF,min,max);
                 pixelsOutput[i] = Color.rgb(red, green, blue);
             }
         } else {//nbMask ==2
@@ -96,14 +100,13 @@ public abstract class Convolution extends Treatment {
                         cptj = 0;
                     }
                 }
-                red = (int) Math.sqrt(redF * redF + redF2 * redF2);
-                green = (int) Math.sqrt(greenF * greenF + greenF2 * greenF2);
-                blue = (int) Math.sqrt(blueF * blueF + blueF2 * blueF2);
+                red = ColorUtil.OverFlowColor((int) Math.sqrt(redF * redF + redF2 * redF2));
+                green = ColorUtil.OverFlowColor((int) Math.sqrt(greenF * greenF + greenF2 * greenF2));
+                blue = ColorUtil.OverFlowColor((int) Math.sqrt(blueF * blueF + blueF2 * blueF2));
                 pixelsOutput[i] = Color.rgb(red, green, blue);
             }
 
         }
-
         bmp.setPixels(pixelsOutput, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         return bmp;
     }

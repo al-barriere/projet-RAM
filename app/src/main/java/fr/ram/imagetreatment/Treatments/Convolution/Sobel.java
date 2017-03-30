@@ -30,7 +30,8 @@ public class Sobel extends Convolution {
         args.putSerializable("mask", mask);
         args.putInt("mask2_size", maskSize);
         args.putSerializable("mask2", mask2);
-
+        args.putInt("min",-4*255);
+        args.putInt("max",4*255);
         return super._compute(img, args);
     }
 }
