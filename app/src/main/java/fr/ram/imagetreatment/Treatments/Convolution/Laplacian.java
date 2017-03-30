@@ -26,8 +26,10 @@ public class Laplacian extends Convolution {
         args.putSerializable("mask", mask);
         args.putInt("min",-255*8);
         args.putInt("max",255*8);
+        super._compute(img, args);
 
-        return super._compute(img, args);
+        HistogramEqualization he=new HistogramEqualization();
+        return he._compute(img,null);
 
 
 

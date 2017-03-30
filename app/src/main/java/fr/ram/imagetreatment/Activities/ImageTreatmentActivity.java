@@ -179,7 +179,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void laplacianFilter(View view) {
         Laplacian l = new Laplacian();
         l.compute(ImageTreatmentActivity.this, imageView, null);
-        histogramEqualization(view);
     }
 
     public void sobelFilter(View view) {
