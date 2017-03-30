@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.ViewDebug;
 
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
+import fr.ram.imagetreatment.Util.ColorUtil;
 
 import static fr.ram.imagetreatment.Util.ColorUtil.changeColorInterval;
 
@@ -32,9 +33,9 @@ public class OverExposure extends Treatment {
             blue = Color.blue(o) + (value);
 
 
-            red = changeColorInterval(red, -255, 510);
-            green = changeColorInterval(green, -255,510);
-            blue = changeColorInterval(blue, -255,510);
+            red = ColorUtil.OverFlowColor(red);
+            green =  ColorUtil.OverFlowColor(green);
+            blue =  ColorUtil.OverFlowColor(blue);
 
 
             pixels[i] = Color.rgb(red,green,blue);
