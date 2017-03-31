@@ -136,17 +136,19 @@ public class CustomImageView extends AppCompatImageView {
                         int scrollX = lastX - x;
                         int scrollY = lastY - y;
 
-                        if (-getScrollX() - scrollX > 0 || -getScrollX() - scrollX + imageWidth * mScaleFactor < screenWidth)
-                            scrollX = 0;
+                        if(!(getScrollX()+ scrollX >= 0-(imageWidth*mScaleFactor-screenWidth)/2))//blocage gauche
+                            scrollX=0;
+                        if(!(getScrollY() + scrollY >=0-(imageHeight*mScaleFactor-screenHeight)/2) )//blocage haut
+                            scrollY=0;
+                        if(!(getScrollX()+ scrollX <= (imageWidth*mScaleFactor-screenWidth)/2))//blocage droite
+                            scrollX=0;
+                        if(!(getScrollY() + scrollY <=(imageHeight*mScaleFactor-screenHeight)/2 ))//blocage bas
+                            scrollY=0;
 
-                        if (-getScrollY() - scrollY > 0 || -getScrollY() - scrollY + imageHeight * mScaleFactor < screenHeight)
-                            scrollY = 0;
+                        scrollBy(scrollX, scrollY);
+                        lastX = x;
+                        lastY = y;
 
-                        if (scrollX != 0 || scrollY != 0) {
-                            lastX = x;
-                            lastY = y;
-                            scrollBy(scrollX, scrollY);
-                        }
                 }
                 return true;
             }
