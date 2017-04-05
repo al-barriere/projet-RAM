@@ -22,7 +22,7 @@ public class Laplacian extends Convolution {
 
         args = new Bundle();
         args.putInt("nbMask",1);
-        args.putInt("mask_size", maskSize);
+        args.putInt("maskSize", maskSize);
         args.putSerializable("mask", mask);
         args.putInt("min",-255*8);
         args.putInt("max",255*8);

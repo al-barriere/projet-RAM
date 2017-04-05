@@ -18,7 +18,7 @@ public abstract class Convolution extends Treatment {
     public Bitmap _compute(CustomImageView img, Bundle args) {
         Bitmap bmp = img.getImageBitmap();
         int nbMask = args.getInt("nbMask");
-        int maskSize = args.getInt("mask_size");
+        int maskSize = args.getInt("maskSize");
         int min=args.getInt("min");
         int max=args.getInt("max");
         double[][] mask = (double[][]) args.get("mask");

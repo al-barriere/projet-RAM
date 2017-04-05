@@ -20,15 +20,15 @@ public class Sobel extends Convolution {
         shadesOfGray._compute(img, null);
         args = new Bundle();
 
-        args.putInt("mask_size", 3);
+        args.putInt("maskSize", 3);
         GaussianBlur gaussianBlur = new GaussianBlur();
         gaussianBlur._compute(img, args);
 
         args = new Bundle();
         args.putInt("nbMask", 2);
-        args.putInt("mask_size", maskSize);
+        args.putInt("maskSize", maskSize);
         args.putSerializable("mask", mask);
-        args.putInt("mask2_size", maskSize);
+        args.putInt("mask2Size", maskSize);
         args.putSerializable("mask2", mask2);
         args.putInt("min",-4*255);
         args.putInt("max",4*255);

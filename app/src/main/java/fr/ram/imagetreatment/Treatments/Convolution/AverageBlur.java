@@ -12,7 +12,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 public class AverageBlur extends Convolution {
     @Override
     public Bitmap _compute(CustomImageView img, Bundle args) {
-        int maskSize = args.getInt("mask_size");
+        int maskSize = args.getInt("maskSize");
         double[][] mask = new double[maskSize][maskSize];
         for (int i = 0; i < maskSize; i++)
             for (int j = 0; j < maskSize; j++)

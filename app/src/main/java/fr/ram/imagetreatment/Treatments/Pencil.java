@@ -23,7 +23,7 @@ public class Pencil extends Treatment {
         inverseColor._compute(img,args);
 
         args=new Bundle();
-        args.putInt("mask_size", 3);
+        args.putInt("maskSize", 3);
         GaussianBlur gaussianBlur = new GaussianBlur();
         gaussianBlur._compute(img, args);
 

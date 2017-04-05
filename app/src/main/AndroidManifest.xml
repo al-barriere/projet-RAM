@@ -15,7 +15,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -30,8 +31,7 @@
 
         <activity
             android:name="fr.ram.imagetreatment.Activities.StartActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/StartActivityTheme">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,8 +39,7 @@
         </activity>
         <activity
             android:name="fr.ram.imagetreatment.Activities.ImageTreatmentActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -252,14 +252,14 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void averageBlurTreatment(int maskSize) {
         AverageBlur m = new AverageBlur();
         Bundle seekData = new Bundle();
-        seekData.putInt("mask_size", maskSize);
+        seekData.putInt("maskSize", maskSize);
         m.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
         GaussianBlur g = new GaussianBlur();
         Bundle seekData = new Bundle();
-        seekData.putInt("mask_size", maskSize);
+        seekData.putInt("maskSize", maskSize);
         g.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 

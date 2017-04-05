@@ -7,10 +7,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="StartActivityTheme" parent="AppTheme">
-        <item name="android:colorBackground">@color/colorPrimary</item>
-    </style>
-
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>

@@ -19,7 +19,7 @@ public class GaussianBlur extends Convolution {
      * @return
      */
     public Bitmap _compute(CustomImageView img, Bundle args) {
-        int maskSize = args.getInt("mask_size");
+        int maskSize = args.getInt("maskSize");
         double[][] mask = new double[maskSize][maskSize];
 
         double sigma = 1.0;
