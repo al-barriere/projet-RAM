@@ -42,6 +42,8 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.ImageFile;
 import fr.ram.imagetreatment.Util.PermissionUtil;
 
+import static fr.ram.imagetreatment.Enums.EffectModeEnum.EFFECT_SELECTION;
+
 public class ImageTreatmentActivity extends AppCompatActivity {
     private Bitmap imageBitmap;
     private Uri photoUri;
@@ -102,7 +104,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
             case R.id.effectModeButton:
                 switch (imageView.getEffectMode()) {
                     case EFFECT_ALL:
-                        imageView.setEffectMode(EffectModeEnum.EFFECT_SELECTION);
+                        imageView.setEffectMode(EFFECT_SELECTION);
                         item.setIcon(R.drawable.ic_gesture_24dp);
                         break;
                     case EFFECT_SELECTION:
