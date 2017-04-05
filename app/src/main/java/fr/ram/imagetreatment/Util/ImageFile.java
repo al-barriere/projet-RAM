@@ -9,11 +9,11 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -35,7 +35,7 @@ public class ImageFile {
         return new File(storageDir, filename);
     }
 
-    public static File createTempImageFile(Activity activity) throws IOException {
+    public static File createTempImageFile(FragmentActivity activity) throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
 
@@ -45,32 +45,23 @@ public class ImageFile {
         return image;
     }
 
-    public static boolean saveImage(final Activity activity, Bitmap image) {
+    public static boolean saveImage(final FragmentActivity activity, Bitmap image) {
         if (PermissionUtil.getWritePermission(activity) != PackageManager.PERMISSION_GRANTED) {
             Snackbar.make(activity.findViewById(R.id.activity_main), R.string.storage_permissions_not_granted, Snackbar.LENGTH_LONG).setAction(R.string.open_permissions, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openPermissionsIntent(activity);
+                    openPermissionsIntent((Activity) activity);
                 }
             }).show();
-        }
-        else {
+        } else {
             File pictureFile = null;
             try {
                 pictureFile = ImageFile.createImageFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
                 FileOutputStream fos = new FileOutputStream(pictureFile);
                 image.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                 fos.close();
-            } catch (FileNotFoundException e) {
-                Log.d("FileNotFoundException", "File not found: " + e.getMessage());
             } catch (IOException e) {
-                Log.d("IOException", "Error accessing file: " + e.getMessage());
-            } catch (NullPointerException e) {
-                Log.d("NullPointerException", "Error accessing file: " + e.getMessage());
+                Snackbar.make(activity.findViewById(R.id.activity_main), R.string.imagefile_save_ioexception_content, Snackbar.LENGTH_LONG).show();
             } finally {
                 if (pictureFile != null) {
                     ((ImageTreatmentActivity) activity).getImageView().setImageModified(false);

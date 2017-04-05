@@ -1,6 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/effectModeButton"
+        android:icon="@drawable/ic_select_all_24dp"
+        app:showAsAction="ifRoom"
+        android:title="@string/reset_image">
+    </item>
+    <item
         android:id="@+id/resetImageButton"
         android:icon="@drawable/ic_clear_24dp"
         app:showAsAction="ifRoom"

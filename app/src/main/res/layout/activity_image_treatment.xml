@@ -125,7 +125,7 @@
 
                 <fr.ram.imagetreatment.CustomViews.EffectButton
                     android:onClick="pencil"
-                    app:effect_button_icon="@drawable/effect_grey_levels"
+                    app:effect_button_icon="@drawable/effect_pencil"
                     app:effect_button_text="@string/pencil"
                     style="@style/ButtonEffect">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>

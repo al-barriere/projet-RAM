@@ -32,4 +32,8 @@
     <string name="storage_permissions_not_granted">Erreur de permissions</string>
     <string name="please_wait">Veuillez patienter</string>
     <string name="processing_image">Application de l\'effet ...</string>
+    <string name="imagefile_save_ioexception_title">Erreur d\'écriture</string>
+    <string name="imagefile_save_ioexception_content">Impossible de créer une image sur la mémoire de stockage de l\'appareil</string>
+    <string name="imagefile_load_ioexception_title">Erreur de lecture</string>
+    <string name="imagefile_load_ioexception_content">Impossible de charger l\'image</string>
 </resources>

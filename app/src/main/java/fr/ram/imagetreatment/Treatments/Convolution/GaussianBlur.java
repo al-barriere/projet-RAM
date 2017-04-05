@@ -11,6 +11,13 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
  */
 
 public class GaussianBlur extends Convolution {
+    /***
+     * Generate a gaussian mask and applies it
+     * Mask generation algirithm adapted from http://www.programming-techniques.com/2013/02/gaussian-filter-generation-using-cc.html
+     * @param img
+     * @param args
+     * @return
+     */
     public Bitmap _compute(CustomImageView img, Bundle args) {
         int maskSize = args.getInt("mask_size");
         double[][] mask = new double[maskSize][maskSize];

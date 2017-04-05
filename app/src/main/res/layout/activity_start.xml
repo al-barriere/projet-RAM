@@ -17,7 +17,8 @@
         android:text="@string/authors"
         android:textAllCaps="false"
         android:textSize="14sp"
-        android:textStyle="normal|italic" />
+        android:textStyle="normal|italic"
+        android:textColor="@color/colorWhite"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

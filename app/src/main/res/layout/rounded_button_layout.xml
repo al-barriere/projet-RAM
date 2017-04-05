@@ -22,5 +22,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAllCaps="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"/>
 </LinearLayout>

@@ -9,7 +9,6 @@
 
     <style name="StartActivityTheme" parent="AppTheme">
         <item name="android:colorBackground">@color/colorPrimary</item>
-        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">

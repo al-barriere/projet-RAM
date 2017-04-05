@@ -1,6 +1,8 @@
 package fr.ram.imagetreatment.Activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,6 +19,7 @@ import android.widget.RelativeLayout;
 
 import java.io.IOException;
 
+import fr.ram.imagetreatment.Enums.EffectModeEnum;
 import fr.ram.imagetreatment.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarHueColorDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarValueDialogFragment;
@@ -31,7 +34,6 @@ import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
 import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
 import fr.ram.imagetreatment.Treatments.HueChoice;
-import fr.ram.imagetreatment.Treatments.InverseColor;
 import fr.ram.imagetreatment.Treatments.OverExposure;
 import fr.ram.imagetreatment.Treatments.Pencil;
 import fr.ram.imagetreatment.Treatments.Sepia;
@@ -70,7 +72,15 @@ public class ImageTreatmentActivity extends AppCompatActivity {
             imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
             imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
         } catch (IOException e) {
-            e.printStackTrace();
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.imagefile_load_ioexception_title)
+                    .setMessage(R.string.imagefile_load_ioexception_content)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            ImageTreatmentActivity.this.finish();
+                        }
+                    })
+                    .show();
         }
 
         imageView.setImageBitmap(imageBitmap);
@@ -88,6 +98,18 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onHomePressed();
+                break;
+            case R.id.effectModeButton:
+                switch (imageView.getEffectMode()) {
+                    case EFFECT_ALL:
+                        imageView.setEffectMode(EffectModeEnum.EFFECT_SELECTION);
+                        item.setIcon(R.drawable.ic_gesture_24dp);
+                        break;
+                    case EFFECT_SELECTION:
+                        imageView.setEffectMode(EffectModeEnum.EFFECT_ALL);
+                        item.setIcon(R.drawable.ic_select_all_24dp);
+                        break;
+                }
                 break;
             case R.id.resetImageButton:
                 try {
@@ -139,7 +161,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void toSepia(View view) {
-       Sepia sepia = new Sepia();
+        Sepia sepia = new Sepia();
         sepia.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
@@ -185,6 +207,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         Sobel s = new Sobel();
         s.compute(ImageTreatmentActivity.this, imageView, null);
     }
+
     public void pencil(View view) {
         Pencil p = new Pencil();
         p.compute(ImageTreatmentActivity.this, imageView, null);

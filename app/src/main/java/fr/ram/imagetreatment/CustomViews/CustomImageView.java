@@ -3,21 +3,30 @@ package fr.ram.imagetreatment.CustomViews;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.effect.Effect;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+
+import fr.ram.imagetreatment.Enums.EffectModeEnum;
+import fr.ram.imagetreatment.R;
 
 /**
  * Created by Rémi on 21/02/2017.
  */
 
-public class CustomImageView extends AppCompatImageView {
+public class CustomImageView extends FrameLayout {
     private boolean imageModified = false;
     private ScaleGestureDetector mScaleDetector;
     private TouchListener mTouchListener;
@@ -27,6 +36,12 @@ public class CustomImageView extends AppCompatImageView {
     private float mScaleFactor = 1.f;
     private float MIN_SCALE = 0.1f;
     private final float MAX_SCALE = 10.0f;
+    private Bitmap effectBitmap;
+    private ImageView principalImageView;
+    private ImageView effectImageView;
+    private Canvas effectCanvas;
+    private EffectModeEnum effectMode = EffectModeEnum.EFFECT_ALL;
+    private Paint paint;
 
     public CustomImageView(Context context) {
         super(context);
@@ -46,15 +61,26 @@ public class CustomImageView extends AppCompatImageView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        setImageMatrix(matrix);
+        principalImageView.setImageMatrix(matrix);
     }
 
     private void init(Context context) {
+        View view = inflate(getContext(), R.layout.custom_imageview_layout, null);
+        addView(view);
+
+        principalImageView = (ImageView) findViewById(R.id.principalImageView);
+        effectImageView = (ImageView) findViewById(R.id.effectImageView);
+
+        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStrokeWidth(40);
+        paint.setColor(Color.RED);
+        paint.setAlpha(80);
+
         post(new Runnable() {
             @Override
             public void run() {
-                imageWidth = getDrawable().getIntrinsicWidth();
-                imageHeight = getDrawable().getIntrinsicHeight();
+                imageWidth = principalImageView.getDrawable().getIntrinsicWidth();
+                imageHeight = principalImageView.getDrawable().getIntrinsicHeight();
                 screenWidth = getWidth();
                 screenHeight = getHeight();
 
@@ -67,8 +93,14 @@ public class CustomImageView extends AppCompatImageView {
                 matrix.getValues(matrixValues);
 
                 mScaleFactor = MIN_SCALE = matrixValues[0];
+
+                effectBitmap = Bitmap.createBitmap(screenWidth, screenHeight, Bitmap.Config.ARGB_8888);
+                effectBitmap = effectBitmap.copy(Bitmap.Config.ARGB_8888, true);
+                effectImageView.setImageBitmap(effectBitmap);
+                effectCanvas = new Canvas(effectBitmap);
             }
         });
+
 
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         mTouchListener = new TouchListener();
@@ -83,7 +115,25 @@ public class CustomImageView extends AppCompatImageView {
     }
 
     public Bitmap getImageBitmap() {
-        return ((BitmapDrawable) (getDrawable())).getBitmap();
+        return ((BitmapDrawable) (principalImageView.getDrawable())).getBitmap();
+    }
+
+    public void setImageBitmap(Bitmap imageBitmap) {
+        this.principalImageView.setImageBitmap(imageBitmap);
+    }
+
+    public EffectModeEnum getEffectMode() {
+        return effectMode;
+    }
+
+    public void setEffectMode(EffectModeEnum effectMode) {
+        if (screenWidth > 0 && screenHeight < 0) {
+            effectCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+            effectImageView.setImageResource(R.color.transparent);
+            effectImageView.invalidate();
+        }
+
+        this.effectMode = effectMode;
     }
 
     @Override
@@ -123,34 +173,50 @@ public class CustomImageView extends AppCompatImageView {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             final int action = event.getAction();
-            if (event.getPointerCount() == 1) {
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        lastX = (int) event.getX();
-                        lastY = (int) event.getY();
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        final int x = (int) event.getX();
-                        final int y = (int) event.getY();
+            if (effectMode == EffectModeEnum.EFFECT_SELECTION) {
+                /*setImageBitmap(img);
+                invalidate();*/
 
-                        int scrollX = lastX - x;
-                        int scrollY = lastY - y;
-
-                        if (-getScrollX() - scrollX > 0 || -getScrollX() - scrollX + imageWidth * mScaleFactor < screenWidth)
-                            scrollX = 0;
-
-                        if (-getScrollY() - scrollY > 0 || -getScrollY() - scrollY + imageHeight * mScaleFactor < screenHeight)
-                            scrollY = 0;
-
-                        if (scrollX != 0 || scrollY != 0) {
-                            lastX = x;
-                            lastY = y;
-                            scrollBy(scrollX, scrollY);
-                        }
-                }
+                effectCanvas.drawPoint(event.getX(), event.getY(), paint);
+                effectImageView.setImageBitmap(effectBitmap);
+                effectImageView.invalidate();
                 return true;
+            } else if (effectMode == EffectModeEnum.EFFECT_ALL) {
+                if (event.getPointerCount() == 1) {
+                    switch (action) {
+                        case MotionEvent.ACTION_DOWN:
+                            lastX = (int) event.getX();
+                            lastY = (int) event.getY();
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            final int x = (int) event.getX();
+                            final int y = (int) event.getY();
+
+                            int scrollX = lastX - x;
+                            int scrollY = lastY - y;
+                            final int probableScrollX = -getScrollX() - scrollX;
+                            final int probableScrollY = -getScrollY() - scrollY;
+
+                            if (probableScrollX > 0 || probableScrollX + imageWidth * mScaleFactor < screenWidth) {
+                                scrollX = 0;
+                            }
+
+                            if (probableScrollY > 0 || probableScrollY + imageHeight * mScaleFactor < screenHeight) {
+                                scrollY = 0;
+                            }
+
+                            if (scrollX != 0 || scrollY != 0) {
+                                lastX = x;
+                                lastY = y;
+                                scrollBy(scrollX, scrollY);
+                            }
+                    }
+                    effectImageView.setImageBitmap(effectBitmap);
+                    effectImageView.invalidate();
+                    return true;
+                }
             }
-            return false;
+            return  false;
         }
     }
 }
