@@ -28,9 +28,14 @@ public class SeekbarValueDialogFragment extends DialogFragment {
 
                 SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.seekBar);
                 ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
-                //progress bar is between 0 and 510 and starts from 255
-                callingActivity.overExposureTreatment(contrast.getProgress()-255);
 
+                String tmp = getTag();
+                if(tmp.equals("contrast")){
+                    callingActivity.contrastTreatment(contrast.getProgress()-255);
+                }else {
+                    //progress bar is between 0 and 510 and starts from 255
+                    callingActivity.overExposureTreatment(contrast.getProgress() - 255);
+                }
                 dialog.dismiss();
             }
         });

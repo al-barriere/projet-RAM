@@ -223,8 +223,8 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void contrast(View view) {
-        Contrast c = new Contrast();
-        c.compute(ImageTreatmentActivity.this, imageView, null);
+        SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
+        newFragments.show(getFragmentManager(), "contrast");
     }
 
     public void histogramEqualization(View view) {
@@ -254,6 +254,13 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         Bundle seekData = new Bundle();
         seekData.putInt("value", value);
         overExposure.compute(ImageTreatmentActivity.this, imageView, seekData);
+    }
+
+    public void contrastTreatment(int value) {
+        Contrast contrast = new Contrast();
+        Bundle seekData = new Bundle();
+        seekData.putInt("value", value);
+        contrast.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void averageBlurTreatment(int maskSize) {
