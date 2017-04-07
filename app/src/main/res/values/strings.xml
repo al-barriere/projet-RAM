@@ -8,6 +8,9 @@
     <string name="main_activity_back_button_title">Voulez-vous sauvegarder l\'image avant de quitter ?</string>
     <string name="yes">Oui</string>
     <string name="reset_image">Réinitialiser l\'image</string>
+    <string name="reposition">Réinitialiser la taille</string>
+    <string name="modeZoom">Mode Zoom</string>
+    <string name="modeSelection">Selection</string>
     <string name="camera">Appareil photo</string>
     <string name="gallery">Galerie</string>
     <string name="image_saved">L\'image a été sauvegardée</string>

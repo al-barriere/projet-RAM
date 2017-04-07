@@ -26,7 +26,7 @@ public class CustomImageView extends AppCompatImageView {
     private int imageWidth, imageHeight, screenWidth, screenHeight;
     private Matrix matrix = new Matrix();
     private int lastX = 0, lastY = 0;
-    private float mScaleFactor = 1.f;
+    private float mScaleFactor;
     private float MIN_SCALE = 0.1f;
     private final float MAX_SCALE = 10.0f;
     private EffectModeEnum effectMode;
@@ -61,10 +61,7 @@ public class CustomImageView extends AppCompatImageView {
                 screenWidth = getWidth();
                 screenHeight = getHeight();
 
-                RectF drawableRect = new RectF(0, 0, imageWidth, imageHeight);
-                RectF viewRect = new RectF(0, 0, screenWidth, screenHeight);
-
-                matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.CENTER);
+                matrix=setMatrixCenter();
 
                 float[] matrixValues = new float[9];
                 matrix.getValues(matrixValues);
@@ -76,6 +73,15 @@ public class CustomImageView extends AppCompatImageView {
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         mTouchListener = new TouchListener();
         effectMode = EffectModeEnum.EFFECT_ALL;
+    }
+
+    public Matrix setMatrixCenter() {
+        scrollTo(0,0);
+        RectF drawableRect = new RectF(0, 0, imageWidth, imageHeight);
+        RectF viewRect = new RectF(0, 0, screenWidth, screenHeight);
+        mScaleFactor=0.f;
+        matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.CENTER);
+        return matrix;
     }
 
     public void setImageModified(boolean imageModified) {

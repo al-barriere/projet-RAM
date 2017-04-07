@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -106,10 +107,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
                     case EFFECT_ALL:
                         imageView.setEffectMode(EFFECT_SELECTION);
                         item.setIcon(R.drawable.ic_gesture_24dp);
+                        item.setTitle("@string/modeSelection");
                         break;
                     case EFFECT_SELECTION:
                         imageView.setEffectMode(EffectModeEnum.EFFECT_ALL);
                         item.setIcon(R.drawable.ic_select_all_24dp);
+                        item.setTitle("@string/modeZoom");
                         break;
                 }
                 break;
@@ -127,6 +130,10 @@ public class ImageTreatmentActivity extends AppCompatActivity {
                 if (imageView.getImageModified()) {
                     ImageFile.saveImage(this, imageBitmap);
                 }
+                break;
+            case R.id.resestZoom:
+                Matrix matrix=imageView.setMatrixCenter();
+                imageView.setImageMatrix(matrix);
                 break;
         }
         return super.onOptionsItemSelected(item);
