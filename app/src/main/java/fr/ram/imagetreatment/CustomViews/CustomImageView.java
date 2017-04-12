@@ -56,16 +56,20 @@ public class CustomImageView extends AppCompatImageView {
         post(new Runnable() {
             @Override
             public void run() {
+                // Get the Bitmap dimensions
                 imageWidth = getDrawable().getIntrinsicWidth();
                 imageHeight = getDrawable().getIntrinsicHeight();
+                // Get the ImageView dimensions
                 screenWidth = getWidth();
                 screenHeight = getHeight();
 
-                matrix=setMatrixCenter();
+                // Center the Bitmap on the ImageView
+                matrix = setMatrixCenter();
 
                 float[] matrixValues = new float[9];
                 matrix.getValues(matrixValues);
 
+                // Save the scale factor of the image
                 mScaleFactor = MIN_SCALE = matrixValues[0];
             }
         });
@@ -75,11 +79,15 @@ public class CustomImageView extends AppCompatImageView {
         effectMode = EffectModeEnum.EFFECT_ALL;
     }
 
+    /***
+     * Return a matrif of the image centered on the screen, reset its scroll and rescale it
+     * @return The matrix of the scaled image
+     */
     public Matrix setMatrixCenter() {
-        scrollTo(0,0);
+        scrollTo(0, 0);
         RectF drawableRect = new RectF(0, 0, imageWidth, imageHeight);
         RectF viewRect = new RectF(0, 0, screenWidth, screenHeight);
-        mScaleFactor=0.f;
+        mScaleFactor = 0.f;
         matrix.setRectToRect(drawableRect, viewRect, Matrix.ScaleToFit.CENTER);
         return matrix;
     }
@@ -111,20 +119,28 @@ public class CustomImageView extends AppCompatImageView {
         this.effectMode = effectMode;
     }
 
+    /***
+     * Private class used to manage the pinch to zoom effect
+     */
     private class ScaleListener
             extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
+            // Get the previous values of the image matrix
             float[] matrixValues = new float[9];
             matrix.getValues(matrixValues);
 
+            // Calculate the new image scale factor
             mScaleFactor *= detector.getScaleFactor();
             mScaleFactor = Math.max(MIN_SCALE, Math.min(mScaleFactor, MAX_SCALE));
 
+            // Change the scale factor (zoom)
             // MSCALE_X
             matrixValues[0] = mScaleFactor;
             // MSCALE_Y
             matrixValues[4] = mScaleFactor;
+
+            // Translate the image for centering it
             // MTRANS_X
             matrixValues[2] = (screenWidth - imageWidth * mScaleFactor) / 2;
             // MTRANS_Y
@@ -137,6 +153,9 @@ public class CustomImageView extends AppCompatImageView {
         }
     }
 
+    /***
+     * Private classe used to manage the image scroll
+     */
     private class TouchListener implements OnTouchListener {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -151,22 +170,28 @@ public class CustomImageView extends AppCompatImageView {
                         final int x = (int) event.getX();
                         final int y = (int) event.getY();
 
+                        // Calculate the translation size
                         int scrollX = lastX - x;
                         int scrollY = lastY - y;
 
-                        if (!(getScrollX() + scrollX >= -(imageWidth * mScaleFactor - screenWidth) / 2))//blocage gauche
+                        // Scroll block
+                        // Left
+                        if (!(getScrollX() + scrollX >= -(imageWidth * mScaleFactor - screenWidth) / 2))
                             scrollX = 0;
-                        if (!(getScrollY() + scrollY >= -(imageHeight * mScaleFactor - screenHeight) / 2))//blocage haut
+                        // Right
+                        if (!(getScrollX() + scrollX <= (imageWidth * mScaleFactor - screenWidth) / 2))
+                            scrollX = 0;
+                        // Top
+                        if (!(getScrollY() + scrollY >= -(imageHeight * mScaleFactor - screenHeight) / 2))
                             scrollY = 0;
-                        if (!(getScrollX() + scrollX <= (imageWidth * mScaleFactor - screenWidth) / 2))//blocage droite
-                            scrollX = 0;
-                        if (!(getScrollY() + scrollY <= (imageHeight * mScaleFactor - screenHeight) / 2))//blocage bas
+                        // Bottom
+                        if (!(getScrollY() + scrollY <= (imageHeight * mScaleFactor - screenHeight) / 2))
                             scrollY = 0;
 
+                        // Scroll the image
                         scrollBy(scrollX, scrollY);
                         lastX = x;
                         lastY = y;
-
                 }
                 return true;
             }

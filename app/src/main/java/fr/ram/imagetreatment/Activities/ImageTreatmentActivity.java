@@ -100,19 +100,19 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onHomePressed();
+                goBack();
                 break;
             case R.id.effectModeButton:
                 switch (imageView.getEffectMode()) {
                     case EFFECT_ALL:
                         imageView.setEffectMode(EFFECT_SELECTION);
                         item.setIcon(R.drawable.ic_gesture_24dp);
-                        item.setTitle("@string/modeSelection");
+                        item.setTitle(R.string.modeZoom);
                         break;
                     case EFFECT_SELECTION:
                         imageView.setEffectMode(EffectModeEnum.EFFECT_ALL);
                         item.setIcon(R.drawable.ic_select_all_24dp);
-                        item.setTitle("@string/modeZoom");
+                        item.setTitle(R.string.modeSelection);
                         break;
                 }
                 break;
@@ -139,7 +139,11 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void onHomePressed() {
+    /***
+     * Leave the current activity
+     * If the image is modified, show an alert dialog for saving the image before leaving
+     */
+    private void goBack() {
         if (imageView.getImageModified()) {
             Bundle args = new Bundle();
             args.putParcelable("imageBitmap", imageBitmap);
@@ -154,7 +158,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        onHomePressed();
+        goBack();
     }
 
     public CustomImageView getImageView() {
@@ -164,34 +168,34 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     /**
      * OnClick event
      */
-    public void toShadesOfGrey(View view) {
+    protected void toShadesOfGrey(View view) {
         ShadesOfGrey shadesOfGrey = new ShadesOfGrey();
         shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void toSepia(View view) {
+    protected void toSepia(View view) {
         Sepia sepia = new Sepia();
         sepia.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void choiceHue(View view) {
+    protected void choiceHue(View view) {
         option = FilterChoiceEnum.HUE;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "choice hue");
     }
 
-    public void colorFilter(View view) {
+    protected void colorFilter(View view) {
         option = FilterChoiceEnum.COLOR;
         SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
         newFragments.show(getFragmentManager(), "colorFilter");
     }
 
-    public void exposure(View view) {
+    protected void exposure(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
         newFragments.show(getFragmentManager(), "overexposure");
     }
 
-    public void averageBlur(View view) {
+    protected void averageBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
         fragmentArgs.putString("filter", "averageBlur");
@@ -199,7 +203,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    public void gaussianBlur(View view) {
+    protected void gaussianBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
         fragmentArgs.putString("filter", "gaussianBlur");
@@ -207,27 +211,27 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         newFragment.show(getFragmentManager(), "sizeMask");
     }
 
-    public void laplacianFilter(View view) {
+    protected void laplacianFilter(View view) {
         Laplacian l = new Laplacian();
         l.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void sobelFilter(View view) {
+    protected void sobelFilter(View view) {
         Sobel s = new Sobel();
         s.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void pencil(View view) {
+    protected void pencil(View view) {
         Pencil p = new Pencil();
         p.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void contrast(View view) {
+    protected void contrast(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
         newFragments.show(getFragmentManager(), "contrast");
     }
 
-    public void histogramEqualization(View view) {
+    protected void histogramEqualization(View view) {
         HistogramEqualization he = new HistogramEqualization();
         he.compute(ImageTreatmentActivity.this, imageView, null);
     }
@@ -281,6 +285,13 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         return option;
     }
 
+    /***
+     * Applies the new image
+     * Informs the UI that the image has been modified
+     * Hides the effect ProgressDialog
+     * @param result : The new bitmap
+     * @param progressDialog : The effect ProgressDialog
+     */
     public void processFinish(Bitmap result, ProgressDialog progressDialog) {
         imageView.setImageBitmap(result);
         imageView.setImageModified(true);

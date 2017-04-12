@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:padding="10dp"
-    android:orientation="vertical"
-    android:weightSum="1">
-
+    android:orientation="vertical">
 
     <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:id="@+id/choice"
-        android:max="360"
-        android:layout_weight="0.72"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/spectrum"
-        />
+        android:max="360" />
 
 </LinearLayout>
