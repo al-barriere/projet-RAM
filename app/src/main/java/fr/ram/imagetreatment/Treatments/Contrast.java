@@ -29,9 +29,9 @@ public class Contrast extends Treatment {
             blue = (int)(factor*(Color.blue(o)-128)+128);
 
 
-            red = ColorUtil.OverFlowColor(red);
-            green =  ColorUtil.OverFlowColor(green);
-            blue =  ColorUtil.OverFlowColor(blue);
+            red = ColorUtil.overFlowColor(red);
+            green =  ColorUtil.overFlowColor(green);
+            blue =  ColorUtil.overFlowColor(blue);
 
 
             pixels[i] = Color.rgb(red,green,blue);

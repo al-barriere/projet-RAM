@@ -25,9 +25,9 @@ public class Sepia extends Treatment {
             int tmp_blue = (red * 272 / 1000) + (green * 534 / 1000) + (blue * 131 / 1000);
             int tmp_green = (red * 349 / 1000) + (green * 686 / 1000) + (blue * 168 / 1000);
 
-            tmp_red = ColorUtil.shiftRgbColor(tmp_red);
-            tmp_green = ColorUtil.shiftRgbColor(tmp_green);
-            tmp_blue = ColorUtil.shiftRgbColor(tmp_blue);
+            tmp_red = ColorUtil.overFlowColor(tmp_red);
+            tmp_green = ColorUtil.overFlowColor(tmp_green);
+            tmp_blue = ColorUtil.overFlowColor(tmp_blue);
 
             pixels[i] = Color.rgb(tmp_red, tmp_green, tmp_blue);
 

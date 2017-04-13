@@ -100,9 +100,9 @@ public abstract class Convolution extends Treatment {
                         cptj = 0;
                     }
                 }
-                red = ColorUtil.OverFlowColor((int) Math.sqrt(redF * redF + redF2 * redF2));
-                green = ColorUtil.OverFlowColor((int) Math.sqrt(greenF * greenF + greenF2 * greenF2));
-                blue = ColorUtil.OverFlowColor((int) Math.sqrt(blueF * blueF + blueF2 * blueF2));
+                red = ColorUtil.overFlowColor((int) Math.sqrt(redF * redF + redF2 * redF2));
+                green = ColorUtil.overFlowColor((int) Math.sqrt(greenF * greenF + greenF2 * greenF2));
+                blue = ColorUtil.overFlowColor((int) Math.sqrt(blueF * blueF + blueF2 * blueF2));
                 pixelsOutput[i] = Color.rgb(red, green, blue);
             }
 
