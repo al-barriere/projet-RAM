@@ -147,7 +147,7 @@
 
                 <fr.ram.imagetreatment.CustomViews.EffectButton
                     android:onClick="contrast"
-                    app:effect_button_icon="@drawable/effect_histogram_equalization"
+                    app:effect_button_icon="@drawable/effect_contrast"
                     app:effect_button_text="@string/contrast"
                     style="@style/ButtonEffect">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>
@@ -155,6 +155,14 @@
                     android:onClick="test"
                     custom:effect_button_icon="@drawable/effect_grey_levels"
                     custom:effect_button_text="@string/grey_levels"
+                    style="@style/ButtonEffect"
+                    android:layout_width="60dp">
+                </fr.ram.imagetreatment.CustomViews.EffectButton>
+
+                <fr.ram.imagetreatment.CustomViews.EffectButton
+                    android:onClick="medianFilter"
+                    custom:effect_button_icon="@drawable/effect_grey_levels"
+                    custom:effect_button_text="@string/median_filter"
                     style="@style/ButtonEffect"
                     android:layout_width="60dp">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>

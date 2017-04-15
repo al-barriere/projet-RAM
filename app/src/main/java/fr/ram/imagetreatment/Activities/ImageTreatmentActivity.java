@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -32,6 +33,7 @@ import fr.ram.imagetreatment.Treatments.Convolution.GaussianBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Laplacian;
 import fr.ram.imagetreatment.Treatments.Convolution.AverageBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
+import fr.ram.imagetreatment.Treatments.MedianFilter;
 import fr.ram.imagetreatment.Treatments.test;
 import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
@@ -241,6 +243,13 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void histogramEqualization(View view) {
         HistogramEqualization he = new HistogramEqualization();
         he.compute(ImageTreatmentActivity.this, imageView, null);
+    }
+
+    public void medianFilter(View view) {
+        MedianFilter medianFilter = new MedianFilter();
+        Bundle args = new Bundle();
+        args.putInt("maskSize", 3);
+        medianFilter.compute(ImageTreatmentActivity.this, imageView, args);
     }
 
     /**
