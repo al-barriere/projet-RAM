@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
  * Created by AntoineB on 17-02-05.
@@ -13,8 +13,7 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class HueChoice extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
         int size = bmp.getWidth() * bmp.getHeight();
         int hue = args.getInt("value");
         int pixels[] = new int[size];
@@ -26,8 +25,7 @@ public class HueChoice extends Treatment {
             hsv[0] = hue;
             pixels[i] = Color.HSVToColor(hsv);
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
-        return bmp;
+        return ImageFile.createBitmapFromPixels(pixels, bmp.getWidth(), bmp.getHeight());
     }
 }

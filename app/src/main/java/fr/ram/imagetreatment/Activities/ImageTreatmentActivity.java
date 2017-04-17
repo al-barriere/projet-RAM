@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -34,7 +33,7 @@ import fr.ram.imagetreatment.Treatments.Convolution.Laplacian;
 import fr.ram.imagetreatment.Treatments.Convolution.AverageBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
 import fr.ram.imagetreatment.Treatments.MedianFilter;
-import fr.ram.imagetreatment.Treatments.test;
+import fr.ram.imagetreatment.Treatments.CartoonEffect;
 import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
 import fr.ram.imagetreatment.Treatments.HueChoice;
@@ -176,9 +175,9 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void test(View view)
+    public void cartoonEffect(View view)
     {
-        test t=new test();
+        CartoonEffect t=new CartoonEffect();
         t.compute(ImageTreatmentActivity.this,imageView,null);
     }
 
@@ -248,7 +247,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void medianFilter(View view) {
         MedianFilter medianFilter = new MedianFilter();
         Bundle args = new Bundle();
-        args.putInt("maskSize", 3);
         medianFilter.compute(ImageTreatmentActivity.this, imageView, args);
     }
 
@@ -309,6 +307,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      * @param progressDialog : The effect ProgressDialog
      */
     public void processFinish(Bitmap result, ProgressDialog progressDialog) {
+        imageBitmap = result;
         imageView.setImageBitmap(result);
         imageView.setImageModified(true);
         progressDialog.dismiss();

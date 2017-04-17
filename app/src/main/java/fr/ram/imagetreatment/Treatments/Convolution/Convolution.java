@@ -3,11 +3,10 @@ package fr.ram.imagetreatment.Treatments.Convolution;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 
 import fr.ram.imagetreatment.Treatments.Treatment;
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.ColorUtil;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
  * Created by Maxime on 10/02/2017.
@@ -15,8 +14,7 @@ import fr.ram.imagetreatment.Util.ColorUtil;
 
 public abstract class Convolution extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
         int nbMask = args.getInt("nbMask");
         int maskSize = args.getInt("maskSize");
         int min=args.getInt("min");
@@ -107,8 +105,7 @@ public abstract class Convolution extends Treatment {
             }
 
         }
-        bmp.setPixels(pixelsOutput, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        return bmp;
+        return ImageFile.createBitmapFromPixels(pixelsOutput, bmp.getWidth(), bmp.getHeight());
     }
 
 

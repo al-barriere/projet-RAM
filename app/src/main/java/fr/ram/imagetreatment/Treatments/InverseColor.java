@@ -3,10 +3,9 @@ package fr.ram.imagetreatment.Treatments;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.ColorUtil;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
  * Created by Maxime on 17/03/2017.
@@ -14,8 +13,7 @@ import fr.ram.imagetreatment.Util.ColorUtil;
 
 public class InverseColor extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for (int i = 0; i < pixels.length; i++) {
@@ -29,12 +27,8 @@ public class InverseColor extends Treatment {
             green = ColorUtil.overFlowColor(254-green);
 
             pixels[i] = Color.rgb(red, green, blue);
-
-
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-
-        return bmp;
+        return ImageFile.createBitmapFromPixels(pixels, bmp.getWidth(), bmp.getHeight());
     }
 
 

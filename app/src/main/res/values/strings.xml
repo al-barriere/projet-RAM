@@ -40,4 +40,5 @@
     <string name="imagefile_load_ioexception_title">Erreur de lecture</string>
     <string name="imagefile_load_ioexception_content">Impossible de charger l\'image</string>
     <string name="median_filter">Filtre médian</string>
+    <string name="cartoon_effect">Effet cartoon</string>
 </resources>

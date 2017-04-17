@@ -3,13 +3,9 @@ package fr.ram.imagetreatment.Treatments;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ViewDebug;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.ColorUtil;
-
-import static fr.ram.imagetreatment.Util.ColorUtil.changeColorInterval;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 
 /**
@@ -19,8 +15,7 @@ import static fr.ram.imagetreatment.Util.ColorUtil.changeColorInterval;
 
 public class OverExposure extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
         int red,green,blue;
         int value= args.getInt("value");
         int size = bmp.getWidth()*bmp.getHeight();
@@ -40,8 +35,7 @@ public class OverExposure extends Treatment {
 
             pixels[i] = Color.rgb(red,green,blue);
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
-        return bmp;
+        return ImageFile.createBitmapFromPixels(pixels, bmp.getWidth(), bmp.getHeight());
     }
 }

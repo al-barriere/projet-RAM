@@ -7,7 +7,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
  * Created by remi on 15/04/2017.
@@ -15,9 +15,8 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class MedianFilter extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
-        int maskSize = args.getInt("maskSize");
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
+        int maskSize = 3;
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
@@ -64,8 +63,6 @@ public class MedianFilter extends Treatment {
             }
         }
 
-        bmp.setPixels(pixelsOutput, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-
-        return bmp;
+        return ImageFile.createBitmapFromPixels(pixelsOutput, bmp.getWidth(), bmp.getHeight());
     }
 }

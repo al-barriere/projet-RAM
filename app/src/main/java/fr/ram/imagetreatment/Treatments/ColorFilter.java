@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.Util.ColorUtil;
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 import static android.graphics.Color.RGBToHSV;
 
@@ -16,9 +16,7 @@ import static android.graphics.Color.RGBToHSV;
 
 public class ColorFilter extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
-
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
         int red, blue, green, rgb;
         int min = 50;
         int color = args.getInt("color");
@@ -43,7 +41,6 @@ public class ColorFilter extends Treatment {
             pixels[i] = rgb;
         }
 
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-        return bmp;
+        return ImageFile.createBitmapFromPixels(pixels, bmp.getWidth(), bmp.getHeight());
     }
 }

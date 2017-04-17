@@ -3,7 +3,6 @@ package fr.ram.imagetreatment.Treatments;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Treatments.Convolution.GaussianBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
 
@@ -13,20 +12,20 @@ import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
 
 public class Pencil extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
+        Bitmap returnBitmap;
 
-        Sobel sobel=new Sobel();
-        sobel._compute(img, args);
+        Sobel sobel = new Sobel();
+        returnBitmap = sobel._compute(bmp, args);
 
-        InverseColor inverseColor=new InverseColor();
-        inverseColor._compute(img,args);
+        InverseColor inverseColor = new InverseColor();
+        returnBitmap = inverseColor._compute(returnBitmap, args);
 
-        args=new Bundle();
+        args = new Bundle();
         args.putInt("maskSize", 3);
         GaussianBlur gaussianBlur = new GaussianBlur();
-        gaussianBlur._compute(img, args);
+        returnBitmap = gaussianBlur._compute(returnBitmap, args);
 
-        return bmp;
+        return returnBitmap;
     }
 }

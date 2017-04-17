@@ -14,7 +14,7 @@ import fr.ram.imagetreatment.Treatments.Treatment;
  */
 
 public class TreatmentAsyncTask extends AsyncTask<Object, Integer, Bitmap> {
-    private CustomImageView img;
+    private Bitmap bmp;
     private Bundle args;
     private Treatment treatment;
     private ProgressDialog progressDialog;
@@ -28,14 +28,14 @@ public class TreatmentAsyncTask extends AsyncTask<Object, Integer, Bitmap> {
      */
     @Override
     protected Bitmap doInBackground(Object... params) {
-        this.img = (CustomImageView) params[0];
+        this.bmp = (Bitmap) params[0];
         this.args = (Bundle) params[1];
         this.treatment = (Treatment) params[2];
         this.delegate = (ImageTreatmentActivity) params[3];
         this.progressDialog = (ProgressDialog) params[4];
 
         // Compute the treatment on the CustomImageView
-        return treatment._compute(img, args);
+        return treatment._compute(bmp, args);
     }
 
     /***

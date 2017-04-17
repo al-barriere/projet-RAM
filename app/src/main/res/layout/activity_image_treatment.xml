@@ -60,14 +60,6 @@
                 android:weightSum="1">
 
                 <fr.ram.imagetreatment.CustomViews.EffectButton
-                    android:onClick="test"
-                    custom:effect_button_icon="@drawable/effect_grey_levels"
-                    custom:effect_button_text="@string/grey_levels"
-                    style="@style/ButtonEffect"
-                    android:layout_width="60dp">
-                </fr.ram.imagetreatment.CustomViews.EffectButton>
-
-                <fr.ram.imagetreatment.CustomViews.EffectButton
                     android:onClick="toShadesOfGrey"
                     custom:effect_button_icon="@drawable/effect_grey_levels"
                     custom:effect_button_text="@string/grey_levels"
@@ -151,18 +143,19 @@
                     app:effect_button_text="@string/contrast"
                     style="@style/ButtonEffect">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>
+
                 <fr.ram.imagetreatment.CustomViews.EffectButton
-                    android:onClick="test"
-                    custom:effect_button_icon="@drawable/effect_grey_levels"
-                    custom:effect_button_text="@string/grey_levels"
+                    android:onClick="medianFilter"
+                    custom:effect_button_icon="@drawable/effect_median"
+                    custom:effect_button_text="@string/median_filter"
                     style="@style/ButtonEffect"
                     android:layout_width="60dp">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>
 
                 <fr.ram.imagetreatment.CustomViews.EffectButton
-                    android:onClick="medianFilter"
-                    custom:effect_button_icon="@drawable/effect_grey_levels"
-                    custom:effect_button_text="@string/median_filter"
+                    android:onClick="cartoonEffect"
+                    custom:effect_button_icon="@drawable/effect_cartoon"
+                    custom:effect_button_text="@string/cartoon_effect"
                     style="@style/ButtonEffect"
                     android:layout_width="60dp">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>

@@ -4,15 +4,14 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.ColorUtil;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
  * Created by Maxime on 03/02/2017.
  */
 public class Sepia extends Treatment {
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap bmp = img.getImageBitmap();
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
         for (int i = 0; i < pixels.length; i++) {
@@ -31,10 +30,7 @@ public class Sepia extends Treatment {
 
             pixels[i] = Color.rgb(tmp_red, tmp_green, tmp_blue);
 
-
         }
-        bmp.setPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-
-        return bmp;
+        return ImageFile.createBitmapFromPixels(pixels, bmp.getWidth(), bmp.getHeight());
     }
 }

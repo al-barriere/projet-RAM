@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
+import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
  * Created by Maxime on 09/02/2017.
@@ -12,10 +12,9 @@ import fr.ram.imagetreatment.CustomViews.CustomImageView;
 
 public class HistogramEqualization extends Treatment {
     @Override
-    public Bitmap _compute(CustomImageView img, Bundle args) {
-        Bitmap image = img.getImageBitmap();
-        Bitmap greyImage = image;
-        int size = image.getWidth() * image.getHeight();
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
+        Bitmap greyImage = bmp;
+        int size = bmp.getWidth() * bmp.getHeight();
         int pixelsColor[] = new int[size];
         int pixelsColorRGB[][] = new int[size][3];
         int pixelsColorNew[] = new int[size];
@@ -26,7 +25,7 @@ public class HistogramEqualization extends Treatment {
         int red, green, blue;
         ShadesOfGrey sod = new ShadesOfGrey();
 
-        image.getPixels(pixelsColor, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
+        bmp.getPixels(pixelsColor, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
         for (int i = 0; i < size; i++) {
             pixelsColorRGB[i][0] = Color.red(pixelsColor[i]);
@@ -34,7 +33,7 @@ public class HistogramEqualization extends Treatment {
             pixelsColorRGB[i][2] = Color.blue(pixelsColor[i]);
         }
 
-        sod._compute(greyImage);
+        greyImage = sod._compute(greyImage, null);
         greyImage.getPixels(pixelsShadesOfGrey, 0, greyImage.getWidth(), 0, 0, greyImage.getWidth(), greyImage.getHeight());
 
         for (int i = 0; i <= 255; i++) {
@@ -59,7 +58,6 @@ public class HistogramEqualization extends Treatment {
             pixelsColorNew[i] = Color.rgb(red, green, blue);
         }
 
-        image.setPixels(pixelsColorNew, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
-        return image;
+        return ImageFile.createBitmapFromPixels(pixelsColorNew, bmp.getWidth(), bmp.getHeight());
     }
 }

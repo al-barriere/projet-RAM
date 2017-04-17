@@ -4,8 +4,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
-
 /**
  * Created by Remi on 10/02/2017.
  */
@@ -14,11 +12,11 @@ public class GaussianBlur extends Convolution {
     /***
      * Generate a gaussian mask and applies it
      * Mask generation algirithm adapted from http://www.programming-techniques.com/2013/02/gaussian-filter-generation-using-cc.html
-     * @param img
+     * @param bmp
      * @param args
      * @return
      */
-    public Bitmap _compute(CustomImageView img, Bundle args) {
+    public Bitmap _compute(Bitmap bmp, Bundle args) {
         int maskSize = args.getInt("maskSize");
         double[][] mask = new double[maskSize][maskSize];
 
@@ -48,6 +46,6 @@ public class GaussianBlur extends Convolution {
         args.putInt("min",0);
         args.putInt("max",255);
 
-        return super._compute(img, args);
+        return super._compute(bmp, args);
     }
 }
