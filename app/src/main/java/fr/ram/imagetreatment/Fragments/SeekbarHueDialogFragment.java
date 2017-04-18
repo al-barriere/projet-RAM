@@ -14,15 +14,25 @@ import fr.ram.imagetreatment.R;
  */
 
 public class SeekbarHueDialogFragment extends SeekbarHueColorDialogFragment {
+    /***
+     * Return an AlertDialog in order to select a color
+     * @param savedInstanceState The Dialog savedInstanceState
+     * @return The Dialog
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = getBuilder();
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                // Retrieve the SeekBar of the AlertDialog and the parent Activity (ImageTreatmentActivity)
                 SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.choice);
                 ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
+
+                // Ask the ImageTreatmentActivity to call the treatment of HueChoice
                 callingActivity.hueChoice(contrast.getProgress());
+
+                // Dismiss the Dialog
                 dialog.dismiss();
             }
         });

@@ -13,6 +13,11 @@ import fr.ram.imagetreatment.R;
  */
 
 public class FileLoadErrorDialogFragment extends DialogFragment {
+    /***
+     * Create an AlertDialog in order to inform the user of an error happening during the loading of a file
+     * @param savedInstanceState The Dialog savedInstanceState
+     * @return The Dialog
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -22,6 +27,7 @@ public class FileLoadErrorDialogFragment extends DialogFragment {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                // Finish the current Activity (ImageTreatmentActivity) and go back to the StartActivity
                 getActivity().finish();
             }
         });

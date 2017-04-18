@@ -47,7 +47,7 @@ public class RoundedButton extends FrameLayout {
         text = (TextView) findViewById(R.id.text);
 
         if (attrs != null) {
-            // Recover the params of the view
+            // Retrieve the params of the view
             customParams = context.getTheme().obtainStyledAttributes(attrs, R.styleable.RoundedButton, 0, 0);
             // Set the icon and the text passed in XML args
             icon.setImageDrawable(customParams.getDrawable(R.styleable.RoundedButton_rounded_button_icon));

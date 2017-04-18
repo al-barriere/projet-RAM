@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.widget.SeekBar;
 
 import fr.ram.imagetreatment.Activities.ImageTreatmentActivity;
+import fr.ram.imagetreatment.CustomViews.MinMaxSeekBar;
 import fr.ram.imagetreatment.R;
 
 /**
@@ -26,15 +27,13 @@ public class SeekbarValueDialogFragment extends DialogFragment {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
-                SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.seekBar);
+                MinMaxSeekBar contrast = (MinMaxSeekBar) ((AlertDialog) dialog).findViewById(R.id.seekBar);
                 ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
 
-                String tmp = getTag();
-                if(tmp.equals("contrast")){
-                    callingActivity.contrastTreatment(contrast.getProgress()-255);
-                }else {
-                    //progress bar is between 0 and 510 and starts from 255
-                    callingActivity.overExposureTreatment(contrast.getProgress() - 255);
+                if (getTag().equals("contrast")) {
+                    callingActivity.contrastTreatment(contrast.getValue());
+                } else {
+                    callingActivity.overExposureTreatment(contrast.getValue());
                 }
                 dialog.dismiss();
             }

@@ -12,6 +12,11 @@ import fr.ram.imagetreatment.R;
  */
 
 public class FileSaveErrorDialogFragment extends DialogFragment {
+    /***
+     * Create an AlertDialog in order to inform the user of an error happening during the creation of a file
+     * @param savedInstanceState The Dialog savedInstanceState
+     * @return The Dialog
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

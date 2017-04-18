@@ -4,10 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +16,7 @@ import android.view.View;
 import java.io.IOException;
 
 import fr.ram.imagetreatment.Fragments.FileLoadErrorDialogFragment;
-import fr.ram.imagetreatment.Fragments.MainActivityBackButtonDialogFragment;
+import fr.ram.imagetreatment.Fragments.ImageTreatmentActivityBackButtonDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarColorDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarHueDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarValueDialogFragment;
@@ -137,7 +135,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
             Bundle args = new Bundle();
             args.putParcelable("imageBitmap", imageBitmap);
 
-            DialogFragment fragmentLeave = new MainActivityBackButtonDialogFragment();
+            DialogFragment fragmentLeave = new ImageTreatmentActivityBackButtonDialogFragment();
             fragmentLeave.setArguments(args);
             fragmentLeave.show(getSupportFragmentManager(), null);
         } else {
