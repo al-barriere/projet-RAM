@@ -1,11 +1,10 @@
 package fr.ram.imagetreatment.Activities;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,15 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.HorizontalScrollView;
-import android.widget.RelativeLayout;
 
 import java.io.IOException;
 
 import fr.ram.imagetreatment.Fragments.FileLoadErrorDialogFragment;
-import fr.ram.imagetreatment.Fragments.FileSaveErrorDialogFragment;
 import fr.ram.imagetreatment.Fragments.MainActivityBackButtonDialogFragment;
-import fr.ram.imagetreatment.Fragments.SeekbarHueColorDialogFragment;
+import fr.ram.imagetreatment.Fragments.SeekbarColorDialogFragment;
+import fr.ram.imagetreatment.Fragments.SeekbarHueDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarValueDialogFragment;
 import fr.ram.imagetreatment.Fragments.SizeMaskDialogFragment;
 import fr.ram.imagetreatment.R;
@@ -35,7 +32,6 @@ import fr.ram.imagetreatment.Treatments.Convolution.AverageBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
 import fr.ram.imagetreatment.Treatments.MedianFilter;
 import fr.ram.imagetreatment.Treatments.CartoonEffect;
-import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
 import fr.ram.imagetreatment.Treatments.HueChoice;
 import fr.ram.imagetreatment.Treatments.OverExposure;
@@ -52,9 +48,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     private Uri photoUri;
     private CustomImageView imageView;
     private Toolbar toolbar;
-    private HorizontalScrollView bottomBar;
-    private RelativeLayout imageContainer;
-    private FilterChoiceEnum option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +56,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         imageView = (CustomImageView) findViewById(R.id.imageView);
-        bottomBar = (HorizontalScrollView) findViewById(R.id.bottomBar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -71,18 +63,28 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+
+        // Save the current image Uri
         photoUri = (Uri) extras.getParcelable("image");
 
         try {
-            imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
-            imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
+            // Load the image from its Uri
+            imageBitmap = ImageFile.loadImageFromUri(photoUri, this);
         } catch (IOException e) {
-            DialogFragment fragmentFileError = new FileLoadErrorDialogFragment();
-            fragmentFileError.show(getSupportFragmentManager(), null);
+            // If an error happened, inform the user
+            showFileLoadErrorDialogFragment();
         }
 
+        // Set the Bitmap to the CustomImageView
         imageView.setImageBitmap(imageBitmap);
+
+        // Request for storage permissions
         PermissionUtil.verifyStoragePermissions(this);
+    }
+
+    private void showFileLoadErrorDialogFragment() {
+        DialogFragment fragmentFileError = new FileLoadErrorDialogFragment();
+        fragmentFileError.show(getSupportFragmentManager(), null);
     }
 
     @Override
@@ -94,26 +96,32 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            // Finish the current activity
             case android.R.id.home:
                 goBack();
                 break;
+            // Reset the current image
+            // Inform the CustomImageView that the image was not modified by any image effects
             case R.id.resetImageButton:
                 try {
-                    imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
-                    imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
-                    imageView.setImageBitmap(imageBitmap);
-                    imageView.setImageModified(false);
+                    // Load the image from its Uri
+                    imageBitmap = ImageFile.loadImageFromUri(photoUri, this);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    // If an error happened, inform the user
+                    showFileLoadErrorDialogFragment();
                 }
+                imageView.setImageBitmap(imageBitmap);
+                imageView.setImageModified(false);
                 break;
+            // If the image is modified, save it on the external storage
             case R.id.saveButton:
-                if (imageView.getImageModified()) {
+                if (imageView.getImageModified())
+                    // Save the image in a new file
                     ImageFile.saveImage(this, imageBitmap);
-                }
                 break;
+            // Reset the image zoom and scroll position
             case R.id.resestZoom:
-                Matrix matrix=imageView.setMatrixCenter();
+                Matrix matrix = imageView.setMatrixCenter();
                 imageView.setImageMatrix(matrix);
                 break;
         }
@@ -137,6 +145,9 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         }
     }
 
+    /***
+     * When the back button or the back arrow is pressed
+     */
     @Override
     public void onBackPressed() {
         goBack();
@@ -147,17 +158,16 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     /**
-     * OnClick event
+     * OnClick events
      */
     public void toShadesOfGrey(View view) {
         ShadesOfGrey shadesOfGrey = new ShadesOfGrey();
         shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void cartoonEffect(View view)
-    {
-        CartoonEffect t=new CartoonEffect();
-        t.compute(ImageTreatmentActivity.this,imageView,null);
+    public void cartoonEffect(View view) {
+        CartoonEffect t = new CartoonEffect();
+        t.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void toSepia(View view) {
@@ -166,14 +176,12 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void choiceHue(View view) {
-        option = FilterChoiceEnum.HUE;
-        SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
+        SeekbarHueDialogFragment newFragments = new SeekbarHueDialogFragment();
         newFragments.show(getFragmentManager(), "choice hue");
     }
 
     public void colorFilter(View view) {
-        option = FilterChoiceEnum.COLOR;
-        SeekbarHueColorDialogFragment newFragments = new SeekbarHueColorDialogFragment();
+        SeekbarColorDialogFragment newFragments = new SeekbarColorDialogFragment();
         newFragments.show(getFragmentManager(), "colorFilter");
     }
 
@@ -230,7 +238,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     /**
-     * Functions Dialogfragment
+     * Functions DialogFragment
      */
     public void hueChoice(int hue) {
         HueChoice hueChoice = new HueChoice();
@@ -272,10 +280,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         Bundle seekData = new Bundle();
         seekData.putInt(MASK_SIZE, maskSize);
         g.compute(ImageTreatmentActivity.this, imageView, seekData);
-    }
-
-    public FilterChoiceEnum getOption() {
-        return option;
     }
 
     /***

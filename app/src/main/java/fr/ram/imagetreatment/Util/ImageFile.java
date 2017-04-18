@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
@@ -137,6 +138,13 @@ public class ImageFile {
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
+    }
+
+    public static Bitmap loadImageFromUri(Uri photoUri, Activity activity) throws IOException {
+        Bitmap imageBitmap;
+        imageBitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), photoUri);
+        imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
+        return imageBitmap;
     }
 }
 

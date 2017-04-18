@@ -10,34 +10,17 @@ import android.widget.SeekBar;
 
 import fr.ram.imagetreatment.Activities.ImageTreatmentActivity;
 import fr.ram.imagetreatment.R;
-import fr.ram.imagetreatment.Treatments.FilterChoiceEnum;
 
 /**
  * Created by AntoineB on 17-02-10.
  */
 
-public class SeekbarHueColorDialogFragment extends DialogFragment {
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+abstract class SeekbarHueColorDialogFragment extends DialogFragment {
+    protected AlertDialog.Builder getBuilder() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layout = getActivity().getLayoutInflater();
         builder.setTitle(R.string.question_hue);
         builder.setView(layout.inflate(R.layout.seekbar_hue, null));
-
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-
-                SeekBar contrast = (SeekBar) ((AlertDialog) dialog).findViewById(R.id.choice);
-                ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
-                if (callingActivity.getOption() == FilterChoiceEnum.HUE) {
-                    callingActivity.hueChoice(contrast.getProgress());
-                } else if (callingActivity.getOption() == FilterChoiceEnum.COLOR) {
-                    callingActivity.filterColor(contrast.getProgress());
-                }
-
-                dialog.dismiss();
-            }
-        });
 
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
@@ -46,6 +29,12 @@ public class SeekbarHueColorDialogFragment extends DialogFragment {
             }
         });
 
+        return builder;
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = getBuilder();
         return builder.create();
     }
 }
