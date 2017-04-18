@@ -13,8 +13,6 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
-import fr.ram.imagetreatment.Enums.EffectModeEnum;
-
 /**
  * Created by Rémi on 21/02/2017.
  */
@@ -29,7 +27,6 @@ public class CustomImageView extends AppCompatImageView {
     private float mScaleFactor;
     private float MIN_SCALE = 0.1f;
     private final float MAX_SCALE = 10.0f;
-    private EffectModeEnum effectMode;
 
     public CustomImageView(Context context) {
         super(context);
@@ -76,7 +73,6 @@ public class CustomImageView extends AppCompatImageView {
 
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
         mTouchListener = new TouchListener();
-        effectMode = EffectModeEnum.EFFECT_ALL;
     }
 
     /***
@@ -109,14 +105,6 @@ public class CustomImageView extends AppCompatImageView {
         mScaleDetector.onTouchEvent(ev);
         mTouchListener.onTouch(this, ev);
         return true;
-    }
-
-    public EffectModeEnum getEffectMode() {
-        return effectMode;
-    }
-
-    public void setEffectMode(EffectModeEnum effectMode) {
-        this.effectMode = effectMode;
     }
 
     /***

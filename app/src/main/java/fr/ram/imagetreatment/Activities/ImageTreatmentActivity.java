@@ -20,7 +20,6 @@ import android.widget.RelativeLayout;
 
 import java.io.IOException;
 
-import fr.ram.imagetreatment.Enums.EffectModeEnum;
 import fr.ram.imagetreatment.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarHueColorDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarValueDialogFragment;
@@ -44,8 +43,6 @@ import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.ImageFile;
 import fr.ram.imagetreatment.Util.PermissionUtil;
-
-import static fr.ram.imagetreatment.Enums.EffectModeEnum.EFFECT_SELECTION;
 
 public class ImageTreatmentActivity extends AppCompatActivity {
     private Bitmap imageBitmap;
@@ -103,20 +100,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 goBack();
-                break;
-            case R.id.effectModeButton:
-                switch (imageView.getEffectMode()) {
-                    case EFFECT_ALL:
-                        imageView.setEffectMode(EFFECT_SELECTION);
-                        item.setIcon(R.drawable.ic_gesture_24dp);
-                        item.setTitle(R.string.modeZoom);
-                        break;
-                    case EFFECT_SELECTION:
-                        imageView.setEffectMode(EffectModeEnum.EFFECT_ALL);
-                        item.setIcon(R.drawable.ic_select_all_24dp);
-                        item.setTitle(R.string.modeSelection);
-                        break;
-                }
                 break;
             case R.id.resetImageButton:
                 try {
