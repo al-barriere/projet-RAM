@@ -28,11 +28,7 @@ public class MainActivityBackButtonDialogFragment extends DialogFragment {
                 getActivity().finish();
             }
         });
-        builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // We have to do nothing
-            }
-        });
+        builder.setNeutralButton(R.string.cancel, null);
         return builder.create();
     }
 }

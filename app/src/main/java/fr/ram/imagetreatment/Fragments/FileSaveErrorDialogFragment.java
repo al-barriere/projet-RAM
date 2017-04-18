@@ -11,7 +11,7 @@ import fr.ram.imagetreatment.R;
  * Created by Rémi on 05/04/2017.
  */
 
-public class FileErrorDialogFragment extends DialogFragment {
+public class FileSaveErrorDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

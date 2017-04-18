@@ -18,15 +18,15 @@ import android.view.View;
  */
 
 public class CustomImageView extends AppCompatImageView {
-    private boolean imageModified = false;
-    private ScaleGestureDetector mScaleDetector;
-    private TouchListener mTouchListener;
     private int imageWidth, imageHeight, screenWidth, screenHeight;
     private Matrix matrix = new Matrix();
     private int lastX = 0, lastY = 0;
     private float mScaleFactor;
     private float MIN_SCALE = 0.1f;
     private final float MAX_SCALE = 10.0f;
+    private boolean imageModified = false;
+    private ScaleGestureDetector mScaleDetector;
+    private TouchListener mTouchListener;
 
     public CustomImageView(Context context) {
         super(context);
@@ -49,6 +49,10 @@ public class CustomImageView extends AppCompatImageView {
         setImageMatrix(matrix);
     }
 
+    /***
+     * Initializes the CustomImageView (get its size, set it centered on the screen, add listeners for pinch to zoom and scroll)
+     * @param context The View context
+     */
     private void init(Context context) {
         post(new Runnable() {
             @Override
@@ -76,7 +80,7 @@ public class CustomImageView extends AppCompatImageView {
     }
 
     /***
-     * Return a matrif of the image centered on the screen, reset its scroll and rescale it
+     * Return a matrix of the image centered on the screen, reset the image scroll and rescale it
      * @return The matrix of the scaled image
      */
     public Matrix setMatrixCenter() {
@@ -88,6 +92,10 @@ public class CustomImageView extends AppCompatImageView {
         return matrix;
     }
 
+    /***
+     * This setter is used by the ImageTreatmentActivity when an effect was added to the image (the activity modified this image)
+     * @param imageModified true when the activity modifies the image, false when the image was just loaded or when the user reset the image
+     */
     public void setImageModified(boolean imageModified) {
         this.imageModified = imageModified;
     }
@@ -96,10 +104,18 @@ public class CustomImageView extends AppCompatImageView {
         return imageModified;
     }
 
+    /***
+     * @return The Bitmap displayed by the CustomImageView
+     */
     public Bitmap getImageBitmap() {
         return ((BitmapDrawable) (getDrawable())).getBitmap();
     }
 
+    /***
+     * Notifies the ScaleDetector and the TouchDetector when a TouchEvent occurs
+     * @param ev The event
+     * @return true : a TouchEvent occurs
+     */
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         mScaleDetector.onTouchEvent(ev);
@@ -142,7 +158,7 @@ public class CustomImageView extends AppCompatImageView {
     }
 
     /***
-     * Private classe used to manage the image scroll
+     * Private class used to manage the image scroll
      */
     private class TouchListener implements OnTouchListener {
         @Override

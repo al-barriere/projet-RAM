@@ -20,6 +20,8 @@ import android.widget.RelativeLayout;
 
 import java.io.IOException;
 
+import fr.ram.imagetreatment.Fragments.FileLoadErrorDialogFragment;
+import fr.ram.imagetreatment.Fragments.FileSaveErrorDialogFragment;
 import fr.ram.imagetreatment.Fragments.MainActivityBackButtonDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarHueColorDialogFragment;
 import fr.ram.imagetreatment.Fragments.SeekbarValueDialogFragment;
@@ -45,6 +47,7 @@ import fr.ram.imagetreatment.Util.ImageFile;
 import fr.ram.imagetreatment.Util.PermissionUtil;
 
 public class ImageTreatmentActivity extends AppCompatActivity {
+    public static final String MASK_SIZE = "maskSize";
     private Bitmap imageBitmap;
     private Uri photoUri;
     private CustomImageView imageView;
@@ -74,15 +77,8 @@ public class ImageTreatmentActivity extends AppCompatActivity {
             imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
             imageBitmap = imageBitmap.copy(Bitmap.Config.ARGB_8888, true);
         } catch (IOException e) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.imagefile_load_ioexception_title)
-                    .setMessage(R.string.imagefile_load_ioexception_content)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            ImageTreatmentActivity.this.finish();
-                        }
-                    })
-                    .show();
+            DialogFragment fragmentFileError = new FileLoadErrorDialogFragment();
+            fragmentFileError.show(getSupportFragmentManager(), null);
         }
 
         imageView.setImageBitmap(imageBitmap);
@@ -267,14 +263,14 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void averageBlurTreatment(int maskSize) {
         AverageBlur m = new AverageBlur();
         Bundle seekData = new Bundle();
-        seekData.putInt("maskSize", maskSize);
+        seekData.putInt(MASK_SIZE, maskSize);
         m.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
         GaussianBlur g = new GaussianBlur();
         Bundle seekData = new Bundle();
-        seekData.putInt("maskSize", maskSize);
+        seekData.putInt(MASK_SIZE, maskSize);
         g.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
@@ -286,8 +282,8 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      * Applies the new image
      * Informs the UI that the image has been modified
      * Hides the effect ProgressDialog
-     * @param result : The new bitmap
-     * @param progressDialog : The effect ProgressDialog
+     * @param result The new bitmap
+     * @param progressDialog The effect ProgressDialog
      */
     public void processFinish(Bitmap result, ProgressDialog progressDialog) {
         imageBitmap = result;
