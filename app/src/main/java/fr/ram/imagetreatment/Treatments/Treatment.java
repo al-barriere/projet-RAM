@@ -32,6 +32,7 @@ public abstract class Treatment {
         // Start a ProgressDialog in order to avoid the feeling of a blocked UI
         ProgressDialog effectProgressDialog = ProgressDialog.show(activity, activity.getString(R.string.please_wait), activity.getString(R.string.processing_image), true);
         effectProgressDialog.setCancelable(false);
+
         // Create and execute the treatment in another thread
         TreatmentAsyncTask treatmentRunnable = new TreatmentAsyncTask();
         treatmentRunnable.execute(img.getImageBitmap(), args, this, activity, effectProgressDialog);

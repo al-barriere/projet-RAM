@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 
+import fr.ram.imagetreatment.Util.BundleArgs;
+
 /**
  * Created by Remi on 10/02/2017.
  */
@@ -17,7 +19,7 @@ public class GaussianBlur extends Convolution {
      * @return
      */
     public Bitmap _compute(Bitmap bmp, Bundle args) {
-        int maskSize = args.getInt("maskSize");
+        int maskSize = args.getInt(BundleArgs.MASK_SIZE);
         double[][] mask = new double[maskSize][maskSize];
 
         double sigma = 1.0;
@@ -37,14 +39,11 @@ public class GaussianBlur extends Convolution {
         for (int i = 0; i < maskSize; ++i)
             for (int j = 0; j < maskSize; ++j)
                 mask[i][j] /= sum;
-        for (int i = 0; i < maskSize; ++i)
-            for (int j = 0; j < maskSize; ++j)
-                Log.i(String.valueOf(i)+"/"+String.valueOf(j),String.valueOf(mask[i][j]));
 
-        args.putInt("nbMask", 1);
-        args.putSerializable("mask", mask);
-        args.putInt("min",0);
-        args.putInt("max",255);
+        args.putInt(BundleArgs.NB_MASK, 1);
+        args.putSerializable(BundleArgs.MASK, mask);
+        args.putInt(BundleArgs.MIN,0);
+        args.putInt(BundleArgs.MAX,255);
 
         return super._compute(bmp, args);
     }

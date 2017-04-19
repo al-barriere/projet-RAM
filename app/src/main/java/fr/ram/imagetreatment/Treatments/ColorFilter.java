@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import fr.ram.imagetreatment.Util.BundleArgs;
 import fr.ram.imagetreatment.Util.ColorUtil;
 import fr.ram.imagetreatment.Util.ImageFile;
 
@@ -19,7 +20,7 @@ public class ColorFilter extends Treatment {
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int red, blue, green, rgb;
         int min = 50;
-        int color = args.getInt("color");
+        int color = args.getInt(BundleArgs.COLOR);
         int size = bmp.getWidth() * bmp.getHeight();
         int pixels[] = new int[size];
         float hsv[] = new float[3];

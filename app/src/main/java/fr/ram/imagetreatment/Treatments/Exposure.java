@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import fr.ram.imagetreatment.Util.BundleArgs;
 import fr.ram.imagetreatment.Util.ColorUtil;
 import fr.ram.imagetreatment.Util.ImageFile;
 
@@ -17,7 +18,7 @@ public class Exposure extends Treatment {
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int red,green,blue;
-        int value= args.getInt("value");
+        int value= args.getInt(BundleArgs.VALUE);
         int size = bmp.getWidth()*bmp.getHeight();
         int pixels[] = new int[size];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());

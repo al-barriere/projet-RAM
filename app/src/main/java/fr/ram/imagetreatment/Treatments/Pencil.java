@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import fr.ram.imagetreatment.Treatments.Convolution.GaussianBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
+import fr.ram.imagetreatment.Util.BundleArgs;
 
 /**
  * Created by Maxime on 18/03/2017.
@@ -22,7 +23,7 @@ public class Pencil extends Treatment {
         returnBitmap = inverseColor._compute(returnBitmap, args);
 
         args = new Bundle();
-        args.putInt("maskSize", 3);
+        args.putInt(BundleArgs.MASK_SIZE, 3);
         GaussianBlur gaussianBlur = new GaussianBlur();
         returnBitmap = gaussianBlur._compute(returnBitmap, args);
 

@@ -37,11 +37,11 @@ import fr.ram.imagetreatment.Treatments.Pencil;
 import fr.ram.imagetreatment.Treatments.Sepia;
 import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
+import fr.ram.imagetreatment.Util.BundleArgs;
 import fr.ram.imagetreatment.Util.ImageFile;
 import fr.ram.imagetreatment.Util.PermissionUtil;
 
 public class ImageTreatmentActivity extends AppCompatActivity {
-    public static final String MASK_SIZE = "maskSize";
     private Bitmap imageBitmap;
     private Uri photoUri;
     private CustomImageView imageView;
@@ -241,42 +241,42 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void hueChoice(int hue) {
         HueChoice hueChoice = new HueChoice();
         Bundle seekData = new Bundle();
-        seekData.putInt("value", hue);
+        seekData.putInt(BundleArgs.VALUE, hue);
         hueChoice.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void filterColor(int color) {
         ColorFilter colorFilter = new ColorFilter();
         Bundle seekData = new Bundle();
-        seekData.putInt("color", color);
+        seekData.putInt(BundleArgs.COLOR, color);
         colorFilter.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void exposureTreatment(int value) {
         Exposure exposure = new Exposure();
         Bundle seekData = new Bundle();
-        seekData.putInt("value", value);
+        seekData.putInt(BundleArgs.VALUE, value);
         exposure.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void contrastTreatment(int value) {
         Contrast contrast = new Contrast();
         Bundle seekData = new Bundle();
-        seekData.putInt("value", value);
+        seekData.putInt(BundleArgs.VALUE, value);
         contrast.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void averageBlurTreatment(int maskSize) {
         AverageBlur m = new AverageBlur();
         Bundle seekData = new Bundle();
-        seekData.putInt(MASK_SIZE, maskSize);
+        seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
         m.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
         GaussianBlur g = new GaussianBlur();
         Bundle seekData = new Bundle();
-        seekData.putInt(MASK_SIZE, maskSize);
+        seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
         g.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 

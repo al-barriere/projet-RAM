@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
+import fr.ram.imagetreatment.Util.BundleArgs;
+import fr.ram.imagetreatment.Util.ColorUtil;
 
 /**
  * Created by Maxime on 10/02/2017.
@@ -21,18 +23,18 @@ public class Sobel extends Convolution {
         returnBitmap = shadesOfGray._compute(bmp, null);
 
         args = new Bundle();
-        args.putInt("maskSize", 3);
+        args.putInt(BundleArgs.MASK_SIZE, 3);
         GaussianBlur gaussianBlur = new GaussianBlur();
         returnBitmap = gaussianBlur._compute(returnBitmap, args);
 
         args = new Bundle();
-        args.putInt("nbMask", 2);
-        args.putInt("maskSize", maskSize);
-        args.putSerializable("mask", mask);
-        args.putInt("mask2Size", maskSize);
-        args.putSerializable("mask2", mask2);
-        args.putInt("min",-4*255);
-        args.putInt("max",4*255);
+        args.putInt(BundleArgs.NB_MASK, 2);
+        args.putInt(BundleArgs.MASK_SIZE, maskSize);
+        args.putSerializable(BundleArgs.MASK, mask);
+        args.putInt(BundleArgs.MASK_2_SIZE, maskSize);
+        args.putSerializable(BundleArgs.MASK_2, mask2);
+        args.putInt(BundleArgs.MIN, -4 * ColorUtil.MAX_VALUE_COLOR_RGB);
+        args.putInt(BundleArgs.MAX, 4 * ColorUtil.MAX_VALUE_COLOR_RGB);
         returnBitmap = super._compute(returnBitmap, args);
 
         return returnBitmap;

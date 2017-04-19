@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import fr.ram.imagetreatment.Util.BundleArgs;
 import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
@@ -15,7 +16,7 @@ public class HueChoice extends Treatment {
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int size = bmp.getWidth() * bmp.getHeight();
-        int hue = args.getInt("value");
+        int hue = args.getInt(BundleArgs.VALUE);
         int pixels[] = new int[size];
         float hsv[] = new float[3];
 

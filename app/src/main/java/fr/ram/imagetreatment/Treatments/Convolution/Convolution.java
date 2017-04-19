@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.Treatments.Treatment;
+import fr.ram.imagetreatment.Util.BundleArgs;
 import fr.ram.imagetreatment.Util.ColorUtil;
 import fr.ram.imagetreatment.Util.ImageFile;
 
@@ -15,14 +16,14 @@ import fr.ram.imagetreatment.Util.ImageFile;
 public abstract class Convolution extends Treatment {
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
-        int nbMask = args.getInt("nbMask");
-        int maskSize = args.getInt("maskSize");
-        int min=args.getInt("min");
-        int max=args.getInt("max");
-        double[][] mask = (double[][]) args.get("mask");
+        int nbMask = args.getInt(BundleArgs.NB_MASK);
+        int maskSize = args.getInt(BundleArgs.MASK_SIZE);
+        int min=args.getInt(BundleArgs.MIN);
+        int max=args.getInt(BundleArgs.MAX);
+        double[][] mask = (double[][]) args.get(BundleArgs.MASK);
         double[][] mask2 = null;
         if (nbMask == 2) {
-            mask2 = (double[][]) args.get("mask2");
+            mask2 = (double[][]) args.get(BundleArgs.MASK_2);
         }
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
