@@ -63,8 +63,7 @@
                     android:onClick="toShadesOfGrey"
                     custom:effect_button_icon="@drawable/effect_grey_levels"
                     custom:effect_button_text="@string/grey_levels"
-                    style="@style/ButtonEffect"
-                    android:layout_width="60dp">
+                    style="@style/ButtonEffect">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>
 
                 <fr.ram.imagetreatment.CustomViews.EffectButton
@@ -92,6 +91,13 @@
                     android:onClick="exposure"
                     custom:effect_button_icon="@drawable/effect_exposure"
                     app:effect_button_text="@string/exposure"
+                    style="@style/ButtonEffect">
+                </fr.ram.imagetreatment.CustomViews.EffectButton>
+
+                <fr.ram.imagetreatment.CustomViews.EffectButton
+                    android:onClick="inverseColors"
+                    custom:effect_button_icon="@drawable/effect_inverse_colors"
+                    custom:effect_button_text="@string/inverse_colors"
                     style="@style/ButtonEffect">
                 </fr.ram.imagetreatment.CustomViews.EffectButton>
 

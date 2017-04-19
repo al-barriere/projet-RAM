@@ -29,6 +29,23 @@ public class ColorUtil {
     }
 
     /***
+     * Return the values of a Sepia pixel
+     * @param red The input red value
+     * @param green The input green value
+     * @param blue The input blue value
+     * @return The array of values
+     *      [O] red
+     *      [1] green
+     *      [2] blue
+     */
+    public static int[] pixelToSepia(int red, int green, int blue) {
+        int newRed = (red * 393 / 1000) + (green * 769 / 1000) + (blue * 189 / 1000);
+        int newGreen = (red * 349 / 1000) + (green * 686 / 1000) + (blue * 168 / 1000);
+        int newBlue = (red * 272 / 1000) + (green * 534 / 1000) + (blue * 131 / 1000);
+        return new int[] {newRed, newGreen, newBlue};
+    }
+
+    /***
      * If the color value if over MAX_VALUE_COLOR_RGB, set it to MAX_VALUE_COLOR_RGB
      * If it is under MIN_VALUE_COLOR, set it to MIN_VALUE_COLOR
      * @param pixel The color value

@@ -28,6 +28,7 @@ import fr.ram.imagetreatment.Treatments.Convolution.GaussianBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Laplacian;
 import fr.ram.imagetreatment.Treatments.Convolution.AverageBlur;
 import fr.ram.imagetreatment.Treatments.Convolution.Sobel;
+import fr.ram.imagetreatment.Treatments.InverseColor;
 import fr.ram.imagetreatment.Treatments.MedianFilter;
 import fr.ram.imagetreatment.Treatments.CartoonEffect;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
@@ -159,6 +160,11 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     /**
      * OnClick events
      */
+    public void inverseColors(View view) {
+        InverseColor inverseColor = new InverseColor();
+        inverseColor.compute(ImageTreatmentActivity.this, imageView, null);
+    }
+
     public void toShadesOfGrey(View view) {
         ShadesOfGrey shadesOfGrey = new ShadesOfGrey();
         shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);

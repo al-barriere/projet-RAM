@@ -16,7 +16,7 @@ import fr.ram.imagetreatment.Runnables.TreatmentAsyncTask;
 public abstract class Treatment {
     /***
      * This method contains the logic of the Treatment
-     * @param bmp The Bitmap to modify
+     * @param bmp The Bitmap input
      * @param args The arguments of the Treatment
      * @return The modified Bitmap
      */

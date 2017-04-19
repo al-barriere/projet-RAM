@@ -41,4 +41,5 @@
     <string name="imagefile_load_ioexception_content">Impossible de charger l\'image</string>
     <string name="median_filter">Filtre médian</string>
     <string name="cartoon_effect">Effet cartoon</string>
+    <string name="inverse_colors">Inverser les couleurs</string>
 </resources>

@@ -11,26 +11,38 @@ import fr.ram.imagetreatment.Util.ImageFile;
  * Created by Maxime on 03/02/2017.
  */
 public class Sepia extends Treatment {
+    /***
+     * Return the sepia version of the given Bitmap
+     * @param bmp The Bitmap input
+     * @param args The arguments of the Treatment
+     * @return The modified Bitmap
+     */
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int[] pixels = new int[bmp.getWidth() * bmp.getHeight()];
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+
         for (int i = 0; i < pixels.length; i++) {
-            int o = pixels[i];
-            int blue = Color.blue(o);
-            int red = Color.red(o);
-            int green = Color.green(o);
+            // We retrieve the pixel value
+            int pixelValue = pixels[i];
+            int red = Color.red(pixelValue);
+            int green = Color.green(pixelValue);
+            int blue = Color.blue(pixelValue);
 
-            int tmp_red = (red * 393 / 1000) + (green * 769 / 1000) + (blue * 189 / 1000);
-            int tmp_blue = (red * 272 / 1000) + (green * 534 / 1000) + (blue * 131 / 1000);
-            int tmp_green = (red * 349 / 1000) + (green * 686 / 1000) + (blue * 168 / 1000);
+            // Get the sepia values
+            int[] pixelsSepia = ColorUtil.pixelToSepia(red, green, blue);
+            int newRed = pixelsSepia[0];
+            int newGreen = pixelsSepia[1];
+            int newBlue = pixelsSepia[2];
 
-            tmp_red = ColorUtil.overFlowColor(tmp_red);
-            tmp_green = ColorUtil.overFlowColor(tmp_green);
-            tmp_blue = ColorUtil.overFlowColor(tmp_blue);
+            // If the values are too high we set it to 255
+            newRed = ColorUtil.overFlowColor(newRed);
+            newGreen = ColorUtil.overFlowColor(newGreen);
+            newBlue = ColorUtil.overFlowColor(newBlue);
 
-            pixels[i] = Color.rgb(tmp_red, tmp_green, tmp_blue);
-
+            // We save the new pixel value
+            pixels[i] = Color.rgb(newRed, newGreen, newBlue);
         }
+
         return ImageFile.createBitmapFromPixels(pixels, bmp.getWidth(), bmp.getHeight());
     }
 }
