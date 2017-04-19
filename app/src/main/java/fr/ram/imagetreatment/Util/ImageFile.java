@@ -83,7 +83,7 @@ public class ImageFile {
             Snackbar.make(activity.findViewById(R.id.activity_main), R.string.storage_permissions_not_granted, Snackbar.LENGTH_LONG).setAction(R.string.open_permissions, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openPermissionsIntent((Activity) activity);
+                    openSettingsIntent((Activity) activity);
                 }
             }).show();
         }
@@ -126,7 +126,11 @@ public class ImageFile {
         return false;
     }
 
-    private static void openPermissionsIntent(Activity activity) {
+    /***
+     * Open the App Info of this app in order to let the user modify the app permissions
+     * @param activity The current Activity
+     */
+    private static void openSettingsIntent(Activity activity) {
         Intent intent = new Intent();
         intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
@@ -134,12 +138,26 @@ public class ImageFile {
         activity.startActivity(intent);
     }
 
+    /***
+     * Create a Bitmap of size width * height with the given pixels array
+     * @param pixels The pixels array
+     * @param width The image width
+     * @param height The image height
+     * @return The created Bitmap
+     */
     public static Bitmap createBitmapFromPixels(int[] pixels, int width, int height) {
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
     }
 
+    /***
+     * Get an Bitmap from its Uri
+     * @param photoUri The Bitmap Uri
+     * @param activity The current Activity
+     * @return The Bitmap
+     * @throws IOException
+     */
     public static Bitmap loadImageFromUri(Uri photoUri, Activity activity) throws IOException {
         Bitmap imageBitmap;
         imageBitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), photoUri);
