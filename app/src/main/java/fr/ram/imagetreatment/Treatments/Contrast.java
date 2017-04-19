@@ -32,10 +32,10 @@ public class Contrast extends Treatment {
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
         for (int i = 0; i < size; i++) {
-            int o = pixels[i];
-            double redF = factor * (Color.red(o) - 128);
-            double greenF = factor * (Color.green(o) - 128);
-            double blueF = factor * (Color.blue(o) - 128);
+            int pixel = pixels[i];
+            double redF = factor * (Color.red(pixel) - 128);
+            double greenF = factor * (Color.green(pixel) - 128);
+            double blueF = factor * (Color.blue(pixel) - 128);
             red = (int) (redF + 128);
             green = (int) (greenF + 128);
             blue = (int) (blueF + 128);
