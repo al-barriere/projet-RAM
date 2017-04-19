@@ -14,6 +14,13 @@ import fr.ram.imagetreatment.Util.ImageFile;
  */
 
 public class Contrast extends Treatment {
+    /***
+     *
+     * Adapted from http://www.dfstudios.co.uk/articles/programming/image-programming-algorithms/image-processing-algorithms-part-5-contrast-adjustment/
+     * @param bmp The Bitmap input
+     * @param args The arguments of the Treatment
+     * @return
+     */
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int red, green, blue;
@@ -37,9 +44,9 @@ public class Contrast extends Treatment {
             green = ColorUtil.overFlowColor(green);
             blue = ColorUtil.overFlowColor(blue);
 
-
             pixels[i] = Color.rgb(red, green, blue);
         }
+
         return ImageFile.createBitmapFromPixels(pixels, bmp.getWidth(), bmp.getHeight());
     }
 }

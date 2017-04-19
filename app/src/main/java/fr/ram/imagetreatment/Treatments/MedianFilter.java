@@ -43,9 +43,12 @@ public class MedianFilter extends Treatment {
             xPixelMatrix = i % width;
             yPixelMatrix = i / width;
 
+            // If the current pixel is in the border
             if (i <= width * (maskSize / 2) || i >= width * (height - (maskSize / 2)) || i % width < (maskSize / 2) || i % width >= width - (maskSize / 2)) {
                 pixelsOutput[i] = pixels[i];
-            } else {
+            }
+            // Else, the mask has enough space to be applied
+            else {
                 for (int x = xPixelMatrix - (maskSize / 2); x <= xPixelMatrix + (maskSize / 2); x++) {
                     for (int y = yPixelMatrix - (maskSize / 2); y <= yPixelMatrix + (maskSize / 2); y++) {
                         // Get the HSV values of the pixel

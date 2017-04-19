@@ -13,10 +13,10 @@ import fr.ram.imagetreatment.Util.ImageFile;
 
 public class InverseColor extends Treatment {
     /***
-     *
+     * Return the input Bitmap with inversed colors
      * @param bmp The Bitmap input
      * @param args The arguments of the Treatment
-     * @return
+     * @return The modified Bitmap
      */
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
@@ -24,15 +24,18 @@ public class InverseColor extends Treatment {
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
 
         for (int i = 0; i < pixels.length; i++) {
-            int o = pixels[i];
-            int blue = Color.blue(o);
-            int red = Color.red(o);
-            int green = Color.green(o);
+            // Get the pixel values
+            int pixel = pixels[i];
+            int blue = Color.blue(pixel);
+            int red = Color.red(pixel);
+            int green = Color.green(pixel);
 
-            red = ColorUtil.overFlowColor(ColorUtil.MAX_VALUE_COLOR_RGB - red);
-            blue = ColorUtil.overFlowColor(ColorUtil.MAX_VALUE_COLOR_RGB - blue);
-            green = ColorUtil.overFlowColor(ColorUtil.MAX_VALUE_COLOR_RGB - green);
+            // Inverse the color values
+            red = ColorUtil.MAX_VALUE_COLOR_RGB - red;
+            blue = ColorUtil.MAX_VALUE_COLOR_RGB - blue;
+            green = ColorUtil.MAX_VALUE_COLOR_RGB - green;
 
+            // Save the new value
             pixels[i] = Color.rgb(red, green, blue);
         }
 

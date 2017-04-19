@@ -9,10 +9,15 @@ import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
  * Created by AntoineB on 17-02-05.
- * You choose what is the hue of your bitmap
  */
 
 public class HueChoice extends Treatment {
+    /***
+     * Return the input Bitmap with a modified hue
+     * @param bmp The Bitmap input
+     * @param args The arguments of the Treatment
+     * @return The modified Bitmap
+     */
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int size = bmp.getWidth() * bmp.getHeight();
@@ -20,10 +25,15 @@ public class HueChoice extends Treatment {
         int pixels[] = new int[size];
         float hsv[] = new float[3];
 
+        // Get the pixels of the Bitmap
         bmp.getPixels(pixels, 0, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+
         for (int i = 0; i < size; i++) {
+            // Get the HSV values of the pixel
             Color.colorToHSV(pixels[i], hsv);
+            // Modify its hue
             hsv[0] = hue;
+            // Apply its new HSV values
             pixels[i] = Color.HSVToColor(hsv);
         }
 
