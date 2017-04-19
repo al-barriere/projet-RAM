@@ -38,6 +38,7 @@ import fr.ram.imagetreatment.Treatments.Sepia;
 import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
 import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Util.BundleArgs;
+import fr.ram.imagetreatment.Util.FragmentTags;
 import fr.ram.imagetreatment.Util.ImageFile;
 import fr.ram.imagetreatment.Util.PermissionUtil;
 
@@ -63,7 +64,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
 
         // Save the current image Uri
-        photoUri = (Uri) extras.getParcelable("image");
+        photoUri = (Uri) extras.getParcelable(BundleArgs.IMAGE_URI);
 
         try {
             // Load the image from its Uri
@@ -133,7 +134,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     private void goBack() {
         if (imageView.getImageModified()) {
             Bundle args = new Bundle();
-            args.putParcelable("imageBitmap", imageBitmap);
+            args.putParcelable(BundleArgs.IMAGE_BITMAP, imageBitmap);
 
             DialogFragment fragmentLeave = new ImageTreatmentActivityBackButtonDialogFragment();
             fragmentLeave.setArguments(args);
@@ -175,33 +176,33 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     public void choiceHue(View view) {
         SeekbarHueDialogFragment newFragments = new SeekbarHueDialogFragment();
-        newFragments.show(getFragmentManager(), "choice hue");
+        newFragments.show(getFragmentManager(), FragmentTags.CHOICE_HUE);
     }
 
     public void colorFilter(View view) {
         SeekbarColorDialogFragment newFragments = new SeekbarColorDialogFragment();
-        newFragments.show(getFragmentManager(), "colorFilter");
+        newFragments.show(getFragmentManager(), FragmentTags.COLOR_FILTER);
     }
 
     public void exposure(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
-        newFragments.show(getFragmentManager(), "exposure");
+        newFragments.show(getFragmentManager(), FragmentTags.EXPOSURE);
     }
 
     public void averageBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
-        fragmentArgs.putString("filter", "averageBlur");
+        fragmentArgs.putString(BundleArgs.FILTER, BundleArgs.AVERAGE_BLUR);
         newFragment.setArguments(fragmentArgs);
-        newFragment.show(getFragmentManager(), "sizeMask");
+        newFragment.show(getFragmentManager(), FragmentTags.SIZE_MASK);
     }
 
     public void gaussianBlur(View view) {
         SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
         Bundle fragmentArgs = new Bundle();
-        fragmentArgs.putString("filter", "gaussianBlur");
+        fragmentArgs.putString(BundleArgs.FILTER, BundleArgs.GAUSSIAN_BLUR);
         newFragment.setArguments(fragmentArgs);
-        newFragment.show(getFragmentManager(), "sizeMask");
+        newFragment.show(getFragmentManager(), FragmentTags.SIZE_MASK);
     }
 
     public void laplacianFilter(View view) {
@@ -221,7 +222,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     public void contrast(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
-        newFragments.show(getFragmentManager(), "contrast");
+        newFragments.show(getFragmentManager(), FragmentTags.CONTRAST);
     }
 
     public void histogramEqualization(View view) {

@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import fr.ram.imagetreatment.Fragments.FileSaveErrorDialogFragment;
 import fr.ram.imagetreatment.R;
+import fr.ram.imagetreatment.Util.BundleArgs;
 import fr.ram.imagetreatment.Util.ImageFile;
 
 /**
@@ -62,7 +63,7 @@ public class StartActivity extends AppCompatActivity {
      */
     private void startImageTreatmentActivity(Uri imageUri) {
         Intent intent = new Intent(this, ImageTreatmentActivity.class);
-        intent.putExtra("image", imageUri);
+        intent.putExtra(BundleArgs.IMAGE_URI, imageUri);
         startActivity(intent);
     }
 

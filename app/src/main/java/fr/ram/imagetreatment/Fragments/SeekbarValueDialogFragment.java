@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import fr.ram.imagetreatment.Activities.ImageTreatmentActivity;
 import fr.ram.imagetreatment.CustomViews.MinMaxSeekBar;
 import fr.ram.imagetreatment.R;
+import fr.ram.imagetreatment.Util.FragmentTags;
 
 /**
  * Created by AntoineB on 17-02-11.
@@ -37,11 +38,11 @@ public class SeekbarValueDialogFragment extends DialogFragment {
                 ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
 
                 // If the Dialog is called by a contrast button, we modify the contrast of the image
-                if (getTag().equals("contrast")) {
+                if (getTag().equals(FragmentTags.CONTRAST)) {
                     callingActivity.contrastTreatment(seekbar.getValue());
                 }
                 // Else, if it is an exposure treatment
-                else if (getTag().equals("exposure")) {
+                else if (getTag().equals(FragmentTags.EXPOSURE)) {
                     callingActivity.exposureTreatment(seekbar.getValue());
                 }
 

@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
 import fr.ram.imagetreatment.R;
+import fr.ram.imagetreatment.Util.BundleArgs;
 import fr.ram.imagetreatment.Util.ImageFile;
 
 public class ImageTreatmentActivityBackButtonDialogFragment extends DialogFragment {
@@ -21,7 +22,7 @@ public class ImageTreatmentActivityBackButtonDialogFragment extends DialogFragme
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         // Retrieve the Bitmap contained by the CustomImageView
-        final Bitmap image = (Bitmap) getArguments().getParcelable("imageBitmap");
+        final Bitmap image = (Bitmap) getArguments().getParcelable(BundleArgs.IMAGE_BITMAP);
 
         builder.setTitle(R.string.main_activity_back_button_title);
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {

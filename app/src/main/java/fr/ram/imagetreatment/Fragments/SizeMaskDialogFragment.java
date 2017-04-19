@@ -11,6 +11,7 @@ import java.util.Objects;
 
 import fr.ram.imagetreatment.Activities.ImageTreatmentActivity;
 import fr.ram.imagetreatment.R;
+import fr.ram.imagetreatment.Util.BundleArgs;
 
 /**
  * Created by Maxime on 22/02/2017.
@@ -68,9 +69,9 @@ public class SizeMaskDialogFragment extends DialogFragment {
         ImageTreatmentActivity callingActivity = (ImageTreatmentActivity) getActivity();
 
         // Apply the treatment depending on the requested filter
-        if (Objects.equals(filter, "averageBlur"))
+        if (Objects.equals(filter, BundleArgs.AVERAGE_BLUR))
             callingActivity.averageBlurTreatment(size);
-        else if (Objects.equals(filter, "gaussianBlur"))
+        else if (Objects.equals(filter, BundleArgs.GAUSSIAN_BLUR))
             callingActivity.gaussianFilterTreatment(size);
 
         // Close the Dialog
