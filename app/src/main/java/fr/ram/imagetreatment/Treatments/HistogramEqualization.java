@@ -13,7 +13,7 @@ import fr.ram.imagetreatment.Util.ImageFile;
 
 public class HistogramEqualization extends Treatment {
     /***
-     *
+     * Return the given Bitmap with its contrast ajusted by histogram equalization
      * @param bmp The Bitmap input
      * @param args The arguments of the Treatment
      * @return The modified Bitmap

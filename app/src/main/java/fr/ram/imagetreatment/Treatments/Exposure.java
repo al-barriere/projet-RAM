@@ -14,6 +14,12 @@ import fr.ram.imagetreatment.Util.ImageFile;
  */
 
 public class Exposure extends Treatment {
+    /***
+     * Return the given Bitmap with a modified exposure
+     * @param bmp The Bitmap input
+     * @param args The arguments of the Treatment
+     * @return The given Bitmap
+     */
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int red, green, blue;
