@@ -14,7 +14,7 @@ import fr.ram.imagetreatment.R;
 
 public class FileLoadErrorDialogFragment extends DialogFragment {
     /***
-     * Create an AlertDialog in order to inform the user of an error happening during the loading of a file
+     * Create a Dialog in order to inform the user of an error happening during the loading of a file
      * @param savedInstanceState The Dialog savedInstanceState
      * @return The Dialog
      */

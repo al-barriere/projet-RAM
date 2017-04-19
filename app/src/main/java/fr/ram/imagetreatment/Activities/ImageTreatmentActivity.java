@@ -32,7 +32,7 @@ import fr.ram.imagetreatment.Treatments.MedianFilter;
 import fr.ram.imagetreatment.Treatments.CartoonEffect;
 import fr.ram.imagetreatment.Treatments.HistogramEqualization;
 import fr.ram.imagetreatment.Treatments.HueChoice;
-import fr.ram.imagetreatment.Treatments.OverExposure;
+import fr.ram.imagetreatment.Treatments.Exposure;
 import fr.ram.imagetreatment.Treatments.Pencil;
 import fr.ram.imagetreatment.Treatments.Sepia;
 import fr.ram.imagetreatment.Treatments.ShadesOfGrey;
@@ -185,7 +185,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     public void exposure(View view) {
         SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
-        newFragments.show(getFragmentManager(), "overexposure");
+        newFragments.show(getFragmentManager(), "exposure");
     }
 
     public void averageBlur(View view) {
@@ -252,11 +252,11 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         colorFilter.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
-    public void overExposureTreatment(int value) {
-        OverExposure overExposure = new OverExposure();
+    public void exposureTreatment(int value) {
+        Exposure exposure = new Exposure();
         Bundle seekData = new Bundle();
         seekData.putInt("value", value);
-        overExposure.compute(ImageTreatmentActivity.this, imageView, seekData);
+        exposure.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void contrastTreatment(int value) {

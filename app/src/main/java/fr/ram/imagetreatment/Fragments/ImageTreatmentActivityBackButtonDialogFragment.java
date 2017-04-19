@@ -12,7 +12,7 @@ import fr.ram.imagetreatment.Util.ImageFile;
 
 public class ImageTreatmentActivityBackButtonDialogFragment extends DialogFragment {
     /***
-     * Create an AlertDialog in order to ask the user if he wants to save the CustomImageView's Bitmap before leaving the current activity
+     * Create a Dialog in order to ask the user if he wants to save the CustomImageView's Bitmap before leaving the current activity
      * @param savedInstanceState The Dialog savedInstanceState
      * @return The Dialog
      */

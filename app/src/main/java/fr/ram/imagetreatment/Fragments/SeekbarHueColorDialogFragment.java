@@ -39,7 +39,7 @@ abstract class SeekbarHueColorDialogFragment extends DialogFragment {
     }
 
     /***
-     * Return an AlertDialog in order to select a color
+     * Return a Dialog in order to select a color
      * @param savedInstanceState The Dialog savedInstanceState
      * @return The Dialog
      */

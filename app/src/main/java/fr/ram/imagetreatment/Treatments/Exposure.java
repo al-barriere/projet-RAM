@@ -13,7 +13,7 @@ import fr.ram.imagetreatment.Util.ImageFile;
  *
  */
 
-public class OverExposure extends Treatment {
+public class Exposure extends Treatment {
     @Override
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         int red,green,blue;
