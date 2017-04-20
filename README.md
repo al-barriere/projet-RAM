@@ -1,6 +1,5 @@
 
 ## I. Présentation
----
 * MOMPRIVÉ Rémi
 * GUILBAULT Maxime
 * BARRIERE Antoine
@@ -14,7 +13,6 @@ Ce projet est découpé en 2 parties. La première consiste à la réalisation d
 
 
 ## II. Besoins fonctionnels
----
 ### a) Obligatoires
 
 - [ ] 1. Chargement image
@@ -41,7 +39,6 @@ Ce projet est découpé en 2 parties. La première consiste à la réalisation d
 - [ ] Restreindre la zone d’application d’un filtre avec le doigt
 
 ## III. Besoins non-fonctionnels
----
 - [x] Utilisation d'un outil de versionning pour le projet
 - [ ] Optimiser un maximum le code
 
