@@ -2,175 +2,175 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/b2fd2d1fd0bd9cfb3ab366df2382250f7ba21c5a/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="24.0.3"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_c8e26ec7bd6e3ef0fe9f6deb8c12043d4c9b543f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_3bc82b762fa71ed7a6cea0f1d1981309b03591ac\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_fde4aea1b166b3c553b4d25ba593f2d1e7b122a9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a5d80ce0de2bb4b08422779453c8b5b0a73d021e">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a0d255dcccdd7e39c22d65bfd754d13a1d939427\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_19bbf7246f460fc600e4146e1d3e41ce52219845\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_56f9c0d435e1b5de6382cbff958ca352d4f945c3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_dcc5e9167b9df95c7c835ee042d6a25815a1357f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_b1aa74a8697cbaa8e606a6fdcc5e2dc7ee0a2473\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_6b070b55b14d2bb76277f29801050f8b464ea4e6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_e31f57e24b6bfd1b035e6ad7cb1e4a7d699fc272\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_382c5a0a55b3c5dde9e90ce0e60d3bc42f4f0dc0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_f30d1022729ed50f5423b83b10410b91df0ff789\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ddc0e7f35880116ef179a0356b557f552904aa74\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_b1fcbdf9b42d1d04b1e4ec1f9482a166c51941a7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_00a75f2bb098bcb316a9d16a126a8b14f5795647\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_d0ed72fc7a098b8b7c87940a52b4b14dbe0f01c1\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_8a0a910fd21972e03b446be53bab8036d057def5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
+        revision="25.0.0"
         sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_27517b0285908d5557311c34538e44bdda444a16\classes.dex" />
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_b224b91a0c7dc0a7b354d083ffc73b9afcdbc21b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/978d7b6774ec51350f8decd53716224add4893e8/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_57bf70fe8c6b60ee88478caf747ade8ed3674e53.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/a6d1882d2687bfea2d786a42490ba38ebb6d1172/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_310b9e14ebb0d84a7a77e27bf848dcfe6d702602.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/f29c6cfb1df2232c07195d7e5e5e09e06a2dbecc/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_f4f445d7982e2548e889b6ae3f209eac3b226797.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/978d7b6774ec51350f8decd53716224add4893e8/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_1c9bdb2c89e69687c85c018c6d3504c12c1ce634.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/4d55c74b9d04e8b163060f84992f42e398b3579d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_2dcf203f46721b9e4df566b40f8955e0e46b9460.jar" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="ea70bac2e28a794e40e04a96f48aaed7e774f601">
-        <dex dex="C:\Users\Remi\AndroidStudioProjects\projet-RAM\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_66396b52a507eb75ceaa0edefd33e2e996623b47\classes.dex" />
+        revision="25.0.0"
+        sha1="9b5435b948a02faf9a3c5eb920317ece807a1b39">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_78a27fd91c148303b18853e1bbb641bc61f8c096/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_56a54e52356e2c2d2cf57bc9180fe902610cd2f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/2d96f96627638ac1e2bcae37021036b23f4767f7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_a72cb84ee5bfeb6edd39d5939101c02968fdc2fa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/c4b9cb95dfa12fc8f4d2a91ad722bdcf738a0b8f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_db01a25e31c8fd0fb64cf2793dac62ca42d0d126.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/8574456aa024d0b210236785711c0a186e63b513/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_334ccbfd7557b41ec81f01e966863c740115388f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/adaa0e9f2e155e178dd6e642926e250e69a1ace6/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_be75593b71c5959e8c660ad1222125ceb93bde4d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/4d55c74b9d04e8b163060f84992f42e398b3579d/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_1e3eb3000434dada6440b025cf16804a3fcb498c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/9532360eabd06feeb3b43f8a90182933ec30ede5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_f5f3aaa7bd5ac632039d8f6bd49b610a6839923a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/f29c6cfb1df2232c07195d7e5e5e09e06a2dbecc/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_6ffc0938795896e0529eb2bd0893197f8687d476.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/8574456aa024d0b210236785711c0a186e63b513/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_c6e96b0f8458fb1e40aca76fdcc3415c3851e92e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/9f708eeadf8601b72bc6a3fbddacc481f7cd7ff6/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_ed1737fb0af591ff999d6e0c42f710d55023e3b3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/remi/.android/build-cache/a6d1882d2687bfea2d786a42490ba38ebb6d1172/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/pre-dexed/debug/classes_4806f53a68845e52b97da26ef9b264d89f14900a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/remi/StudioProjects/projet-RAM/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ddbaa16f4db0eaadd781d713373ebd6433f51536/classes.dex" />
     </item>
 
 </items>
