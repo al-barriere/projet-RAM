@@ -31,13 +31,14 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <fr.ram.imagetreatment.CustomViews.CustomImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="matrix">
-
                 </fr.ram.imagetreatment.CustomViews.CustomImageView>
+
             </FrameLayout>
 
         </LinearLayout>
