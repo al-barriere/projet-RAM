@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mask_sizes_array">
+        <item>3X3</item>
+        <item>5X5</item>
+        <item>7X7</item>
+        <item>9X9</item>
+    </string-array>
+</resources>
