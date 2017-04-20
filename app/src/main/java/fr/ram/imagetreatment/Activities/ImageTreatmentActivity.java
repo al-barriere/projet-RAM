@@ -158,57 +158,30 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     /**
-     * OnClick events
+     * OnClick events - Without DialogFragments
      */
     public void inverseColors(View view) {
+        // Apply the effect
         InverseColor inverseColor = new InverseColor();
         inverseColor.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void toShadesOfGrey(View view) {
+        // Apply the effect
         ShadesOfGrey shadesOfGrey = new ShadesOfGrey();
         shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void cartoonEffect(View view) {
+        // Apply the effect
         CartoonEffect t = new CartoonEffect();
         t.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void toSepia(View view) {
+        // Apply the effect
         Sepia sepia = new Sepia();
         sepia.compute(ImageTreatmentActivity.this, imageView, null);
-    }
-
-    public void choiceHue(View view) {
-        SeekbarHueDialogFragment newFragments = new SeekbarHueDialogFragment();
-        newFragments.show(getFragmentManager(), FragmentTags.CHOICE_HUE);
-    }
-
-    public void colorFilter(View view) {
-        SeekbarColorDialogFragment newFragments = new SeekbarColorDialogFragment();
-        newFragments.show(getFragmentManager(), FragmentTags.COLOR_FILTER);
-    }
-
-    public void exposure(View view) {
-        SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
-        newFragments.show(getFragmentManager(), FragmentTags.EXPOSURE);
-    }
-
-    public void averageBlur(View view) {
-        SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
-        Bundle fragmentArgs = new Bundle();
-        fragmentArgs.putString(BundleArgs.FILTER, BundleArgs.AVERAGE_BLUR);
-        newFragment.setArguments(fragmentArgs);
-        newFragment.show(getFragmentManager(), FragmentTags.SIZE_MASK);
-    }
-
-    public void gaussianBlur(View view) {
-        SizeMaskDialogFragment newFragment = new SizeMaskDialogFragment();
-        Bundle fragmentArgs = new Bundle();
-        fragmentArgs.putString(BundleArgs.FILTER, BundleArgs.GAUSSIAN_BLUR);
-        newFragment.setArguments(fragmentArgs);
-        newFragment.show(getFragmentManager(), FragmentTags.SIZE_MASK);
     }
 
     public void laplacianFilter(View view) {
@@ -226,11 +199,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         p.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
-    public void contrast(View view) {
-        SeekbarValueDialogFragment newFragments = new SeekbarValueDialogFragment();
-        newFragments.show(getFragmentManager(), FragmentTags.CONTRAST);
-    }
-
     public void histogramEqualization(View view) {
         HistogramEqualization he = new HistogramEqualization();
         he.compute(ImageTreatmentActivity.this, imageView, null);
@@ -238,12 +206,52 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
     public void medianFilter(View view) {
         MedianFilter medianFilter = new MedianFilter();
-        Bundle args = new Bundle();
-        medianFilter.compute(ImageTreatmentActivity.this, imageView, args);
+        medianFilter.compute(ImageTreatmentActivity.this, imageView, null);
+    }
+
+    /***
+     * OnClick events - With DialogFragments
+     */
+    public void choiceHue(View view) {
+        SeekbarHueDialogFragment seekbarHueDialogFragment = new SeekbarHueDialogFragment();
+        seekbarHueDialogFragment.show(getFragmentManager(), FragmentTags.CHOICE_HUE);
+    }
+
+    public void colorFilter(View view) {
+        SeekbarColorDialogFragment seekbarColorDialogFragment = new SeekbarColorDialogFragment();
+        seekbarColorDialogFragment.show(getFragmentManager(), FragmentTags.COLOR_FILTER);
+    }
+
+    public void exposure(View view) {
+        SeekbarValueDialogFragment seekbarValueDialogFragment = new SeekbarValueDialogFragment();
+        seekbarValueDialogFragment.show(getFragmentManager(), FragmentTags.EXPOSURE);
+    }
+
+    public void contrast(View view) {
+        SeekbarValueDialogFragment seekbarValueDialogFragment = new SeekbarValueDialogFragment();
+        seekbarValueDialogFragment.show(getFragmentManager(), FragmentTags.CONTRAST);
+    }
+
+    public void averageBlur(View view) {
+        Bundle fragmentArgs = new Bundle();
+        fragmentArgs.putString(BundleArgs.FILTER, BundleArgs.AVERAGE_BLUR);
+
+        SizeMaskDialogFragment sizeMaskDialogFragment = new SizeMaskDialogFragment();
+        sizeMaskDialogFragment.setArguments(fragmentArgs);
+        sizeMaskDialogFragment.show(getFragmentManager(), FragmentTags.SIZE_MASK);
+    }
+
+    public void gaussianBlur(View view) {
+        Bundle fragmentArgs = new Bundle();
+        fragmentArgs.putString(BundleArgs.FILTER, BundleArgs.GAUSSIAN_BLUR);
+
+        SizeMaskDialogFragment sizeMaskDialogFragment = new SizeMaskDialogFragment();
+        sizeMaskDialogFragment.setArguments(fragmentArgs);
+        sizeMaskDialogFragment.show(getFragmentManager(), FragmentTags.SIZE_MASK);
     }
 
     /**
-     * Functions DialogFragment
+     * DialogFragment callbacks
      */
     public void hueChoice(int hue) {
         HueChoice hueChoice = new HueChoice();
@@ -253,37 +261,40 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void filterColor(int color) {
-        ColorFilter colorFilter = new ColorFilter();
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.COLOR, color);
+
+        ColorFilter colorFilter = new ColorFilter();
         colorFilter.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void exposureTreatment(int value) {
-        Exposure exposure = new Exposure();
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.VALUE, value);
+
+        Exposure exposure = new Exposure();
         exposure.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void contrastTreatment(int value) {
-        Contrast contrast = new Contrast();
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.VALUE, value);
+
+        Contrast contrast = new Contrast();
         contrast.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void averageBlurTreatment(int maskSize) {
-        AverageBlur m = new AverageBlur();
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
+        AverageBlur m = new AverageBlur();
         m.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
-        GaussianBlur g = new GaussianBlur();
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
+        GaussianBlur g = new GaussianBlur();
         g.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
