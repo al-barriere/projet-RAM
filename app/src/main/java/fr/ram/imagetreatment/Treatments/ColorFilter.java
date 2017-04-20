@@ -22,7 +22,7 @@ public class ColorFilter extends Treatment {
      * @return The modified Bitmap
      */
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         int red, blue, green, pixel, newColorValue;
         int min = 50;
         int color = args.getInt(BundleArgs.COLOR);

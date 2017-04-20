@@ -22,18 +22,18 @@ public class CartoonEffect extends Treatment {
      * @return The modified Bitmap
      */
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         int width = bmp.getWidth();
         int height = bmp.getHeight();
         int size = width * height;
 
         // We create an image with the outline of the input Bitmap
         Sobel sobel = new Sobel();
-        Bitmap sobelBitmap = sobel._compute(bmp, args);
+        Bitmap sobelBitmap = sobel.render(bmp, args);
 
         // We apply a median filter on the input Bitmap and save it in a new Bitmap
         MedianFilter medianFilter = new MedianFilter();
-        Bitmap medianBitmap = medianFilter._compute(bmp, args);
+        Bitmap medianBitmap = medianFilter.render(bmp, args);
 
         int pixelsSobel[] = new int[size];
         int pixelsMedian[] = new int[size];

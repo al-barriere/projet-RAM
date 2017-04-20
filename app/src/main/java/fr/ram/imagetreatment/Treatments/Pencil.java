@@ -19,23 +19,23 @@ public class Pencil extends Treatment {
      * @return The modified Bitmap
      */
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         // Create the Bitmap result
         Bitmap returnBitmap;
 
         // Apply the Sobel effect
         Sobel sobel = new Sobel();
-        returnBitmap = sobel._compute(bmp, args);
+        returnBitmap = sobel.render(bmp, args);
 
         // Inverse the colors
         InverseColor inverseColor = new InverseColor();
-        returnBitmap = inverseColor._compute(returnBitmap, args);
+        returnBitmap = inverseColor.render(returnBitmap, args);
 
         // Apply a Gaussian blur in order to remove the imperfections
         args = new Bundle();
         args.putInt(BundleArgs.MASK_SIZE, 3);
         GaussianBlur gaussianBlur = new GaussianBlur();
-        returnBitmap = gaussianBlur._compute(returnBitmap, args);
+        returnBitmap = gaussianBlur.render(returnBitmap, args);
 
         // Return the modified Bitmap
         return returnBitmap;

@@ -15,7 +15,7 @@ import fr.ram.imagetreatment.Util.ImageFile;
 
 public abstract class Convolution extends Treatment {
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         int nbMask = args.getInt(BundleArgs.NB_MASK);
         int maskSize = args.getInt(BundleArgs.MASK_SIZE);
         int minPixel=args.getInt(BundleArgs.MIN);

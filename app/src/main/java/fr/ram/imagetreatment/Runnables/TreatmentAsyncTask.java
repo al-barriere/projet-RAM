@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import fr.ram.imagetreatment.Activities.ImageTreatmentActivity;
-import fr.ram.imagetreatment.CustomViews.CustomImageView;
 import fr.ram.imagetreatment.Treatments.Treatment;
 
 /**
@@ -35,7 +34,7 @@ public class TreatmentAsyncTask extends AsyncTask<Object, Integer, Bitmap> {
         this.progressDialog = (ProgressDialog) params[4];
 
         // Compute the treatment on the CustomImageView
-        return treatment._compute(bmp, args);
+        return treatment.render(bmp, args);
     }
 
     /***

@@ -168,55 +168,55 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void inverseColors(View view) {
         // Apply the effect
         InverseColor inverseColor = new InverseColor();
-        inverseColor.compute(ImageTreatmentActivity.this, imageView, null);
+        inverseColor.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void toShadesOfGrey(View view) {
         // Apply the effect
         ShadesOfGrey shadesOfGrey = new ShadesOfGrey();
-        shadesOfGrey.compute(ImageTreatmentActivity.this, imageView, null);
+        shadesOfGrey.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void cartoonEffect(View view) {
         // Apply the effect
         CartoonEffect t = new CartoonEffect();
-        t.compute(ImageTreatmentActivity.this, imageView, null);
+        t.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void toSepia(View view) {
         // Apply the effect
         Sepia sepia = new Sepia();
-        sepia.compute(ImageTreatmentActivity.this, imageView, null);
+        sepia.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void laplacianFilter(View view) {
         // Apply the effect
         Laplacian l = new Laplacian();
-        l.compute(ImageTreatmentActivity.this, imageView, null);
+        l.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void sobelFilter(View view) {
         // Apply the effect
         Sobel s = new Sobel();
-        s.compute(ImageTreatmentActivity.this, imageView, null);
+        s.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void pencil(View view) {
         // Apply the effect
         Pencil p = new Pencil();
-        p.compute(ImageTreatmentActivity.this, imageView, null);
+        p.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void histogramEqualization(View view) {
         // Apply the effect
         HistogramEqualization he = new HistogramEqualization();
-        he.compute(ImageTreatmentActivity.this, imageView, null);
+        he.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void medianFilter(View view) {
         // Apply the effect
         MedianFilter medianFilter = new MedianFilter();
-        medianFilter.compute(ImageTreatmentActivity.this, imageView, null);
+        medianFilter.applyTreatment(ImageTreatmentActivity.this, imageView, null);
     }
 
     /***
@@ -268,7 +268,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         seekData.putInt(BundleArgs.VALUE, hue);
 
         HueChoice hueChoice = new HueChoice();
-        hueChoice.compute(ImageTreatmentActivity.this, imageView, seekData);
+        hueChoice.applyTreatment(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void filterColor(int color) {
@@ -276,7 +276,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         seekData.putInt(BundleArgs.COLOR, color);
 
         ColorFilter colorFilter = new ColorFilter();
-        colorFilter.compute(ImageTreatmentActivity.this, imageView, seekData);
+        colorFilter.applyTreatment(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void exposureTreatment(int value) {
@@ -284,7 +284,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         seekData.putInt(BundleArgs.VALUE, value);
 
         Exposure exposure = new Exposure();
-        exposure.compute(ImageTreatmentActivity.this, imageView, seekData);
+        exposure.applyTreatment(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void contrastTreatment(int value) {
@@ -292,7 +292,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         seekData.putInt(BundleArgs.VALUE, value);
 
         Contrast contrast = new Contrast();
-        contrast.compute(ImageTreatmentActivity.this, imageView, seekData);
+        contrast.applyTreatment(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void averageBlurTreatment(int maskSize) {
@@ -300,7 +300,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
 
         AverageBlur a = new AverageBlur();
-        a.compute(ImageTreatmentActivity.this, imageView, seekData);
+        a.applyTreatment(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
@@ -308,7 +308,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
 
         GaussianBlur g = new GaussianBlur();
-        g.compute(ImageTreatmentActivity.this, imageView, seekData);
+        g.applyTreatment(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     /***

@@ -20,7 +20,7 @@ public abstract class Treatment {
      * @param args The arguments of the Treatment
      * @return The modified Bitmap
      */
-    public abstract Bitmap _compute(Bitmap bmp, Bundle args);
+    public abstract Bitmap render(Bitmap bmp, Bundle args);
 
     /***
      * This method is called by the ImageTreatmentActivity in order to start a Treatment
@@ -28,7 +28,7 @@ public abstract class Treatment {
      * @param img The CustomImageView containing the Bitmap to modify
      * @param args The arguments of the Treatment
      */
-    public void compute(Activity activity, CustomImageView img, Bundle args) {
+    public void applyTreatment(Activity activity, CustomImageView img, Bundle args) {
         // Start a ProgressDialog in order to avoid the feeling of a blocked UI
         ProgressDialog effectProgressDialog = ProgressDialog.show(activity, activity.getString(R.string.please_wait), activity.getString(R.string.processing_image), true);
         effectProgressDialog.setCancelable(false);

@@ -22,7 +22,7 @@ public class MedianFilter extends Treatment {
      * @return The modified Bitmap
      */
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         int maskSize = 3;
 
         // Get the pixels of the input Bitmap

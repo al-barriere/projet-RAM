@@ -21,7 +21,7 @@ public class Exposure extends Treatment {
      * @return The given Bitmap
      */
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         int red, green, blue;
         int value = args.getInt(BundleArgs.VALUE);
         int size = bmp.getWidth() * bmp.getHeight();

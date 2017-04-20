@@ -19,7 +19,7 @@ public class HistogramEqualization extends Treatment {
      * @return The modified Bitmap
      */
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         Bitmap greyImage = bmp;
         int size = bmp.getWidth() * bmp.getHeight();
         int pixelsColor[] = new int[size];
@@ -44,7 +44,7 @@ public class HistogramEqualization extends Treatment {
 
         // Apply the grey levels effect on a new Bitmap
         ShadesOfGrey sod = new ShadesOfGrey();
-        greyImage = sod._compute(greyImage, null);
+        greyImage = sod.render(greyImage, null);
 
         // Get the grey levels pixels
         greyImage.getPixels(pixelsShadesOfGrey, 0, greyImage.getWidth(), 0, 0, greyImage.getWidth(), greyImage.getHeight());

@@ -78,6 +78,7 @@ public class MinMaxSeekBar extends android.support.v7.widget.AppCompatSeekBar {
 
     /***
      * @return The "real" value of the SeekBar (calculated depending on the min, max and step values)
+     *      This value is the relative progress of the SeekBar
      */
     public int getValue() {
         return value;

@@ -19,7 +19,7 @@ public class HueChoice extends Treatment {
      * @return The modified Bitmap
      */
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         int size = bmp.getWidth() * bmp.getHeight();
         int hue = args.getInt(BundleArgs.VALUE);
         int pixels[] = new int[size];

@@ -11,7 +11,7 @@ import fr.ram.imagetreatment.Util.BundleArgs;
 
 public class AverageBlur extends Convolution {
     @Override
-    public Bitmap _compute(Bitmap bmp, Bundle args) {
+    public Bitmap render(Bitmap bmp, Bundle args) {
         // Creation of a mask that will be applied to the pixel of the image
         int maskSize = args.getInt(BundleArgs.MASK_SIZE);
         double[][] mask = new double[maskSize][maskSize];
@@ -27,6 +27,6 @@ public class AverageBlur extends Convolution {
         args.putInt(BundleArgs.MIN, 0);
         args.putInt(BundleArgs.MAX, 255);
 
-        return super._compute(bmp, args);
+        return super.render(bmp, args);
     }
 }
