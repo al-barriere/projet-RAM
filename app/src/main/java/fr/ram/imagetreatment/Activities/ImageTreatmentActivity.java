@@ -57,6 +57,7 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         imageView = (CustomImageView) findViewById(R.id.imageView);
 
+        // Add the toolbar and enable its back arrow
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -80,11 +81,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
 
         // Request for storage permissions
         PermissionUtil.verifyStoragePermissions(this);
-    }
-
-    private void showFileLoadErrorDialogFragment() {
-        DialogFragment fragmentFileError = new FileLoadErrorDialogFragment();
-        fragmentFileError.show(getSupportFragmentManager(), null);
     }
 
     @Override
@@ -129,6 +125,22 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     /***
+     * When the back button or the back arrow is pressed
+     */
+    @Override
+    public void onBackPressed() {
+        goBack();
+    }
+
+    /***
+     * Show an alert when the image file could not be loaded
+     */
+    private void showFileLoadErrorDialogFragment() {
+        DialogFragment fragmentFileError = new FileLoadErrorDialogFragment();
+        fragmentFileError.show(getSupportFragmentManager(), null);
+    }
+
+    /***
      * Leave the current activity
      * If the image is modified, show an alert dialog for saving the image before leaving
      */
@@ -145,13 +157,6 @@ public class ImageTreatmentActivity extends AppCompatActivity {
         }
     }
 
-    /***
-     * When the back button or the back arrow is pressed
-     */
-    @Override
-    public void onBackPressed() {
-        goBack();
-    }
 
     public CustomImageView getImageView() {
         return imageView;
@@ -185,26 +190,31 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     }
 
     public void laplacianFilter(View view) {
+        // Apply the effect
         Laplacian l = new Laplacian();
         l.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void sobelFilter(View view) {
+        // Apply the effect
         Sobel s = new Sobel();
         s.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void pencil(View view) {
+        // Apply the effect
         Pencil p = new Pencil();
         p.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void histogramEqualization(View view) {
+        // Apply the effect
         HistogramEqualization he = new HistogramEqualization();
         he.compute(ImageTreatmentActivity.this, imageView, null);
     }
 
     public void medianFilter(View view) {
+        // Apply the effect
         MedianFilter medianFilter = new MedianFilter();
         medianFilter.compute(ImageTreatmentActivity.this, imageView, null);
     }
@@ -254,9 +264,10 @@ public class ImageTreatmentActivity extends AppCompatActivity {
      * DialogFragment callbacks
      */
     public void hueChoice(int hue) {
-        HueChoice hueChoice = new HueChoice();
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.VALUE, hue);
+
+        HueChoice hueChoice = new HueChoice();
         hueChoice.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
@@ -287,13 +298,15 @@ public class ImageTreatmentActivity extends AppCompatActivity {
     public void averageBlurTreatment(int maskSize) {
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
-        AverageBlur m = new AverageBlur();
-        m.compute(ImageTreatmentActivity.this, imageView, seekData);
+
+        AverageBlur a = new AverageBlur();
+        a.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
 
     public void gaussianFilterTreatment(int maskSize) {
         Bundle seekData = new Bundle();
         seekData.putInt(BundleArgs.MASK_SIZE, maskSize);
+
         GaussianBlur g = new GaussianBlur();
         g.compute(ImageTreatmentActivity.this, imageView, seekData);
     }
