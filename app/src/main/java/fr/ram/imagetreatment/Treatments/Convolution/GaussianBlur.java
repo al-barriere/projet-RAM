@@ -14,9 +14,9 @@ public class GaussianBlur extends Convolution {
     /***
      * Generate a gaussian mask and applies it
      * Mask generation algorithm adapted from http://www.programming-techniques.com/2013/02/gaussian-filter-generation-using-cc.html
-     * @param bmp
-     * @param args
-     * @return
+     * @param bmp The input Bitmap
+     * @param args The arguments of the Treatment
+     * @return The modified Bitmap
      */
     public Bitmap _compute(Bitmap bmp, Bundle args) {
         // Retrieve the mask size
