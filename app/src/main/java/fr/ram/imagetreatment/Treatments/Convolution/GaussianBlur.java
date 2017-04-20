@@ -13,37 +13,43 @@ import fr.ram.imagetreatment.Util.BundleArgs;
 public class GaussianBlur extends Convolution {
     /***
      * Generate a gaussian mask and applies it
-     * Mask generation algirithm adapted from http://www.programming-techniques.com/2013/02/gaussian-filter-generation-using-cc.html
+     * Mask generation algorithm adapted from http://www.programming-techniques.com/2013/02/gaussian-filter-generation-using-cc.html
      * @param bmp
      * @param args
      * @return
      */
     public Bitmap _compute(Bitmap bmp, Bundle args) {
+        // Retrieve the mask size
         int maskSize = args.getInt(BundleArgs.MASK_SIZE);
         double[][] mask = new double[maskSize][maskSize];
+        double maskValue;
 
-        double sigma = 1.0;
-        double r, s = 2.0 * sigma * sigma;
+        double sigma = 1.0f;
+        double r, s = 2.0f * sigma * sigma;
 
-        double sum = 0.0;
+        double sum = 0.0f;
         int shift = maskSize / 2;
 
+        // Generate the Mask
         for (int x = -shift; x <= shift; x++) {
             for (int y = -shift; y <= shift; y++) {
                 r = Math.sqrt(x * x + y * y);
-                mask[x + shift][y + shift] = (Math.exp(-(r * r) / s)) / (Math.PI * s);
-                sum += mask[x + shift][y + shift];
+                maskValue = (Math.exp(-(r * r) / s)) / (Math.PI * s);
+                mask[x + shift][y + shift] = maskValue;
+                sum += maskValue;
             }
         }
 
+        // Normalize the Mask values (set it between 0 and 1)
         for (int i = 0; i < maskSize; ++i)
             for (int j = 0; j < maskSize; ++j)
                 mask[i][j] /= sum;
 
+        // Set the Convolution arguments
         args.putInt(BundleArgs.NB_MASK, 1);
         args.putSerializable(BundleArgs.MASK, mask);
-        args.putInt(BundleArgs.MIN,0);
-        args.putInt(BundleArgs.MAX,255);
+        args.putInt(BundleArgs.MIN, 0);
+        args.putInt(BundleArgs.MAX, 255);
 
         return super._compute(bmp, args);
     }
