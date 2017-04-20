@@ -10,6 +10,9 @@ Ceci correspond à notre projet Android que l'on doit réaliser dans le cadre de
 Notre projet consiste à la réalisation d'une **application** de Traitement d'image sur smartphone avec système Android. Pour cela, elle devra être réalisée avec le logiciel *Android Studio*.
 Ce projet est découpé en 2 parties. La première consiste à la réalisation des effets que l'on peut faire sur une image et la seconde se concentre sur l'organisation et l'optimisation de notre application.
 
+[Voir le rapport](rapport_barriere_guilbault_momprive.pdf)
+
+
 ## II. Besoins fonctionnels
 ---
 ### a) Obligatoires
